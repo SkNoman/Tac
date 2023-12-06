@@ -16,10 +16,10 @@ class SignInFragment : BaseFragmentWithBinding<FragmentSignInBinding>
 {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.textView.text = "بَسْمَلَة"
-
-        binding.textView.setOnClickListener{
+        binding.btnSignIn.setOnClickListener {
+            findNavController().navigate(R.id.OTPFragment)
+        }
+        binding.tvNavigateSignIn.setOnClickListener {
             findNavController().navigate(R.id.signUpFragment)
         }
     }

@@ -6,14 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.SignInFragment">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/ivLoginAnim"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".35"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/login_anim" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="بَسْمَلَة"
-        android:textSize="52sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/amita"
+        android:text="@string/welcome"
+        android:textColor="@color/appThemeBlue"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivLoginAnim" />
+
+    <TextView
+        android:id="@+id/txtLoginNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/amita"
+        android:text="@string/sign_in_to_continue"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
+
+
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/rounded_bd_10dp"
+        android:backgroundTint="@color/appThemeBlue"
+        android:fontFamily="@font/amita"
+        android:text="@string/sign_in"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <EditText
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_bd_10dp"
+        android:backgroundTint="@color/color_input_field"
+        android:alpha=".6"
+        android:hint="@string/please_enter_mobile_number"
+        android:gravity="center_vertical"
+        android:textColorHint="@color/white"
+        android:fontFamily="@font/amita"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:inputType="number"
+        android:drawableStart="@drawable/baseline_person_pin_24"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtLoginNote"
+        android:autofillHints="">
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvNavigateSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
+        android:text="@string/not_a_member_register"
+        android:textAlignment="textEnd"
+        android:textColor="@color/appThemeBlue"
+        android:fontFamily="@font/amita"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

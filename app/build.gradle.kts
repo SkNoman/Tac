@@ -60,5 +60,10 @@ dependencies {
     //NAVIGATION COMPONENT
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.5")
+    //LOTTIE ANIMATION
+    implementation ("com.airbnb.android:lottie:3.4.2")
+    //OTP LAYOUT
+    implementation ("io.github.chaosleung:pinview:1.4.4")
+
 
 }
