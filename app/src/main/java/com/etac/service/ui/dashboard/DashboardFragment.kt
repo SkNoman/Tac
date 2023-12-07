@@ -5,12 +5,17 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.etac.service.Constant
 import com.etac.service.R
+import com.etac.service.adapters.DashboardMainMenuAdapter
 import com.etac.service.adapters.SlideItemAdapter
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentDashboardBinding
+import com.etac.service.models.DashboardMenuItem
+import com.etac.service.models.MenusItem
 import com.etac.service.models.SlideItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -39,9 +44,9 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
     }
     private fun autoPlaceSlider() {
         val sliderItem : ArrayList<SlideItem> = ArrayList()
-        sliderItem.add(SlideItem("https://img.freepik.com/free-vector/laundry-room-isometric-composition-with-conceptual-image-tablet-laundry-equipment-with-people-touchscreen_1284-32369.jpg?w=740&t=st=1701891675~exp=1701892275~hmac=87d3914f30b64e5c3da105f8122edd387a7b8e37721dab8eced7edb52fe8f89c"))
-        sliderItem.add(SlideItem("https://previews.123rf.com/images/sergray/sergray1912/sergray191200097/137922158-futuristic-car-service-scanning-and-auto-data-analysis-intelligent-car-banner-futuristic-isometric.jpg"))
-        sliderItem.add(SlideItem("https://img.freepik.com/premium-vector/professional-laundry-service-typography-banner-modern-washing-machine-agitation-rinsing-ironing-folding-clothing_87771-4848.jpg?w=2000"))
+        sliderItem.add(SlideItem(Constant.sliderImg1))
+        sliderItem.add(SlideItem(Constant.sliderImg2))
+        sliderItem.add(SlideItem(Constant.sliderImg3))
 
         binding.viewPagerHotItem.apply {
             adapter = SlideItemAdapter(requireContext(),sliderItem)
@@ -63,5 +68,22 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
             binding.viewPagerHotItem.currentItem = binding.viewPagerHotItem.currentItem + 1
             handler.postDelayed(this, 5000)
         }
+    }
+
+    private fun setMenus() {
+        val menusItem: MutableList<MenusItem> = mutableListOf()
+        // Add items to the menusItem list
+        menusItem.add(MenusItem(1, "Service Your Car",R.drawable.car_banner_futeristic))
+        menusItem.add(MenusItem(2, "Clean Your Clothes",R.drawable.laundry_service_online))
+        menusItem.add(MenusItem(3, "All Service History",R.drawable.laundry_service_online))
+        menusItem.add(MenusItem(4, "Payment Info",R.drawable.laundry_service_iron))
+
+        showMenus(menusItem)
+    }
+    private fun showMenus(menusItem: List<MenusItem>) {
+        binding.recyclerviewMainMenu.layoutManager =
+            GridLayoutManager(activity,2,GridLayoutManager.VERTICAL,false)
+        binding.recyclerviewMainMenu.adapter =
+            DashboardMainMenuAdapter(requireContext(),menusItem,this)
     }
 }

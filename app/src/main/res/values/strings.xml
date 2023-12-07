@@ -37,4 +37,5 @@
     <string name="otp_verification">OTP Verification</string>
     <string name="validate">Validate</string>
     <string name="good_day">Good Day!</string>
+    <string name="services">Services</string>
 </resources>

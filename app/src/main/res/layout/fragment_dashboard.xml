@@ -62,7 +62,7 @@
             android:layout_marginTop="8dp"
             android:text="Abdullah-Al-Noman"
             android:textColor="@color/white"
-            android:fontFamily="@font/amita"
+            android:fontFamily="cursive"
             android:textSize="@dimen/_16sp"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/txtGreetings" />
@@ -72,9 +72,45 @@
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_margin="@dimen/dp16"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/dp16" />
+
+        <TextView
+            android:id="@+id/txtServices"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/amita"
+            android:text="@string/services"
+            android:textColor="@color/appThemeBlue"
+            android:textSize="@dimen/sp24"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/viewPagerHotItem" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewMainMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_db_main_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/txtServices" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
