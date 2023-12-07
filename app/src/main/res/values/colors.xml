@@ -8,7 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="appThemeBlue">#180D82</color>
-    <color name="color_input_field">#E91E1E</color>
+    <color name="color_input_field">#3F51B5</color>
     <color name="color_input_field_bk">#E20355FB</color>
     <color name="transparent">#00000000</color>
+    <color name="app_status_bar_color">#E2EDF4FB</color>
+    <color name="color_input_fld_hint">#EAE3E3</color>
 </resources>

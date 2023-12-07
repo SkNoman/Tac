@@ -31,4 +31,7 @@
     <dimen name="_10dp">10dp</dimen>
     <dimen name="_20dp">20dp</dimen>
     <dimen name="_15dp">15dp</dimen>
+    <dimen name="sign_up_input_fld_size_16sp">16sp</dimen>
+    <dimen name="common_btn_txt_size">18sp</dimen>
+    <dimen name="_16sp">16sp</dimen>
 </resources>

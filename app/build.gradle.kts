@@ -64,6 +64,12 @@ dependencies {
     implementation ("com.airbnb.android:lottie:3.4.2")
     //OTP LAYOUT
     implementation ("io.github.chaosleung:pinview:1.4.4")
+    //GLIDE
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    //View Pager
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    //Rounded Image
+    implementation ("com.makeramen:roundedimageview:2.3.0")
 
 
 }

@@ -26,4 +26,15 @@
     <string name="welcome">Welcome<font color="#FF0000"><b>!</b></font></string>
     <string name="sign_in_to_continue">Sign in to continue</string>
     <string name="please_enter_mobile_number">Please enter mobile number</string>
+    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="please_enter_your_phone_number">Please enter your phone number</string>
+    <string name="please_select_your_area">Please select your area</string>
+    <string name="please_enter_your_address">Please enter your address</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="have_an_account">Have an account?</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="we_have_sent_an_otp_to_your_number_please_enter">We have sent an OTP to your number, please enter</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="validate">Validate</string>
+    <string name="good_day">Good Day!</string>
 </resources>
