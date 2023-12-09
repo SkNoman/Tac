@@ -13,4 +13,6 @@
     <color name="transparent">#00000000</color>
     <color name="app_status_bar_color">#E2EDF4FB</color>
     <color name="color_input_fld_hint">#EAE3E3</color>
+    <color name="menu_bg">#F3EDED</color>
+    <color name="bg_tint_light_blue_sky">#18ACEF</color>
 </resources>

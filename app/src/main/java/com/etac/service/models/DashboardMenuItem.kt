@@ -9,5 +9,5 @@ data class  MenusItem(
     val menuTitle: String? = "",
     val menuServiceCount: Int? = null,
     val menuIcon: Int? = null,
-    val menuBGColor: String? = ""
+    val menuBGColor: Int? = null
 )

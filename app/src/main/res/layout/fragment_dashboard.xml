@@ -31,7 +31,8 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/app_name"
-            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:src="@drawable/baseline_donut_small_24"
+            app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +40,6 @@
             android:id="@+id/txtGreetings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/amita"
             android:text="@string/good_day"
@@ -60,9 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Abdullah-Al-Noman"
+            android:text="@string/dev_name"
+            android:fontFamily="@font/amita"
             android:textColor="@color/white"
-            android:fontFamily="cursive"
             android:textSize="@dimen/_16sp"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/txtGreetings" />
@@ -71,9 +71,11 @@
             android:id="@+id/viewPagerHotItem"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:layout_margin="@dimen/dp16"
-            app:layout_constraintEnd_toStartOf="@+id/guideline4"
-            app:layout_constraintStart_toStartOf="@id/guideline3"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="@dimen/_8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
 
 
@@ -97,20 +99,100 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/viewPagerHotItem" />
+            app:layout_constraintTop_toBottomOf="@+id/viewPagerHotItem"
+            app:drawableStartCompat="@drawable/baseline_dashboard_24"
+            app:drawableTint="#DF044F" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerviewMainMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            tools:itemCount="4"
-            tools:listitem="@layout/item_db_main_menu"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/txtServices" />
+            app:layout_constraintTop_toBottomOf="@+id/txtServices"
+            app:spanCount="2"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_db_main_menu" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/baseline_person_pin_24"
+            app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:id="@+id/txtLocateUs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amita"
+            android:text="@string/locate_us"
+            android:textColor="@color/appThemeBlue"
+            android:textSize="@dimen/sp24"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/baseline_add_location_alt_24"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerviewMainMenu"
+            app:drawableTint="#FF5722">
+
+        </TextView>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imageSlide"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="32dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/map_view_mohammadpur_shayamoli"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline4"
+            app:layout_constraintStart_toStartOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/txtLocateUs"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp16"
+            app:riv_corner_radius="12dp">
+
+        </com.makeramen.roundedimageview.RoundedImageView>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/rounded_bd_10dp"
+            android:backgroundTint="@color/bg_tint_light_blue_sky"
+            android:alpha=".8"
+            android:src="@drawable/map"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/_10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageSlide"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/imageSlide"
+            app:layout_constraintTop_toTopOf="@+id/imageSlide"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/uni_trust_at_google_maps"
+            android:textStyle="bold"
+            android:textSize="@dimen/_20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/amita"
+            app:layout_constraintBottom_toBottomOf="@+id/imageSlide"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
