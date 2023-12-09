@@ -39,7 +39,7 @@ class SlideItemAdapter(
 
 class SlideItemViewHolder(inflater: LayoutInflater,parent: ViewGroup):
     RecyclerView.ViewHolder(inflater.inflate(R.layout.slide_item_container,parent,false)){
-    private var imageView: RoundedImageView = itemView.findViewById(R.id.imageSlide)
+    private var imageView: RoundedImageView = itemView.findViewById(R.id.ivGoogleMapView)
 
     fun bind(
         context: Context,
