@@ -30,4 +30,9 @@
         android:name="com.etac.service.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/carServiceFragment"
+        android:name="com.etac.service.ui.services.CarServiceFragment"
+        android:label="fragment_car_service"
+        tools:layout="@layout/fragment_car_service" />
 </navigation>

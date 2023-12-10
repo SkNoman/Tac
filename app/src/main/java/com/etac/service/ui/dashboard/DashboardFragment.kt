@@ -7,6 +7,7 @@ import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -120,6 +121,10 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
             DashboardMainMenuAdapter(requireContext(),menusItem,this)
     }
     override fun onClick(id: Int) {
-        Toast.makeText(requireContext(),"Menu Id:$id",Toast.LENGTH_SHORT).show()
+        when(id){
+            1->{
+                findNavController().navigate(R.id.carServiceFragment)
+            }
+        }
     }
 }

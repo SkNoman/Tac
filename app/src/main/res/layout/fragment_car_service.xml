@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.services.CarServiceFragment">
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="@dimen/_10dp"
+        android:fontFamily="@font/amita"
+        android:text="@string/create_car_service_request"
+        android:textColor="@color/appThemeBlue"
+        android:textSize="@dimen/_18sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/baseline_add_circle_outline_24"
+        app:drawableTint="@color/appThemeBlue"
+        app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/dp16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/dp16" />
+
+    <LinearLayout
+        android:id="@+id/carServiceReqFormLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:alpha=".8"
+        android:background="@drawable/rounded_bd_10dp"
+        android:backgroundTint="#D6D8E2"
+        android:orientation="vertical"
+        android:padding="@dimen/dp16"
+        app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/appThemeBlue"
+            android:textSize="@dimen/_20sp" />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:autofillHints=""
+            android:background="@drawable/rounded_bd_10dp"
+            android:backgroundTint="@color/requests_input_flg_bg"
+            android:ems="10"
+            android:inputType="text"
+            android:padding="@dimen/_8dp"
+            android:textColor="@color/white"
+            tools:text="@string/dev_name" />
+
+
+        <TextView
+            android:id="@+id/txtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            android:text="@string/phone_number"
+            android:textColor="@color/appThemeBlue"
+            android:textSize="@dimen/_20sp" />
+
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:autofillHints=""
+            android:background="@drawable/rounded_bd_10dp"
+            android:backgroundTint="@color/requests_input_flg_bg"
+            android:ems="10"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:padding="@dimen/_8dp"
+            android:textColor="@color/white"
+            tools:text="@string/demo_phone" />
+
+        <TextView
+            android:id="@+id/txtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            android:text="@string/address"
+            android:textColor="@color/appThemeBlue"
+            android:textSize="@dimen/_20sp" />
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:autofillHints=""
+            android:background="@drawable/rounded_bd_10dp"
+            android:backgroundTint="@color/requests_input_flg_bg"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:padding="@dimen/_8dp"
+            android:textColor="@color/white"
+            tools:text="Mohammadpur,Japan Garden 12/34" />
+
+        <TextView
+            android:id="@+id/txtServiceAre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            android:text="@string/service_area"
+            android:textColor="@color/appThemeBlue"
+            android:textSize="@dimen/_20sp" />
+
+        <EditText
+            android:id="@+id/etServiceArea"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:layout_marginTop="@dimen/_8dp"
+            android:autofillHints=""
+            android:background="@drawable/rounded_bd_10dp"
+            android:backgroundTint="@color/requests_input_flg_bg"
+            android:ems="10"
+            android:inputType="none"
+            android:padding="@dimen/_8dp"
+            android:textColor="@color/white"
+            tools:text="Mohammadpur" />
+
+        <TextView
+            android:id="@+id/txtServiceDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            android:text="@string/service_details"
+            android:textColor="@color/appThemeBlue"
+            android:textSize="@dimen/_20sp" />
+
+        <EditText
+            android:id="@+id/etServiceDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:autofillHints=""
+            android:background="@drawable/rounded_bd_10dp"
+            android:backgroundTint="@color/requests_input_flg_bg"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:maxLength="200"
+            android:maxLines="5"
+            android:padding="@dimen/_8dp"
+            android:textColor="@color/white"
+            tools:text="I want to fix my car's tyre along with some engine issues" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/rounded_bd_10dp"
+        android:backgroundTint="@color/appThemeBlue"
+        android:fontFamily="@font/amita"
+        android:text="@string/submit"
+        android:textSize="@dimen/_18sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/carServiceReqFormLayout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

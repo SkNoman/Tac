@@ -15,4 +15,5 @@
     <color name="color_input_fld_hint">#EAE3E3</color>
     <color name="menu_bg">#F3EDED</color>
     <color name="bg_tint_light_blue_sky">#18ACEF</color>
+    <color name="requests_input_flg_bg">#9703A9F4</color>
 </resources>

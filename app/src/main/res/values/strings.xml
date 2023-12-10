@@ -46,4 +46,12 @@
     <string name="locate_us">Locate Us</string>
     <string name="dev_name">Sk Abdullah-Al-Noman</string>
     <string name="developed_by_arc">Developed by ARC</string>
+    <string name="create_car_service_request">Create Car Service Request</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="demo_phone">01718228200\n</string>
+    <string name="service_area">Service Area</string>
+    <string name="service_details">Service Details</string>
+    <string name="submit">Submit</string>
 </resources>
