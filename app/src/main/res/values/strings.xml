@@ -46,7 +46,7 @@
     <string name="locate_us">Locate Us</string>
     <string name="dev_name">Sk Abdullah-Al-Noman</string>
     <string name="developed_by_arc">Developed by ARC</string>
-    <string name="create_car_service_request">Create Car Service Request</string>
+    <string name="create_car_service_request">Create Car\nService Request</string>
     <string name="name">Name</string>
     <string name="address">Address</string>
     <string name="phone_number">Phone Number</string>
