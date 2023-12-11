@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-            <androidx.constraintlayout.widget.Guideline
+    <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideLineLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_begin="16dp" />
 
-            <androidx.constraintlayout.widget.Guideline
+    <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideLineRight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,18 +61,19 @@
         app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
         app:layout_constraintTop_toBottomOf="@+id/txtGreetings" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <TextView
+        android:id="@+id/txtUniTrust"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/baseline_person_pin_24"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/amita"
+        android:text="@string/uni_trust_splash"
+        android:textSize="@dimen/_16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
         app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/semi_black" />
+        app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerHotItem"
@@ -87,10 +88,12 @@
 
 
     <ScrollView
+        android:id="@+id/mainMenuScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/dp24"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPagerHotItem">
@@ -130,6 +133,19 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:backgroundColor="@color/offWhiteApp"
+        app:textColor="@color/white"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginEnd="@dimen/_8dp"
+        app:indicatorColor="@color/bg_tint_light_blue_sky"
+        app:iconTint="@color/semi_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

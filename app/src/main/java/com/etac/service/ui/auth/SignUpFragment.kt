@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentSignUpBinding
+import com.etac.service.utils.Animation
 
 class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
     (FragmentSignUpBinding::inflate)
@@ -15,7 +16,7 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
 
 
         binding.layoutNavigateSignIn.setOnClickListener{
-            findNavController().navigate(R.id.signInFragment)
+            findNavController().navigate(R.id.signInFragment , null , Animation.animNav().build())
         }
     }
 }

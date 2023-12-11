@@ -20,9 +20,12 @@ import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentDashboardBinding
 import com.etac.service.models.MenusItem
 import com.etac.service.models.SlideItem
+import com.etac.service.utils.Animation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import me.ibrahimsn.lib.OnItemSelectedListener
 
 class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
     (FragmentDashboardBinding::inflate), OnClickMenu
@@ -36,6 +39,27 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
             autoImageSlider()
         }
         setMenus()
+
+        binding.bottomBar.onItemSelected = {
+            when(it){
+                1->{
+                    val delayMillis = 1000 // 2 seconds
+                    val handler = Handler()
+                    handler.postDelayed({
+                        findNavController().navigate(R.id.profileFragment,null,Animation.animNav().build())
+                        } , delayMillis.toLong())
+                }
+                2->{
+                    val delayMillis = 1000 // 2 seconds
+                    val handler = Handler()
+                    handler.postDelayed({
+                                            findNavController().navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
+                                        } , delayMillis.toLong())
+                    //navController.navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
+                }
+            }
+            //Toast.makeText(requireContext(),"Item $it selected",Toast.LENGTH_SHORT).show()
+        }
     }
     override fun onPause() {
         super.onPause()
@@ -123,10 +147,10 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
     override fun onClick(id: Int) {
         when(id){
             1->{
-                findNavController().navigate(R.id.carServiceFragment)
+                findNavController().navigate(R.id.carServiceFragment , null , Animation.animNav().build())
             }
             2->{
-                findNavController().navigate(R.id.laundryServiceFragment)
+                findNavController().navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
             }
         }
     }

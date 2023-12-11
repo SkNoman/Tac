@@ -49,7 +49,7 @@ class SlideItemViewHolder(inflater: LayoutInflater,parent: ViewGroup):
         viewPagerRunnable: Runnable
     ){
         Glide.with(context).load(slideItemList.image)
-            .placeholder(R.drawable.car_banner_futeristic).into(imageView)
+            .placeholder(R.drawable.laundry_service_online).into(imageView)
         if (position == content.size -2){
             itemView.post(viewPagerRunnable)
         }

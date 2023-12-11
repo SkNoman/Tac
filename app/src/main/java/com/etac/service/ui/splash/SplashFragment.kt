@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentSplashBinding
+import com.etac.service.utils.Animation
 
 class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
     (FragmentSplashBinding::inflate)
@@ -14,7 +15,7 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnContinue.setOnClickListener {
-            findNavController().navigate(R.id.signInFragment)
+            findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
         }
     }
 }

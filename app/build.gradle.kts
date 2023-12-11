@@ -70,6 +70,8 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     //Rounded Image
     implementation ("com.makeramen:roundedimageview:2.3.0")
+    //Custom Bottom Navigation View
+    implementation ("com.github.ibrahimsn98:SmoothBottomBar:1.7.9")
 
 
 }

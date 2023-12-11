@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentOTPBinding
+import com.etac.service.utils.Animation
 
 class OTPFragment: BaseFragmentWithBinding<FragmentOTPBinding>
     (FragmentOTPBinding::inflate)
@@ -14,7 +15,7 @@ class OTPFragment: BaseFragmentWithBinding<FragmentOTPBinding>
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnValidateOTP.setOnClickListener {
-            findNavController().navigate(R.id.dashboardFragment)
+            findNavController().navigate(R.id.dashboardFragment , null , Animation.animNav().build())
         }
     }
 }

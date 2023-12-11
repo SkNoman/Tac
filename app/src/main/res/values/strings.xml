@@ -59,4 +59,9 @@
     <string name="select">Select</string>
     <string name="please_enter_service_details">Please enter service details</string>
     <string name="create_a_laundry_nservice_request">Create a laundry \nservice request</string>
+    <string name="profile">Profile</string>
+    <string name="home">Home</string>
+    <string name="update_your_ninformation">Update your\ninformation</string>
+    <string name="update">Update</string>
+    <string name="secondary_phone_number">Secondary Phone Number</string>
 </resources>

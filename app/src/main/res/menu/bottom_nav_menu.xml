@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item0"
+        android:title="@string/home"
+        android:icon="@drawable/home_app_logo_40px"/>
+
+    <item
+        android:id="@+id/item1"
+        android:title="@string/profile"
+        android:icon="@drawable/account_circle_40_px"/>
+
+    <item
+        android:id="@+id/item2"
+        android:title="@string/locate_us"
+        android:icon="@drawable/share_location_40_px"/>
+</menu>
