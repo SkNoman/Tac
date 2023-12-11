@@ -16,4 +16,8 @@
     <color name="menu_bg">#F3EDED</color>
     <color name="bg_tint_light_blue_sky">#18ACEF</color>
     <color name="requests_input_flg_bg">#9703A9F4</color>
+    <color name="oval_shape_end_color">#E2D5F4</color>
+    <color name="oval_shape_center_clolor">#E2083899</color>
+    <color name="semi_black">#D7000000</color>
+    <color name="red">#C60606</color>
 </resources>

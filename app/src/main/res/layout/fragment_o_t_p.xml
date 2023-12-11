@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ivOtpAnim" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtService"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -69,7 +69,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/txtService"
         tools:text="013323"/>
 
     <Button

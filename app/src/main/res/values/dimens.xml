@@ -35,4 +35,6 @@
     <dimen name="sign_up_input_fld_size_16sp">16sp</dimen>
     <dimen name="common_btn_txt_size">18sp</dimen>
     <dimen name="_16sp">16sp</dimen>
+    <dimen name="sp28">28sp</dimen>
+    <dimen name="dp24">24dp</dimen>
 </resources>

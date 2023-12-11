@@ -54,4 +54,8 @@
     <string name="service_area">Service Area</string>
     <string name="service_details">Service Details</string>
     <string name="submit">Submit</string>
+    <string name="request_a_service">Create a car\nservice request</string>
+    <string name="select_area">Select Area</string>
+    <string name="select">Select</string>
+    <string name="please_enter_service_details">Please enter service details</string>
 </resources>

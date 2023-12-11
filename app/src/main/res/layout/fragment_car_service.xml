@@ -1,216 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.services.CarServiceFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/dp16"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/request_a_service"
+        android:textColor="@color/semi_black"
+        android:textSize="@dimen/sp28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBack" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:layout_editor_absoluteX="2dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:background="@drawable/top_portion_bg_dashboard_oval"
-            android:contentDescription="@string/app_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:drawablePadding="@dimen/_10dp"
-            android:text="@string/create_car_service_request"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp24"
-            android:textStyle="bold"
-            app:drawableStartCompat="@drawable/baseline_add_circle_outline_24"
-            app:drawableTint="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
-            app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideLineLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/dp16" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideLineRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/dp16" />
-
-        <LinearLayout
-            android:id="@+id/carServiceReqFormLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp16"
-            android:alpha=".8"
-            android:background="@drawable/rounded_bd_10dp"
-            android:backgroundTint="@color/white"
-            android:orientation="vertical"
-            android:padding="@dimen/dp16"
-            app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
-            app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
-            app:layout_constraintTop_toBottomOf="@+id/textView3">
-
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtName"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp10"
                 android:text="@string/name"
-                android:textColor="@color/appThemeBlue"
-                android:textSize="@dimen/_20sp" />
+                android:textColor="@color/semi_black"
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/sp18">
 
-            <EditText
-                android:id="@+id/etName"
+            </TextView>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_50dp"
-                android:layout_marginTop="@dimen/_8dp"
-                android:autofillHints=""
-                android:background="@drawable/rounded_bd_10dp"
-                android:backgroundTint="@color/requests_input_flg_bg"
-                android:ems="10"
-                android:inputType="text"
-                android:padding="@dimen/_8dp"
-                android:textColor="@color/white"
-                tools:text="@string/dev_name" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp20"
+                app:cursorErrorColor="@color/red"
+                app:cursorColor="@color/semi_black"
+                app:hintTextColor="@color/semi_black"
+                app:boxStrokeColor="@color/semi_black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:drawablePadding="@dimen/dp10"
+                    android:hint="@string/please_enter_your_name"
+                    android:inputType="textMultiLine"
+                    android:maxLength="50" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <TextView
-                android:id="@+id/txtPhone"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp16"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp10"
                 android:text="@string/phone_number"
-                android:textColor="@color/appThemeBlue"
-                android:textSize="@dimen/_20sp" />
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/semi_black"
+                android:textSize="@dimen/sp18">
 
-            <EditText
-                android:id="@+id/etPhone"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50dp"
-                android:layout_marginTop="@dimen/_8dp"
-                android:autofillHints=""
-                android:background="@drawable/rounded_bd_10dp"
-                android:backgroundTint="@color/requests_input_flg_bg"
-                android:ems="10"
-                android:inputType="phone"
-                android:maxLength="11"
-                android:maxLines="1"
-                android:padding="@dimen/_8dp"
-                android:textColor="@color/white"
-                tools:text="@string/demo_phone" />
+            </TextView>
 
-            <TextView
-                android:id="@+id/txtAddress"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp16"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp20"
+                app:cursorErrorColor="@color/red"
+                app:cursorColor="@color/semi_black"
+                app:hintTextColor="@color/semi_black"
+                app:boxStrokeColor="@color/semi_black"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp10"
+                    android:hint="@string/demo_phone"
+                    android:fontFamily="@font/open_sans"
+                    android:inputType="number"
+                    android:maxLength="11" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/select_area"
+                android:textColor="@color/semi_black"
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/sp18">
+
+            </TextView>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/area"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp20"
+                app:cursorErrorColor="@color/red"
+                app:cursorColor="@color/semi_black"
+                app:hintTextColor="@color/semi_black"
+                app:boxStrokeColor="@color/semi_black"
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/etArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp10"
+                    android:hint="@string/select"
+                    android:fontFamily="@font/open_sans"
+                    android:inputType="none" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp10"
                 android:text="@string/address"
-                android:textColor="@color/appThemeBlue"
-                android:textSize="@dimen/_20sp" />
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/semi_black"
+                android:textSize="@dimen/sp18">
 
-            <EditText
-                android:id="@+id/etAddress"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50dp"
-                android:layout_marginTop="@dimen/_8dp"
-                android:autofillHints=""
-                android:background="@drawable/rounded_bd_10dp"
-                android:backgroundTint="@color/requests_input_flg_bg"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:maxLength="100"
-                android:padding="@dimen/_8dp"
-                android:textColor="@color/white"
-                tools:text="Mohammadpur,Japan Garden 12/34" />
+            </TextView>
 
-            <TextView
-                android:id="@+id/txtServiceAre"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/address"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp16"
-                android:text="@string/service_area"
-                android:textColor="@color/appThemeBlue"
-                android:textSize="@dimen/_20sp" />
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp20"
+                app:cursorErrorColor="@color/red"
+                app:cursorColor="@color/semi_black"
+                app:hintTextColor="@color/semi_black"
+                app:boxStrokeColor="@color/semi_black"
+                >
 
-            <EditText
-                android:id="@+id/etServiceArea"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp50"
-                android:layout_marginTop="@dimen/_8dp"
-                android:autofillHints=""
-                android:background="@drawable/rounded_bd_10dp"
-                android:backgroundTint="@color/requests_input_flg_bg"
-                android:ems="10"
-                android:inputType="none"
-                android:padding="@dimen/_8dp"
-                android:textColor="@color/white"
-                tools:text="Mohammadpur" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/dp10"
+                    android:hint="@string/please_enter_your_address"
+                    android:fontFamily="@font/open_sans"
+                    android:inputType="textMultiLine"
+                    android:maxLength="200" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/txtServiceDetails"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp16"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp10"
                 android:text="@string/service_details"
-                android:textColor="@color/appThemeBlue"
-                android:textSize="@dimen/_20sp" />
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/semi_black"
+                android:textSize="@dimen/sp18">
 
-            <EditText
-                android:id="@+id/etServiceDetails"
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/details"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8dp"
-                android:autofillHints=""
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp20"
+                app:cursorErrorColor="@color/red"
+                app:cursorColor="@color/semi_black"
+                app:hintTextColor="@color/semi_black"
+                app:boxStrokeColor="@color/semi_black"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etServiceDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/dp10"
+                    android:fontFamily="@font/open_sans"
+                    android:hint="@string/please_enter_service_details"
+                    android:inputType="textMultiLine"
+                    android:maxLength="200" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <ProgressBar
+                android:id="@+id/progressbar_form"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dp10"
+                android:progressTint="@color/white"
+                android:secondaryProgressTint="#E4EDE4"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/btn_submit"
+                android:layout_width="@dimen/_200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp24"
+                android:layout_marginEnd="@dimen/dp20"
+                android:layout_marginBottom="@dimen/dp20"
                 android:background="@drawable/rounded_bd_10dp"
-                android:backgroundTint="@color/requests_input_flg_bg"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:maxLength="200"
-                android:maxLines="5"
-                android:padding="@dimen/_8dp"
+                android:backgroundTint="@color/semi_black"
+                android:gravity="center"
+                android:text="@string/submit"
                 android:textColor="@color/white"
-                tools:text="I want to fix my car's tyre along with some engine issues" />
-        </LinearLayout>
+                android:fontFamily="@font/open_sans"
+                android:textSize="@dimen/_18sp" />
 
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/rounded_bd_10dp"
-            android:backgroundTint="@color/appThemeBlue"
-            android:text="@string/submit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
-            app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
-            app:layout_constraintTop_toBottomOf="@+id/carServiceReqFormLayout" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
 
 
 
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

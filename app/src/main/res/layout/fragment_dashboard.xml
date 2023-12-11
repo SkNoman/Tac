@@ -51,8 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/amita"
                 android:text="@string/good_day"
+                android:fontFamily="@font/open_sans"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_18sp"
                 app:layout_constraintStart_toEndOf="@+id/ivMenu"
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/dev_name"
-                android:fontFamily="@font/amita"
+                android:fontFamily="@font/open_sans"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16sp"
                 app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
@@ -122,22 +122,6 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="@dimen/dp16" />
 
-            <TextView
-                android:id="@+id/txtServices"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8dp"
-                android:fontFamily="@font/amita"
-                android:text="@string/services"
-                android:textColor="@color/appThemeBlue"
-                android:textSize="@dimen/sp24"
-                android:textStyle="bold"
-                app:drawableStartCompat="@drawable/baseline_dashboard_24"
-                app:drawableTint="#DF044F"
-                app:layout_constraintBottom_toTopOf="@+id/recyclerviewMainMenu"
-                app:layout_constraintEnd_toStartOf="@+id/guideLineRight2"
-                app:layout_constraintStart_toStartOf="@+id/guideLineLeft2"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerviewMainMenu"
@@ -147,95 +131,10 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toStartOf="@+id/guideLineRight2"
                 app:layout_constraintStart_toStartOf="@+id/guideLineLeft2"
-                app:layout_constraintTop_toBottomOf="@+id/txtServices"
+                app:layout_constraintTop_toTopOf="parent"
                 app:spanCount="2"
                 tools:itemCount="4"
                 tools:listitem="@layout/item_db_main_menu" />
-
-
-            <TextView
-                android:id="@+id/txtLocateUs"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/amita"
-                android:text="@string/locate_us"
-                android:textColor="@color/appThemeBlue"
-                android:textSize="@dimen/sp24"
-                android:textStyle="bold"
-                app:drawableStartCompat="@drawable/baseline_add_location_alt_24"
-                app:drawableTint="#FF5722"
-                app:layout_constraintEnd_toStartOf="@+id/guideLineRight2"
-                app:layout_constraintStart_toStartOf="@+id/guideLineLeft2"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerviewMainMenu">
-
-            </TextView>
-
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/ivGoogleMapView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="@dimen/dp16"
-                android:layout_marginEnd="@dimen/dp16"
-                android:layout_marginBottom="32dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/map_view_mohammadpur_shayamoli"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/guideLineRight2"
-                app:layout_constraintStart_toStartOf="@id/guideLineLeft2"
-                app:layout_constraintTop_toBottomOf="@+id/txtLocateUs"
-                app:riv_corner_radius="12dp">
-
-            </com.makeramen.roundedimageview.RoundedImageView>
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:alpha=".8"
-                android:background="@drawable/rounded_bd_10dp"
-                android:backgroundTint="@color/white"
-                android:contentDescription="@string/app_name"
-                android:padding="@dimen/_10dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/map"
-                app:layout_constraintBottom_toBottomOf="@+id/ivGoogleMapView"
-                app:layout_constraintEnd_toStartOf="@+id/guideLineRight2"
-                app:layout_constraintStart_toStartOf="@+id/guideLineLeft2"
-                app:layout_constraintTop_toTopOf="@+id/ivGoogleMapView" />
-
-            <TextView
-                android:id="@+id/txtUniTrustAtGoogleMaps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/amita"
-                android:text="@string/uni_trust_at_google_maps"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/ivGoogleMapView"
-                app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                app:layout_constraintStart_toStartOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-            <TextView
-                android:id="@+id/txtWhoDeveloped"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:drawablePadding="@dimen/dp10"
-                android:gravity="center"
-                android:text="@string/developed_by_arc"
-                android:textAlignment="center"
-                app:drawableStartCompat="@drawable/baseline_android_24"
-                app:drawableTint="#4CAF50"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideLineRight2"
-                app:layout_constraintStart_toStartOf="@+id/guideLineLeft2"
-                app:layout_constraintTop_toBottomOf="@+id/ivGoogleMapView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
