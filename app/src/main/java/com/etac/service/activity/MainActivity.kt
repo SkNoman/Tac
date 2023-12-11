@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         val window = this.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.app_status_bar_color)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.offWhiteApp)
 
     }
 }

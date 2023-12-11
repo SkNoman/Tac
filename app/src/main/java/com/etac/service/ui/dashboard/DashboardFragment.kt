@@ -31,7 +31,7 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val window = requireActivity().window
-        window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.appThemeBlue)
+        //window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
         CoroutineScope(Dispatchers.IO).launch {
             autoImageSlider()
         }
@@ -124,6 +124,9 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
         when(id){
             1->{
                 findNavController().navigate(R.id.carServiceFragment)
+            }
+            2->{
+                findNavController().navigate(R.id.laundryServiceFragment)
             }
         }
     }

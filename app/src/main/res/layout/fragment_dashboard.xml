@@ -21,30 +21,19 @@
                 app:layout_constraintGuide_end="@dimen/dp16" />
 
 
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:background="@drawable/top_portion_bg_dashboard_oval"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/app_name">
-
-            </ImageView>
-
-            <ImageView
-                android:id="@+id/ivMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="@color/white"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/baseline_donut_small_24"
-                app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
-                app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
-                app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/ivMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/baseline_donut_small_24"
+        app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
+        app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/semi_black" />
 
             <TextView
                 android:id="@+id/txtGreetings"
@@ -53,43 +42,45 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/good_day"
                 android:fontFamily="@font/open_sans"
-                android:textColor="@color/white"
+                android:textColor="@color/semi_black"
                 android:textSize="@dimen/_18sp"
                 app:layout_constraintStart_toEndOf="@+id/ivMenu"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
+    <TextView
+        android:id="@+id/txtUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/dev_name"
+        android:textColor="@color/semi_black"
+        android:textSize="@dimen/_16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/txtGreetings" />
 
-            <TextView
-                android:id="@+id/txtUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/dev_name"
-                android:fontFamily="@font/open_sans"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_16sp"
-                app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
-                app:layout_constraintTop_toBottomOf="@+id/txtGreetings" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/baseline_person_pin_24"
-                app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
-                app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
-                app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/baseline_person_pin_24"
+        app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
+        app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/semi_black" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerHotItem"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="@dimen/_8dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="@dimen/dp16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
@@ -98,7 +89,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_8dp"
+        android:layout_marginTop="@dimen/dp24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

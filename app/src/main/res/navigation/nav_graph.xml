@@ -35,4 +35,14 @@
         android:name="com.etac.service.ui.services.CarServiceFragment"
         android:label="fragment_car_service"
         tools:layout="@layout/fragment_car_service" />
+    <fragment
+        android:id="@+id/serviceHistoryFragment"
+        android:name="com.etac.service.ui.services.ServiceHistoryFragment"
+        android:label="fragment_service_history"
+        tools:layout="@layout/fragment_service_history" />
+    <fragment
+        android:id="@+id/laundryServiceFragment"
+        android:name="com.etac.service.ui.services.LaundryServiceFragment"
+        android:label="fragment_laundry_service"
+        tools:layout="@layout/fragment_laundry_service" />
 </navigation>

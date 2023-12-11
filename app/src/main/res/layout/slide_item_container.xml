@@ -6,6 +6,9 @@
     android:id="@+id/ivGoogleMapView"
     android:layout_marginEnd="@dimen/dp10"
     android:adjustViewBounds="true"
+    android:elevation="@dimen/_4dp"
+    android:outlineSpotShadowColor="@color/black"
+    android:outlineAmbientShadowColor="@color/bg_tint_light_blue_sky"
     app:riv_corner_radius="12dp"
     android:scaleType="centerCrop"
     >
