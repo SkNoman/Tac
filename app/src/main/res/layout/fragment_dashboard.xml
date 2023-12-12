@@ -29,62 +29,69 @@
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/app_name"
+        android:visibility="gone"
         android:src="@drawable/baseline_donut_small_24"
-        app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
         app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/semi_black" />
-
-            <TextView
-                android:id="@+id/txtGreetings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/good_day"
-                android:fontFamily="@font/open_sans"
-                android:textColor="@color/semi_black"
-                android:textSize="@dimen/_18sp"
-                app:layout_constraintStart_toEndOf="@+id/ivMenu"
-                app:layout_constraintTop_toTopOf="parent" />
-
+        app:tint="@color/appThemeBlue" />
 
     <TextView
         android:id="@+id/txtUserName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/open_sans"
         android:text="@string/dev_name"
-        android:textColor="@color/semi_black"
-        android:textSize="@dimen/_16sp"
-        app:layout_constraintStart_toStartOf="@+id/guideLineLeft"
-        app:layout_constraintTop_toBottomOf="@+id/txtGreetings" />
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:maxLines="2"
+        app:drawableEndCompat="@drawable/account16dp"
+        android:textAlignment="textEnd"
+        app:drawableTint="@color/black"
+        android:drawablePadding="@dimen/_4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtUniTrustColorFul"
+        app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txtUniTrustColorFul"
+        app:layout_constraintTop_toTopOf="@+id/txtUniTrustColorFul" />
+
+    <ImageView
+        android:id="@+id/ivUniTrust"
+        android:layout_width="57dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/txtUniTrust"
+        android:id="@+id/txtUniTrustColorFul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:fontFamily="@font/amita"
         android:text="@string/uni_trust_splash"
-        android:textSize="@dimen/_16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
-        app:layout_constraintEnd_toStartOf="@+id/guideLineRight"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUniTrust"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivUniTrust" />
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerHotItem"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="@dimen/dp16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerHotItem"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/dp16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivUniTrust" />
 
 
     <ScrollView
@@ -141,8 +148,8 @@
         app:textColor="@color/white"
         android:layout_marginStart="@dimen/_8dp"
         android:layout_marginEnd="@dimen/_8dp"
-        app:indicatorColor="@color/bg_tint_light_blue_sky"
-        app:iconTint="@color/semi_black"
+        app:indicatorColor="@color/semi_black"
+        app:iconTint="@color/bg_tint_light_blue_sky"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

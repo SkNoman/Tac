@@ -50,7 +50,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/amita"
+        android:fontFamily="@font/open_sans"
         android:text="@string/hello_with_exclamatory_color"
         android:textColor="@color/appThemeBlue"
         android:textSize="34sp"

@@ -1,15 +1,12 @@
 package com.etac.service.activity
 
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.databinding.ActivityMainBinding
 import com.etac.service.utils.Animation
@@ -25,25 +22,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         navController = findNavController(R.id.nav_host_fragment_content_main)
 
-        val window = this.window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.offWhiteApp)
+        val window = window
+        val decorView = window.decorView
+        val wic = WindowInsetsControllerCompat(window, decorView)
+        wic.isAppearanceLightStatusBars = true
+        window.statusBarColor = ContextCompat.getColor(this,R.color.offWhiteApp)
 
 
-        /*binding.bottomBar.onItemSelected = {
-            when(it){
-                0->{
-                    navController.navigate(R.id.dashboardFragment,null,Animation.animNav().build())
-                }
-                1->{
-                    navController.navigate(R.id.profileFragment,null,Animation.animNav().build())
-                }
-                2->{
-                    //navController.navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
-                }
-            }
-            //Toast.makeText(requireContext(),"Item $it selected",Toast.LENGTH_SHORT).show()
-        }*/
         /*navController.addOnDestinationChangedListener{_,destination,_ ->
             when(destination.id){
                 R.id.dashboardFragment, R.id.profileFragment-> {
@@ -59,4 +44,25 @@ class MainActivity : AppCompatActivity() {
         }*/
 
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        try {
+            when (navController.currentDestination?.id) {
+                R.id.dashboardFragment,R.id.signInFragment -> {
+                    finish()
+                }
+                R.id.laundryServiceFragment,R.id.carServiceFragment,R.id.profileFragment->{
+                    navController.navigate(R.id.dashboardFragment,null,Animation.animNav().build())
+                }
+                else -> {
+                    super.onBackPressed()
+                }
+            }
+        }catch (e:Exception){
+            Log.e("nlog-exc-BackPressed" , e.toString())
+        }
+    }
+
+
 }

@@ -4,8 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="uni_trust_splash">
             <font color="#180D82">Uni </font>
-            <font color="#FF0000"><b>T</b></font>
-            <font color="#180D82">rust</font>
+            <font color="#FF0000"><b>T</b></font><font color="#180D82">rust</font>
     </string>
     <string name="moto_splash">Elevate Your Drive, Elevate Your Style.
         Seamless Car Service and Laundry Bliss Await. Your Journey, Perfected
@@ -18,8 +17,7 @@
     <string name="not_a_member_register">
         New to
         <font color="#180D82"><b>Uni</b> </font>
-        <font color="#FF0000"><b>T</b></font>
-        <font color="#180D82">rust?</font>
+        <font color="#FF0000"><b>T</b></font><font color="#180D82">rust?</font>
         <u><b> Register</b></u>
     </string>
     <string name="hi">Hi<font color="#FF0000"><b>!</b></font></string>
@@ -36,7 +34,7 @@
     <string name="we_have_sent_an_otp_to_your_number_please_enter">We have sent an OTP to your number, please enter</string>
     <string name="otp_verification">OTP Verification</string>
     <string name="validate">Validate</string>
-    <string name="good_day">ood Day!</string>
+    <string name="good_day">Good Day!</string>
     <string name="services">Services</string>
     <string name="uni_trust_at_google_maps">
         Uni-Trust At
@@ -44,7 +42,7 @@
         Maps
     </string>
     <string name="locate_us">Locate Us</string>
-    <string name="dev_name">Sk Abdullah-Al-Noman</string>
+    <string name="dev_name">Good Day! Abdullah-Al-Noman</string>
     <string name="developed_by_arc">Developed by ARC</string>
     <string name="create_car_service_request">Create Car\nService Request</string>
     <string name="name">Name</string>

@@ -1,9 +1,13 @@
 package com.etac.service.ui.dashboard
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -43,18 +47,18 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
         binding.bottomBar.onItemSelected = {
             when(it){
                 1->{
-                    val delayMillis = 1000 // 2 seconds
+                    val delayMillis = 500 // .5 seconds
                     val handler = Handler()
                     handler.postDelayed({
                         findNavController().navigate(R.id.profileFragment,null,Animation.animNav().build())
                         } , delayMillis.toLong())
                 }
                 2->{
-                    val delayMillis = 1000 // 2 seconds
+                    val delayMillis = 500 // .5 seconds
                     val handler = Handler()
                     handler.postDelayed({
-                                            findNavController().navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
-                                        } , delayMillis.toLong())
+                              openGoogleMaps(28.000,90.999,"Momammdpur","Dhaka")
+                    } , delayMillis.toLong())
                     //navController.navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
                 }
             }
@@ -69,11 +73,28 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
         super.onResume()
         handler.postDelayed(viewPagerHotItemRunnable, 5000)
     }
+    private fun openGoogleMaps(latitude: Double , longitude: Double , placeName:String , district:String) {
+        val uri =  "geo:$latitude,$longitude?q=$placeName,$district ,Bangladesh"
+        val intent = Intent(Intent.ACTION_VIEW , Uri.parse(uri))
+        intent.setPackage("com.google.android.apps.maps")
+        requireActivity().startActivity(intent)
+    }
     private fun autoImageSlider() {
         val sliderItem : ArrayList<SlideItem> = ArrayList()
-        sliderItem.add(SlideItem(Constant.sliderImg1))
-        sliderItem.add(SlideItem(Constant.sliderImg2))
-        sliderItem.add(SlideItem(Constant.sliderImg3))
+        sliderItem.add(SlideItem(Constant.c1))
+        sliderItem.add(SlideItem(Constant.l1))
+        sliderItem.add(SlideItem(Constant.c2))
+        sliderItem.add(SlideItem(Constant.l2))
+        sliderItem.add(SlideItem(Constant.c3))
+        sliderItem.add(SlideItem(Constant.l3))
+        sliderItem.add(SlideItem(Constant.c4))
+        sliderItem.add(SlideItem(Constant.l4))
+        sliderItem.add(SlideItem(Constant.c5))
+        sliderItem.add(SlideItem(Constant.l5))
+        sliderItem.add(SlideItem(Constant.c6))
+        sliderItem.add(SlideItem(Constant.l6))
+        sliderItem.add(SlideItem(Constant.c7))
+
 
         binding.viewPagerHotItem.apply {
             adapter = SlideItemAdapter(requireContext(),sliderItem)
@@ -151,6 +172,12 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
             }
             2->{
                 findNavController().navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
+            }
+            3->{
+                Toast.makeText(requireContext(),"Coming soon",Toast.LENGTH_SHORT).show()
+            }
+            else->{
+                Toast.makeText(requireContext(),"Coming soon",Toast.LENGTH_SHORT).show()
             }
         }
     }
