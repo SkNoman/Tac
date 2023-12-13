@@ -13,6 +13,7 @@ import com.etac.service.utils.Animation
 
 class MainActivity : AppCompatActivity() {
 
+    private val tAG = "MAIN_ACTIVITY"
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
@@ -60,9 +61,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }catch (e:Exception){
-            Log.e("nlog-exc-BackPressed" , e.toString())
+            Log.e(tAG , e.toString())
         }
     }
-
-
 }

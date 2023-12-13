@@ -38,4 +38,5 @@
     <dimen name="sp28">28sp</dimen>
     <dimen name="dp24">24dp</dimen>
     <dimen name="dp100">100dp</dimen>
+    <dimen name="sp14">14sp</dimen>
 </resources>

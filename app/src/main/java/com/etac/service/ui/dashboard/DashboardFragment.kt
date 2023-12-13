@@ -1,16 +1,13 @@
 package com.etac.service.ui.dashboard
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,9 +24,7 @@ import com.etac.service.models.SlideItem
 import com.etac.service.utils.Animation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import me.ibrahimsn.lib.OnItemSelectedListener
 
 class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
     (FragmentDashboardBinding::inflate), OnClickMenu
@@ -38,7 +33,6 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val window = requireActivity().window
-        //window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
         CoroutineScope(Dispatchers.IO).launch {
             autoImageSlider()
         }
@@ -54,11 +48,7 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
                         } , delayMillis.toLong())
                 }
                 2->{
-                    val delayMillis = 500 // .5 seconds
-                    val handler = Handler()
-                    handler.postDelayed({
-                              openGoogleMaps(28.000,90.999,"Momammdpur","Dhaka")
-                    } , delayMillis.toLong())
+                    Toast.makeText(requireContext(),"Coming soon",Toast.LENGTH_SHORT).show()
                     //navController.navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
                 }
             }
@@ -73,14 +63,8 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
         super.onResume()
         handler.postDelayed(viewPagerHotItemRunnable, 5000)
     }
-    private fun openGoogleMaps(latitude: Double , longitude: Double , placeName:String , district:String) {
-        val uri =  "geo:$latitude,$longitude?q=$placeName,$district ,Bangladesh"
-        val intent = Intent(Intent.ACTION_VIEW , Uri.parse(uri))
-        intent.setPackage("com.google.android.apps.maps")
-        requireActivity().startActivity(intent)
-    }
     private fun autoImageSlider() {
-        val sliderItem : ArrayList<SlideItem> = ArrayList()
+        val sliderItem : MutableList<SlideItem> = ArrayList()
         sliderItem.add(SlideItem(Constant.c1))
         sliderItem.add(SlideItem(Constant.l1))
         sliderItem.add(SlideItem(Constant.c2))
@@ -95,9 +79,8 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
         sliderItem.add(SlideItem(Constant.l6))
         sliderItem.add(SlideItem(Constant.c7))
 
-
         binding.viewPagerHotItem.apply {
-            adapter = SlideItemAdapter(requireContext(),sliderItem)
+            adapter = SlideItemAdapter(requireContext(),sliderItem.shuffled().toMutableList())
             clipToPadding = false
             clipChildren = false
             offscreenPageLimit = sliderItem.size
@@ -125,7 +108,7 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
                         1 ,
                         "Car Service" ,
                         10 ,
-                        R.drawable.car_service_icon ,
+                        R.drawable.car_icon_lift ,
                         Color.BLUE
                 )
         )
@@ -177,7 +160,7 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
                 Toast.makeText(requireContext(),"Coming soon",Toast.LENGTH_SHORT).show()
             }
             else->{
-                Toast.makeText(requireContext(),"Coming soon",Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.aboutUsFragment,null,Animation.animNav().build())
             }
         }
     }

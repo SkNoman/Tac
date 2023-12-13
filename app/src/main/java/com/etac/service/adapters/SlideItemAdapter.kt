@@ -11,10 +11,10 @@ import com.makeramen.roundedimageview.RoundedImageView
 
 class SlideItemAdapter(
     context: Context,
-    slideItemList: ArrayList<SlideItem>
+    slideItemList: MutableList<SlideItem>
 ): RecyclerView.Adapter<SlideItemViewHolder>() {
 
-    private val content: ArrayList<SlideItem> = slideItemList
+    private val content: MutableList<SlideItem> = slideItemList
     private var mContext: Context = context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlideItemViewHolder {
@@ -45,7 +45,7 @@ class SlideItemViewHolder(inflater: LayoutInflater,parent: ViewGroup):
         context: Context,
         slideItemList: SlideItem,
         position: Int,
-        content: ArrayList<SlideItem>,
+        content: MutableList<SlideItem>,
         viewPagerRunnable: Runnable
     ){
         Glide.with(context).load(slideItemList.image)
