@@ -5,9 +5,8 @@ class ServiceHistory {
 }
 
 data class  ServiceHistoryList(
-    val menuId: Int? = null,
-    val menuTitle: String? = "",
-    val menuDetails: String? = null,
-    val menuIcon: Int? = null,
-    val serviceDate: String? = null
+    val serviceType : Int?,
+    val serviceTitle: String? = "",
+    val serviceDetails: String? = "",
+    val serviceDate: String? = ""
 )

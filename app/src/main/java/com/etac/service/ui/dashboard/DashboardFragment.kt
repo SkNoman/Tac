@@ -1,8 +1,6 @@
 package com.etac.service.ui.dashboard
 
-import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper

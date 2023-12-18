@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:elevation="@dimen/_4dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="@dimen/dp10"
-        android:elevation="4dp"
-        android:outlineAmbientShadowColor="@color/black"
-        app:cardBackgroundColor="#E0E4E6"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp16"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/dp10"
+        android:outlineSpotShadowColor="@color/red"
+        android:elevation="@dimen/_4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,14 +23,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView3"
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivServiceHistoryIcon"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp150"
                 android:scaleType="centerCrop"
+                app:riv_corner_radius="@dimen/_10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:src="@drawable/car_service_banner_temp" />
 
             <TextView
                 android:id="@+id/txtServiceDate"
@@ -37,13 +39,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="10-11-2023"
-                android:textColor="@color/black"
-                android:textSize="16sp"
+                android:elevation="@dimen/_4dp"
+                android:outlineSpotShadowColor="@color/bg_tint_light_blue_sky"
+                android:background="@drawable/rounded_bg_10_dp"
+                android:backgroundTint="@color/white"
+                android:gravity="center_vertical"
+                tools:text="10-11-2023"
+                android:textColor="@color/semi_black"
+                android:padding="@dimen/dp5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:drawableStartCompat="@drawable/baseline_calendar_month_24"
+                app:drawableTint="@color/semi_black" />
 
             <TextView
                 android:id="@+id/txtServiceType"
@@ -51,10 +60,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Recycler view title"
+                tools:text="Recycler view title"
+                android:textColor="@color/semi_black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                app:layout_constraintTop_toBottomOf="@+id/ivServiceHistoryIcon" />
 
             <TextView
                 android:id="@+id/txtServiceDetails"
@@ -64,9 +74,11 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:maxLines="3"
-                android:text="Recycler view details lorem is the greatest dummy text which every developers write down into their projects initially."
+                tools:text="Recycler view details lorem is the greatest dummy text which every developers write down into their projects initially."
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="@dimen/sp14"
+                android:layout_marginBottom="@dimen/dp16"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtServiceType" />
 
@@ -78,9 +90,11 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
+                android:textColor="@color/semi_black"
                 app:layout_constraintStart_toEndOf="@+id/txtServiceType"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                app:drawableStartCompat="@drawable/info_24_px" />
+                app:layout_constraintTop_toBottomOf="@+id/ivServiceHistoryIcon"
+                app:drawableStartCompat="@drawable/info_24_px"
+                app:drawableTint="@color/semi_black" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -30,7 +30,7 @@ class ServiceHistoryListAdapter(
         val menuContent: ServiceHistoryList = content[position]
         holder.bindServiceHistory(mContext,menuContent)
         holder.itemView.setOnClickListener{
-            menuContent.menuId?.let { it1 -> onMenuItemClick.onClick(it1) }
+            menuContent.serviceType?.let { it1 -> onMenuItemClick.onClick(it1) }
         }
     }
 
@@ -46,14 +46,19 @@ class ServiceItemViewHolder(inflater: LayoutInflater,parent: ViewGroup):
 
     private var title: TextView = itemView.findViewById(R.id.txtServiceType)
     private var details: TextView = itemView.findViewById(R.id.txtServiceDetails)
-    private var icon: ImageView = itemView.findViewById(R.id.imageView3)
+    private var icon: ImageView = itemView.findViewById(R.id.ivServiceHistoryIcon)
     private var serviceDate: TextView = itemView.findViewById(R.id.txtServiceDate)
 
     fun bindServiceHistory(context: Context,menuData:ServiceHistoryList){
-        title.text = menuData.menuTitle
-        details.text = menuData.menuDetails
-        menuData.menuIcon?.let { icon.setImageResource(it) }
+        title.text = menuData.serviceTitle
+        details.text = menuData.serviceDetails
         serviceDate.text = menuData.serviceDate
+        //menuData.menuIcon?.let { icon.setImageResource(it) }
+        if (menuData.serviceType == 1){
+            icon.setImageResource(R.drawable.car_service_banner_temp)
+        }else{
+            icon.setImageResource(R.drawable.laundry_service_online)
+        }
     }
 }
 
