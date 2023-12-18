@@ -118,35 +118,3 @@ fun getLocalProperty(key: String, file: String = "local.properties"): String {
     } else error("File not found")
     return properties.getProperty("api_key")
 }
-
-
-/*val getBaseUrl(){
-*//*    //Properties properties = new Properties()
-    val pro
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-    String baseUrl = properties.getProperty("base_url")
-    if (baseUrl == null)
-        throw new FileNotFoundException("Add 'base_url' field at local.properties file.")
-
-    return baseUrl*//*
-}
-
-val getSecretKey() {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-    String key = properties.getProperty("secret_key")
-    if (key == null)
-        throw new FileNotFoundException("No found")
-
-    return key
-}*/
-
-/*val getAPIKey() {
-    //Properties properties = new Properties()
-    val properties = Properties()
-    properties.load(project.rootProject.file("local.properties").inputStream())
-
-    return properties.getProperty("api_key") ?: throw FileNotFoundException("File Not Found")
-}*/

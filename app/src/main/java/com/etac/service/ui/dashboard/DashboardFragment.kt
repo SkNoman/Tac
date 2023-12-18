@@ -157,7 +157,7 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
                 findNavController().navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
             }
             3->{
-                Toast.makeText(requireContext(),"Coming soon",Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.serviceHistoryFragment,null,Animation.animNav().build())
             }
             else->{
                 findNavController().navigate(R.id.aboutUsFragment,null,Animation.animNav().build())
