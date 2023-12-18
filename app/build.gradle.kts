@@ -56,6 +56,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.test.ext:junit-ktx:1.1.5")
     testImplementation("junit:junit:4.13.2")
     //NAVIGATION COMPONENT
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.5")
@@ -72,6 +73,7 @@ dependencies {
     implementation ("com.makeramen:roundedimageview:2.3.0")
     //Custom Bottom Navigation View
     implementation ("com.github.ibrahimsn98:SmoothBottomBar:1.7.9")
+    androidTestImplementation("junit:junit:4.12")
 
 
 }
