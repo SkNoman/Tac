@@ -1,11 +1,11 @@
 package com.etac.service.di
 
 import com.etac.service.BuildConfig
-import com.etac.service.Constant
-import com.etac.service.Constant.CLIENT_TYPE
-import com.etac.service.Constant.KEY_CLIENT_TYPE
-import com.etac.service.Constant.KEY_CLIENT_VERSION
-import com.etac.service.Constant.KEY_JSON
+import com.etac.service.utils.Constant
+import com.etac.service.utils.Constant.CLIENT_TYPE
+import com.etac.service.utils.Constant.KEY_CLIENT_TYPE
+import com.etac.service.utils.Constant.KEY_CLIENT_VERSION
+import com.etac.service.utils.Constant.KEY_JSON
 import com.etac.service.network.ApiInterface
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module

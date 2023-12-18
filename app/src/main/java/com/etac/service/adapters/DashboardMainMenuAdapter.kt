@@ -54,7 +54,7 @@ class MenuItemViewHolder(inflater: LayoutInflater,parent: ViewGroup):
         title.text = menuData.menuTitle
         menuData.menuIcon?.let { icon.setImageResource(it) }
         serviceCount.text = menuData.menuServiceCount.toString()
-        menuLayout.background = ContextCompat.getDrawable(context, R.drawable.rounded_bd_10dp)
+        menuLayout.background = ContextCompat.getDrawable(context, R.drawable.rounded_bg_20_dp)
         //menuData.menuBGColor?.let { menuLayout.setBackgroundColor(it) }
        // menuLayout.backgroundTintList = ColorStateList.valueOf(menuData.menuBGColor!!)
     }

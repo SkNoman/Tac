@@ -10,7 +10,9 @@ import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentAboutUsBinding
 import com.etac.service.utils.Animation
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutUsFragment : BaseFragmentWithBinding<FragmentAboutUsBinding>
 (FragmentAboutUsBinding::inflate)
 {

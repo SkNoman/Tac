@@ -1,4 +1,4 @@
-package com.etac.service
+package com.etac.service.utils
 
 object Constant {
 

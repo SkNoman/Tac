@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.etac.service.Constant
+import com.etac.service.utils.Constant
 import com.etac.service.R
 import com.etac.service.adapters.DashboardMainMenuAdapter
 import com.etac.service.adapters.OnClickMenu

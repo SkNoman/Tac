@@ -79,7 +79,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_bd_10dp"
+        android:background="@drawable/rounded_bg_20_dp"
         android:backgroundTint="@color/appThemeBlue"
         android:text="@string/validate"
         android:fontFamily="@font/open_sans"

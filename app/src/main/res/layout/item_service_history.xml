@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp16"
-        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/dp10"
         android:outlineSpotShadowColor="@color/red"
         android:elevation="@dimen/_4dp"
@@ -28,7 +27,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp150"
                 android:scaleType="centerCrop"
-                app:riv_corner_radius="@dimen/_10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/car_service_banner_temp" />
@@ -40,6 +38,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:elevation="@dimen/_4dp"
+                android:alpha=".8"
                 android:outlineSpotShadowColor="@color/bg_tint_light_blue_sky"
                 android:background="@drawable/rounded_bg_10_dp"
                 android:backgroundTint="@color/white"
@@ -55,7 +54,7 @@
                 app:drawableTint="@color/semi_black" />
 
             <TextView
-                android:id="@+id/txtServiceType"
+                android:id="@+id/txtServiceTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -74,27 +73,69 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:maxLines="3"
-                tools:text="Recycler view details lorem is the greatest dummy text which every developers write down into their projects initially."
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:textSize="@dimen/sp14"
-                android:layout_marginBottom="@dimen/dp16"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtServiceType" />
+                app:layout_constraintTop_toBottomOf="@+id/txtServiceTitle"
+                tools:text="Recycler view details lorem is the greatest dummy text which every developers write down into their projects initially." />
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center_vertical"
+                android:text="@string/payment_details"
+                android:textColor="@color/semi_black"
+                app:drawableStartCompat="@drawable/info_24_px"
+                app:drawableTint="@color/semi_black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvServiceStatus"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtServiceDetails" />
+
+            <TextView
+                android:id="@+id/tvServiceStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/rounded_bg_20_dp"
+                android:backgroundTint="@color/green"
+                android:padding="@dimen/_10dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtServiceDetails"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Completed ☑" />
+
+            <TextView
+                android:id="@+id/tvPaymentInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                android:background="@drawable/rounded_bg_5_dp"
+                android:backgroundTint="@color/semi_black"
+                android:gravity="center_vertical"
+                android:drawablePadding="@dimen/dp5"
+                android:padding="@dimen/_10dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvServiceStatus"
                 app:layout_constraintHorizontal_bias="1.0"
-                android:textColor="@color/semi_black"
-                app:layout_constraintStart_toEndOf="@+id/txtServiceType"
-                app:layout_constraintTop_toBottomOf="@+id/ivServiceHistoryIcon"
-                app:drawableStartCompat="@drawable/info_24_px"
-                app:drawableTint="@color/semi_black" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtServiceDetails"
+                app:layout_constraintVertical_bias="0.0"
+                android:text="Payment Info" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

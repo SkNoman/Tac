@@ -10,7 +10,9 @@ import androidx.navigation.findNavController
 import com.etac.service.R
 import com.etac.service.databinding.ActivityMainBinding
 import com.etac.service.utils.Animation
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val tAG = "MAIN_ACTIVITY"

@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Service History"
+        android:text="@string/service_history"
         android:fontFamily="@font/open_sans"
         android:textColor="@color/semi_black"
         android:textSize="@dimen/sp24"
@@ -67,12 +67,12 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch"
         tools:itemCount="2"
         tools:listitem="@layout/item_service_history" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/etSearch"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -88,7 +88,7 @@
         android:drawableStart="@drawable/baseline_search_24"
         android:drawableTint="@color/semi_black"
         android:padding="5dp"
-        android:hint="Search"
+        android:hint="@string/search"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView" />

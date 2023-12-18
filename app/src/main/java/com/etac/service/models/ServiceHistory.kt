@@ -5,8 +5,10 @@ class ServiceHistory {
 }
 
 data class  ServiceHistoryList(
+    val id: Int?,
     val serviceType : Int?,
     val serviceTitle: String? = "",
     val serviceDetails: String? = "",
-    val serviceDate: String? = ""
+    val serviceDate: String? = "",
+    val serviceStatus: Int
 )
