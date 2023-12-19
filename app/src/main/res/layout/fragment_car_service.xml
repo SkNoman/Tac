@@ -77,6 +77,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans"
+                    android:text="Mohammad"
                     android:drawablePadding="@dimen/dp10"
                     android:hint="@string/please_enter_your_name"
                     android:inputType="textMultiLine"
@@ -149,6 +150,7 @@
                 app:cursorColor="@color/semi_black"
                 app:hintTextColor="@color/semi_black"
                 app:boxStrokeColor="@color/semi_black"
+                app:endIconTint="@color/semi_black"
                 >
 
                 <AutoCompleteTextView
@@ -195,6 +197,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:drawablePadding="@dimen/dp10"
+                    android:text="@string/demo_address"
                     android:hint="@string/please_enter_your_address"
                     android:fontFamily="@font/open_sans"
                     android:inputType="textMultiLine"

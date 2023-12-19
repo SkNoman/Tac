@@ -12,6 +12,7 @@ import com.etac.service.R
 import com.etac.service.adapters.ServiceHistoryListAdapter
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentServiceHistoryBinding
+import com.etac.service.dialogs.PaymentInfoSubmitDialog
 import com.etac.service.models.ServiceHistoryList
 import com.etac.service.utils.Animation
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,8 +24,6 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
 {
     @Inject
     lateinit var serviceHistoryListAdapter: ServiceHistoryListAdapter
-    private var adapter: ServiceHistoryListAdapter? = null
-    private var serviceHistoryList = listOf<ServiceHistoryList>()
     private val serviceItemList: MutableList<ServiceHistoryList> = mutableListOf()
     override fun onViewCreated(view: View , savedInstanceState: Bundle?) {
         super.onViewCreated(view , savedInstanceState)
@@ -43,6 +42,8 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
                 filter(s.toString())
             }
         })
+
+
     }
 
     private fun filter(item: String) {
@@ -173,6 +174,16 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
     }
 
     override fun onClick(id: Int) {
-        Toast.makeText(requireContext(),"Clicked item: $id",Toast.LENGTH_SHORT).show()
+        //Toast.makeText(requireContext(),"Clicked item: $id",Toast.LENGTH_SHORT).show()
+        PaymentInfoSubmitDialog(requireContext(),object:PaymentInfoSubmitDialog.OnClickListener{
+            override fun onClickSubmit() {
+                Toast.makeText(requireContext(),"Payment details submitted successfully",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onClickCancel() {
+
+            }
+
+        }).show()
     }
 }

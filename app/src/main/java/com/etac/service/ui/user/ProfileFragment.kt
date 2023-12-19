@@ -19,6 +19,11 @@ class ProfileFragment : BaseFragmentWithBinding<FragmentProfileBinding>(
         binding.ivBack.setOnClickListener{
             findNavController().navigate(R.id.dashboardFragment , null , Animation.animNav().build())
         }
-
+        binding.ivEdit.setOnClickListener{
+            findNavController().navigate(R.id.profileUpdateFragment,null,Animation.animNav().build())
+        }
+        binding.btnLogout.setOnClickListener {
+            findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
+        }
     }
 }

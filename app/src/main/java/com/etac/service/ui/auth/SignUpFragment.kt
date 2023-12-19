@@ -18,5 +18,9 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
         binding.layoutNavigateSignIn.setOnClickListener{
             findNavController().navigate(R.id.signInFragment , null , Animation.animNav().build())
         }
+
+        binding.btnSignUp.setOnClickListener{
+            findNavController().navigate(R.id.OTPFragment , null , Animation.animNav().build())
+        }
     }
 }

@@ -48,7 +48,7 @@
     <string name="name">Name</string>
     <string name="address">Address</string>
     <string name="phone_number">Phone Number</string>
-    <string name="demo_phone">01718228200\n</string>
+    <string name="demo_phone">01718228200</string>
     <string name="service_area">Service Area</string>
     <string name="service_details">Service Details</string>
     <string name="submit">Submit</string>
@@ -77,4 +77,9 @@
     <string name="payment_details"><u>Payment Details</u></string>
     <string name="service_history">Service History</string>
     <string name="search">Search</string>
+    <string name="alternative_phone_no">Alternative Phone No</string>
+    <string name="demo_address">77/A,Town hall, Mohammadpur</string>
+    <string name="please_enter_transaction_id">Please enter transaction id</string>
+    <string name="add_payment_details">Add Payment Details</string>
+    <string name="confirm">Confirm</string>
 </resources>

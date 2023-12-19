@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/signInFragment"
@@ -55,4 +55,9 @@
         android:name="com.etac.service.ui.general.AboutUsFragment"
         android:label="fragment_about_us"
         tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/profileUpdateFragment"
+        android:name="com.etac.service.ui.user.ProfileUpdateFragment"
+        android:label="fragment_profile_update"
+        tools:layout="@layout/fragment_profile_update" />
 </navigation>

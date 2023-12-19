@@ -19,7 +19,12 @@ class OTPFragment: BaseFragmentWithBinding<FragmentOTPBinding>
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnValidateOTP.setOnClickListener {
-            findNavController().navigate(R.id.dashboardFragment , null , Animation.animNav().build())
+            if (binding.layoutOTP.text.toString() == "123456"){
+                findNavController().navigate(R.id.dashboardFragment , null , Animation.animNav().build())
+            }else {
+                // OTP is invalid, you can show an error message
+                Toast.makeText(requireContext() , "Invalid OTP" , Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.layoutOTP.addTextChangedListener(object : TextWatcher {
@@ -37,6 +42,7 @@ class OTPFragment: BaseFragmentWithBinding<FragmentOTPBinding>
                     if (enteredOTP == "123456") {
                         // OTP is valid, navigate to the next page
                         binding.layoutOTP.setText("")
+                        Toast.makeText(requireContext(),"Welcome, Mohammad",Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.dashboardFragment,null,Animation.animNav().build())
                     } else {
                         // OTP is invalid, you can show an error message
