@@ -24,11 +24,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/dp16"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/open_sans"
         android:text="@string/request_a_service"
         android:textColor="@color/semi_black"
-        android:textStyle="bold"
         android:textSize="@dimen/sp28"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivBack" />
@@ -37,10 +38,13 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/dp16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:layout_editor_absoluteX="2dp">
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -52,9 +56,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginTop="@dimen/dp10"
+                android:fontFamily="@font/open_sans"
                 android:text="@string/name"
                 android:textColor="@color/semi_black"
-                android:fontFamily="@font/open_sans"
                 android:textSize="@dimen/sp18">
 
             </TextView>
@@ -67,21 +71,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginEnd="@dimen/dp20"
-                app:cursorErrorColor="@color/red"
+                app:boxStrokeColor="@color/semi_black"
                 app:cursorColor="@color/semi_black"
-                app:hintTextColor="@color/semi_black"
-                app:boxStrokeColor="@color/semi_black">
+                app:cursorErrorColor="@color/red"
+                app:hintTextColor="@color/semi_black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Mohammad"
                     android:drawablePadding="@dimen/dp10"
+                    android:fontFamily="@font/open_sans"
                     android:hint="@string/please_enter_your_name"
                     android:inputType="textMultiLine"
-                    android:maxLength="50" />
+                    android:maxLength="50"
+                    android:text="Mohammad" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -92,8 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginTop="@dimen/dp10"
-                android:text="@string/phone_number"
                 android:fontFamily="@font/open_sans"
+                android:text="@string/phone_number"
                 android:textColor="@color/semi_black"
                 android:textSize="@dimen/sp18">
 
@@ -106,19 +110,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginEnd="@dimen/dp20"
-                app:cursorErrorColor="@color/red"
-                app:cursorColor="@color/semi_black"
-                app:hintTextColor="@color/semi_black"
                 app:boxStrokeColor="@color/semi_black"
-                >
+                app:cursorColor="@color/semi_black"
+                app:cursorErrorColor="@color/red"
+                app:hintTextColor="@color/semi_black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPhoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/dp10"
-                    android:hint="@string/demo_phone"
                     android:fontFamily="@font/open_sans"
+                    android:hint="@string/demo_phone"
                     android:inputType="number"
                     android:maxLength="11" />
 
@@ -131,9 +134,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginTop="@dimen/dp10"
+                android:fontFamily="@font/open_sans"
                 android:text="@string/select_area"
                 android:textColor="@color/semi_black"
-                android:fontFamily="@font/open_sans"
                 android:textSize="@dimen/sp18">
 
             </TextView>
@@ -146,20 +149,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginEnd="@dimen/dp20"
-                app:cursorErrorColor="@color/red"
-                app:cursorColor="@color/semi_black"
-                app:hintTextColor="@color/semi_black"
                 app:boxStrokeColor="@color/semi_black"
+                app:cursorColor="@color/semi_black"
+                app:cursorErrorColor="@color/red"
                 app:endIconTint="@color/semi_black"
-                >
+                app:hintTextColor="@color/semi_black">
 
                 <AutoCompleteTextView
                     android:id="@+id/etArea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/dp10"
-                    android:hint="@string/select"
                     android:fontFamily="@font/open_sans"
+                    android:hint="@string/select"
                     android:inputType="none" />
 
 
@@ -171,8 +173,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginTop="@dimen/dp10"
-                android:text="@string/address"
                 android:fontFamily="@font/open_sans"
+                android:text="@string/address"
                 android:textColor="@color/semi_black"
                 android:textSize="@dimen/sp18">
 
@@ -185,11 +187,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginEnd="@dimen/dp20"
-                app:cursorErrorColor="@color/red"
-                app:cursorColor="@color/semi_black"
-                app:hintTextColor="@color/semi_black"
                 app:boxStrokeColor="@color/semi_black"
-                >
+                app:cursorColor="@color/semi_black"
+                app:cursorErrorColor="@color/red"
+                app:hintTextColor="@color/semi_black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAddress"
@@ -197,11 +198,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:drawablePadding="@dimen/dp10"
-                    android:text="@string/demo_address"
-                    android:hint="@string/please_enter_your_address"
                     android:fontFamily="@font/open_sans"
+                    android:hint="@string/please_enter_your_address"
                     android:inputType="textMultiLine"
-                    android:maxLength="200" />
+                    android:maxLength="200"
+                    android:text="@string/demo_address" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -211,8 +212,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginTop="@dimen/dp10"
-                android:text="@string/service_details"
                 android:fontFamily="@font/open_sans"
+                android:text="@string/service_details"
                 android:textColor="@color/semi_black"
                 android:textSize="@dimen/sp18">
 
@@ -225,11 +226,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginEnd="@dimen/dp20"
-                app:cursorErrorColor="@color/red"
-                app:cursorColor="@color/semi_black"
-                app:hintTextColor="@color/semi_black"
                 app:boxStrokeColor="@color/semi_black"
-                >
+                app:cursorColor="@color/semi_black"
+                app:cursorErrorColor="@color/red"
+                app:hintTextColor="@color/semi_black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etServiceDetails"
@@ -268,10 +268,10 @@
                 android:layout_marginBottom="@dimen/dp20"
                 android:background="@drawable/rounded_bg_20_dp"
                 android:backgroundTint="@color/semi_black"
+                android:fontFamily="@font/open_sans"
                 android:gravity="center"
                 android:text="@string/submit"
                 android:textColor="@color/white"
-                android:fontFamily="@font/open_sans"
                 android:textSize="@dimen/_18sp" />
 
 
