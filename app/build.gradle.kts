@@ -23,8 +23,8 @@ android {
         versionName = "1.0"
 
 
-        buildConfigField("String","API_KEY", getLocalProperty("api_key"))
-        buildConfigField("String","SECRET_KEY", getLocalProperty("secret_key"))
+        buildConfigField("String","USER_NAME", getLocalProperty("username"))
+        buildConfigField("String","PASSWORD", getLocalProperty("password"))
         buildConfigField("String","BASE_URL", getLocalProperty("base_url"))
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -109,12 +109,12 @@ fun getLocalProperty(key: String, file: String = "local.properties"): String {
     if (key != null){
         Log.d("key", key)
     }else{
-        Log.d("key","key is null:(")
+        Log.d("key","key is null :(")
     }
     if (localProperties.isFile) {
         InputStreamReader(FileInputStream(localProperties),Charsets.UTF_8).use { reader->
             properties.load(reader)
         }
     } else error("File not found")
-    return properties.getProperty("api_key")
+    return properties.getProperty(key)
 }

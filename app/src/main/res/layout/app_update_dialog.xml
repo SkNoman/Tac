@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@+id/layoutPaymentInfoSubmitDialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp16"
+    app:cardCornerRadius="@dimen/_20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bg_20_dp"
+        android:backgroundTint="#F2F4F4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="@dimen/dp20"
+            android:src="@drawable/force_update_cover"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/open_sans_light"
+            android:textColor="@color/offWhiteApp"
+            android:text="App updates available"
+            android:textSize="@dimen/sp24"
+            app:layout_constraintBottom_toTopOf="@+id/tvUpdateBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageView6" />
+
+        <TextView
+            android:id="@+id/tvUpdateBtn"
+            android:layout_width="@dimen/dp150"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_bg_20_dp"
+            android:backgroundTint="@color/semi_black"
+            android:elevation="@dimen/_4dp"
+            android:outlineSpotShadowColor="@color/bg_tint_light_blue_sky"
+            android:padding="@dimen/_10dp"
+            android:text="@string/update"
+            android:textAlignment="center"
+            android:fontFamily="@font/open_sans_light"
+            android:textSize="@dimen/_16sp"
+            android:textColor="@color/offWhiteApp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintEnd_toEndOf="@+id/textView10"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="@+id/textView10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

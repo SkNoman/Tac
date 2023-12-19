@@ -82,4 +82,6 @@
     <string name="please_enter_transaction_id">Please enter transaction id</string>
     <string name="add_payment_details">Add Payment Details</string>
     <string name="confirm">Confirm</string>
+
+    <string name="pls_check_internet">Please check internet connection!</string>
 </resources>

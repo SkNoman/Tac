@@ -16,27 +16,27 @@ class PaymentInfoSubmitDialog(
     private val binding = PaymentInfoSubmitDialogBinding.inflate(LayoutInflater.from(context), null, false)
 
     init {
-        binding.tvSubmit.setOnClickListener {
-            dismiss()
-            listener.onClickSubmit()
-        }
-        binding.ivExit.setOnClickListener{
-            dismiss()
-            listener.onClickCancel()
-        }
-        binding.radioCash.setOnClickListener{
-            binding.radioOnline.isChecked = false
-            binding.etTransactionId.visibility = View.INVISIBLE
-            binding.txtTransactionId.visibility = View.INVISIBLE
-        }
-        binding.radioOnline.setOnClickListener {
-            binding.radioCash.isChecked = false
-            binding.etTransactionId.visibility = View.VISIBLE
-            binding.txtTransactionId.visibility = View.VISIBLE
-        }
+
 
         binding.apply {
-
+            tvSubmit.setOnClickListener {
+                dismiss()
+                listener.onClickSubmit()
+            }
+            ivExit.setOnClickListener{
+                dismiss()
+                listener.onClickCancel()
+            }
+            radioCash.setOnClickListener{
+                radioOnline.isChecked = false
+                etTransactionId.visibility = View.INVISIBLE
+                txtTransactionId.visibility = View.INVISIBLE
+            }
+            radioOnline.setOnClickListener {
+                radioCash.isChecked = false
+                etTransactionId.visibility = View.VISIBLE
+                txtTransactionId.visibility = View.VISIBLE
+            }
         }
 
         setView(binding.root)

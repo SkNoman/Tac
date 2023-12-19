@@ -1,6 +1,7 @@
 package com.etac.service.network
 
 
+import com.etac.service.models.ApplicationStatus
 import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Response
@@ -8,25 +9,46 @@ import retrofit2.http.*
 
 interface ApiInterface {
 
+    @GET()
+    fun getApplicationStatus(
+        @Url url: String,
+    ): Call<ApplicationStatus>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /* @Headers(
-         "Accept: application/json"
-     )
-     @POST(eAppApiEndPoint.CHECK_MOBILE_NUMBER)
-     fun isMobileAvailable(
-         @Body body: MobileIsAvailable
-     ): Call<IsMobileAvailableResponse>*/
-
-
-/*    @GET()
-    fun getBaseUrl(
-        @Url url: String,
-        @Header("X-RequestHash") requestHash: String
-    ): Call<GetBaeUrlResponse>*/
-
-
-
-
+     "Accept: application/json"
+ )
+ @POST(eAppApiEndPoint.CHECK_MOBILE_NUMBER)
+ fun isMobileAvailable(
+     @Body body: MobileIsAvailable
+ ): Call<IsMobileAvailableResponse>*/
 
 /*    @FormUrlEncoded
     @POST()
