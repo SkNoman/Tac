@@ -1,6 +1,6 @@
 package com.etac.service.models
 
-data class ApplicationStatus(
+data class ApplicationStatusResponse(
 	val result: Result? = null,
 	val maintenance_info: Any? = null,
 	val result_code: Int? = null,

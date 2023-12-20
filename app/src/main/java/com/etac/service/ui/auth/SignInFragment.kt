@@ -1,27 +1,88 @@
 package com.etac.service.ui.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentSignInBinding
+import com.etac.service.network.ApiEndPoint
 import com.etac.service.utils.Animation
+import com.etac.service.utils.AppUtils
+import com.etac.service.utils.CheckNetworkStatus
+import com.etac.service.utils.Constant
+import com.etac.service.viewmodels.AuthViewModel
+import com.google.gson.JsonObject
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SignInFragment : BaseFragmentWithBinding<FragmentSignInBinding>
     (FragmentSignInBinding::inflate)
 {
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.btnSignIn.setOnClickListener {
-            findNavController().navigate(R.id.OTPFragment ,null , Animation.animNav().build())
+        private val authViewModel: AuthViewModel by viewModels()
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            binding.tvNavigateSignIn.setOnClickListener {
+                findNavController().navigate(R.id.signUpFragment ,null , Animation.animNav().build())
+            }
+            binding.btnSignIn.setOnClickListener {
+                CheckNetworkStatus.isOnline(requireContext(),object:CheckNetworkStatus.Status{
+                    override fun online() {
+                        if (binding.etPhoneNumber.text.length == 11){
+                            checkUserPhoneNumber()
+                        }else{
+                            AppUtils.showToast(requireContext(),
+                            getString(R.string.please_enter_valid_phone_number), false,getString(R.string.toast_type_warning))
+                        }
+                    }
+                    override fun offline() {
+                        AppUtils.showToast(requireContext(),
+                        getString(R.string.pls_check_internet),false, getString(R.string.toast_type_warning))
+                    }
+                })
+            }
+
+            authViewModel.checkUserRes.observe(viewLifecycleOwner) { data ->
+                data.getContentIfNotHandled().let {
+                    if (it?.result_code == 0) {
+                        if (it.result?.hasUser == true) {
+                            onLoadingVm().showLoadingFun(false)
+                            val bundle = Bundle()
+                            bundle.putString("name","Sk Noman")
+                            bundle.putString("phone",binding.etPhoneNumber.text.toString())
+                            findNavController().navigate(R.id.OTPFragment,bundle,
+                                                         Animation.animNav().build())
+                        }else{
+                            onLoadingVm().showLoadingFun(false)
+                            findNavController().navigate(R.id.signUpFragment,null,
+                                                         Animation.animNav().build())
+                        }
+                    }
+                }
+            }
+            authViewModel.errorResponse.observe(viewLifecycleOwner){error ->
+                onLoadingVm().showLoadingFun(false)
+                error.getContentIfNotHandled().let {
+                    AppUtils.showToast(requireContext(),
+                                       it?.message.toString(), false, getString(R.string.toast_type_error))
+                }
+            }
         }
-        binding.tvNavigateSignIn.setOnClickListener {
-            findNavController().navigate(R.id.signUpFragment,null,Animation.animNav().build())
+
+    private fun checkUserPhoneNumber() {
+        try {
+            onLoadingVm().showLoadingFun(true)
+            val jsonObject = JsonObject()
+            jsonObject.addProperty("user_type","user")
+            jsonObject.addProperty("primary_phone",binding.etPhoneNumber.text.toString())
+            authViewModel.checkUser(ApiEndPoint.LOGIN,jsonObject)
+
+        }catch (e:Exception){
+            onLoadingVm().showLoadingFun(false)
+            AppUtils.showToast(requireContext(),
+                               Constant.ERROR_MESSAGE, false, getString(R.string.toast_type_error))
         }
     }
 }

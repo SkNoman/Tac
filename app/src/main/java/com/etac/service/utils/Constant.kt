@@ -2,7 +2,7 @@ package com.etac.service.utils
 
 object Constant {
 
-    const val CURRENT_BUILD_VERSION = 1000
+    const val CURRENT_BUILD_VERSION = 999
     const val CLIENT_TYPE =  1
     const val KEY_CLIENT_TYPE =  "client_type"
     const val KEY_CLIENT_VERSION =  "client_version"

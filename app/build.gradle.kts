@@ -99,6 +99,8 @@ dependencies {
     //Hilt
     implementation ("com.google.dagger:hilt-android:2.49")
     kapt ("com.google.dagger:hilt-compiler:2.49")
+    //For Toast
+    implementation ("com.github.Spikeysanju:MotionToast:1.4")
 
 
 }

@@ -4,26 +4,47 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentOTPBinding
+import com.etac.service.network.ApiEndPoint
 import com.etac.service.utils.Animation
+import com.etac.service.utils.AppUtils
+import com.etac.service.utils.CheckNetworkStatus
+import com.etac.service.utils.Constant
 import com.etac.service.utils.HideKeyboard.hideKeyboard
+import com.etac.service.viewmodels.AuthViewModel
+import com.google.gson.JsonObject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OTPFragment: BaseFragmentWithBinding<FragmentOTPBinding>
     (FragmentOTPBinding::inflate)
 {
+    private val authViewModel: AuthViewModel by viewModels()
+    private  var phone = ""
+    private var name = ""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        try {
+            phone = requireArguments().getString("phone","")
+            name = requireArguments().getString("name","")
+        }catch (e:Exception){
+            AppUtils.showToast(requireContext(),Constant.ERROR_MESSAGE,false,
+                               getString(R.string.toast_type_error))
+        }
+
+
+
         binding.btnValidateOTP.setOnClickListener {
-            if (binding.layoutOTP.text.toString() == "123456"){
-                findNavController().navigate(R.id.dashboardFragment , null , Animation.animNav().build())
+            if (binding.layoutOTP.text?.length == 6){
+                checkOTP(binding.layoutOTP.text.toString())
             }else {
-                // OTP is invalid, you can show an error message
-                Toast.makeText(requireContext() , "Invalid OTP" , Toast.LENGTH_SHORT).show()
+                AppUtils.showToast(requireContext(),getString(R.string.invalid_otp),false,
+                                   getString(R.string.toast_type_error))
             }
         }
 
@@ -39,17 +60,64 @@ class OTPFragment: BaseFragmentWithBinding<FragmentOTPBinding>
                     requireActivity().hideKeyboard()
                     val enteredOTP = editable.toString()
                     // For example, you can check if the entered OTP is "123456"
-                    if (enteredOTP == "123456") {
-                        // OTP is valid, navigate to the next page
-                        binding.layoutOTP.setText("")
-                        Toast.makeText(requireContext(),"Welcome, Mohammad",Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.dashboardFragment,null,Animation.animNav().build())
-                    } else {
-                        // OTP is invalid, you can show an error message
-                        Toast.makeText(requireContext() , "Invalid OTP" , Toast.LENGTH_SHORT).show()
-                    }
+                    CheckNetworkStatus.isOnline(requireContext(),object :CheckNetworkStatus.Status{
+                        override fun online() {
+                            checkOTP(enteredOTP)
+                        }
+
+                        override fun offline() {
+                            AppUtils.showToast(requireContext(),getString(R.string.pls_check_internet),
+                                               false,getString(R.string.toast_type_error))
+                        }
+
+                    })
                 }
             }
         })
+
+        authViewModel.checkOTPRes.observe(viewLifecycleOwner) { data ->
+            data.getContentIfNotHandled().let {
+                if (it?.result_code == 0) {
+                    if (it.result?.is_valid == true) {
+                        onLoadingVm().showLoadingFun(false)
+                        AppUtils.showToast(requireContext(),
+                                           "Welcome $name", true, getString(R.string.toast_type_success))
+                        findNavController().navigate(R.id.dashboardFragment,null,
+                                                     Animation.animNav().build())
+                    }else{
+                        onLoadingVm().showLoadingFun(false)
+                        AppUtils.showToast(requireContext(),getString(R.string.invalid_otp),true,
+                                           getString(R.string.toast_type_error))
+                    }
+                }
+            }
+        }
+        authViewModel.errorResponse.observe(viewLifecycleOwner){error ->
+            onLoadingVm().showLoadingFun(false)
+            error.getContentIfNotHandled().let {
+                AppUtils.showToast(requireContext(),
+                                   it?.message.toString(), false, getString(R.string.toast_type_error))
+            }
+        }
+    }
+
+    private fun checkOTP(otp:String) {
+        onLoadingVm().showLoadingFun(true)
+        try {
+            if (phone.isNotEmpty()){
+                val jsonObject = JsonObject()
+                jsonObject.addProperty("phone",phone)
+                jsonObject.addProperty("otp",otp)
+                authViewModel.checkOTP(ApiEndPoint.CHECK_OTP,jsonObject)
+            }else{
+                AppUtils.showToast(requireContext(),Constant.ERROR_MESSAGE,false,
+                                   getString(R.string.toast_type_error))
+                findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
+            }
+
+        }catch (e:Exception){
+            AppUtils.showToast(requireContext(),Constant.ERROR_MESSAGE,false,
+                               getString(R.string.toast_type_error))
+        }
     }
 }

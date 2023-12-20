@@ -16,6 +16,7 @@ import com.etac.service.dialogs.OnClickListener
 import com.etac.service.network.ApiEndPoint
 import com.etac.service.network.ApiInterface
 import com.etac.service.utils.Animation
+import com.etac.service.utils.AppUtils
 import com.etac.service.utils.CheckNetworkStatus
 import com.etac.service.utils.Constant
 import com.etac.service.viewmodels.AuthViewModel
@@ -27,7 +28,7 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
 {
     private val tAG = "SPLASH"
     private val authViewModel: AuthViewModel by viewModels()
-    lateinit var dialog: DialogFragment
+    private lateinit var dialog: DialogFragment
 
     override fun onResume() {
         super.onResume()
@@ -36,7 +37,8 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
                 getApplicationStatus()
             }
             override fun offline() {
-                Toast.makeText(requireContext(),getString(R.string.pls_check_internet),Toast.LENGTH_SHORT).show()
+                AppUtils.showToast(requireContext(),getString(R.string.pls_check_internet),
+                                   false,getString(R.string.toast_type_error))
             }
         })
     }
@@ -52,12 +54,11 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
             findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
         }
 
-
         authViewModel.applicationStatusRes.observe(viewLifecycleOwner) { data ->
             data.getContentIfNotHandled().let {
                 if (it?.result_code == 0){
-                    Log.d(tAG,"Application Status Response: $it")
-                    if (it.result?.current_version!! > Constant.CURRENT_BUILD_VERSION){
+                    if (it.result?.current_version!! > Constant.CURRENT_BUILD_VERSION)
+                    {
                         if (it.result.force_update!!){
                             dialog = AppUpdateDialog(this)
                             dialog.show(childFragmentManager, "Update App Dialog")
@@ -68,16 +69,15 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
                             dialog.isCancelable = true
                         }
                     }
-                    //Toast.makeText(requireContext(), it.result.current_version.toString(), Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(requireContext(),Constant.ERROR_MESSAGE,Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
         authViewModel.errorResponse.observe(viewLifecycleOwner){error ->
             error.getContentIfNotHandled().let {
-                Toast.makeText(requireContext(),it?.message,Toast.LENGTH_SHORT).show()
+                AppUtils.showToast(requireContext(),
+                                   it?.message.toString(), false,
+                                   getString(R.string.toast_type_error))
             }
         }
     }
@@ -86,7 +86,7 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
         try {
             authViewModel.getApplicationStatus(ApiEndPoint.GET_APPLICATION_STATUS)
         }catch (e:Exception){
-            Log.d(tAG,"getApplicationStatusErr:$e")
+            Toast.makeText(requireContext(),e.message,Toast.LENGTH_SHORT).show()
         }
     }
 

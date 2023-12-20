@@ -1,8 +1,12 @@
 package com.etac.service.network
 
 
-import com.etac.service.models.ApplicationStatus
-import org.json.JSONArray
+import com.etac.service.models.ApplicationStatusResponse
+import com.etac.service.models.auth.CheckOTPResponse
+import com.etac.service.models.auth.LoginResponse
+import com.etac.service.models.auth.SignUpResponse
+import com.etac.service.models.service.ServiceCreateResponse
+import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -12,8 +16,31 @@ interface ApiInterface {
     @GET()
     fun getApplicationStatus(
         @Url url: String,
-    ): Call<ApplicationStatus>
+    ): Call<ApplicationStatusResponse>
 
+    @POST()
+    fun checkUser(
+        @Url url:String,
+        @Body jsonObject: JsonObject
+    ): Call<LoginResponse>
+
+    @POST()
+    fun postSignUp(
+        @Url url:String,
+        @Body jsonObject: JsonObject
+    ): Call<SignUpResponse>
+
+    @POST()
+    fun checkOTP(
+        @Url url:String,
+        @Body jsonObject: JsonObject
+    ): Call<CheckOTPResponse>
+
+    @POST()
+    fun createServiceRea(
+        @Url url:String,
+        @Body jsonObject: JsonObject
+    ): Call<ServiceCreateResponse>
 
 
 

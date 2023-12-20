@@ -2,22 +2,26 @@ package com.etac.service.activity
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.etac.service.R
 import com.etac.service.databinding.ActivityMainBinding
 import com.etac.service.utils.Animation
+import com.etac.service.viewmodels.ProgressBarHandleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val tAG = "MAIN_ACTIVITY"
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private val loadingBarViewModel: ProgressBarHandleViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,15 @@ class MainActivity : AppCompatActivity() {
         wic.isAppearanceLightStatusBars = true
         window.statusBarColor = ContextCompat.getColor(this,R.color.offWhiteApp)
 
+        initAlertDialog()
+
+        loadingBarViewModel.showLoadingLiveData.observe(this) {
+            if (it) {
+                showDialog()
+            } else {
+                dismissDialog()
+            }
+        }
 
         /*navController.addOnDestinationChangedListener{_,destination,_ ->
             when(destination.id){

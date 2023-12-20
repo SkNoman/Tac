@@ -84,4 +84,14 @@
     <string name="confirm">Confirm</string>
 
     <string name="pls_check_internet">Please check internet connection!</string>
+    <string name="please_enter_valid_phone_number">Please enter valid phone number</string>
+
+    <string name="toast_type_default">default</string>
+    <string name="toast_type_success">success</string>
+    <string name="toast_type_error">error</string>
+    <string name="toast_type_warning">warning</string>
+    <string name="please_enter_your_valid_address">Please enter your valid address</string>
+    <string name="please_enter_your_full_name">Please enter your full name</string>
+    <string name="loading">Loading\n</string>
+    <string name="invalid_otp">Please enter valid OTP!</string>
 </resources>

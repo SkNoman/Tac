@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.viewbinding.ViewBinding
+import com.etac.service.viewmodels.ProgressBarHandleViewModel
 
 typealias Inflate<Any> = (LayoutInflater, ViewGroup?, Boolean) -> Any
 
@@ -29,15 +31,9 @@ abstract class BaseFragmentWithBinding<VB : ViewBinding>(private val inflate: In
         _binding = null
     }
 
-
-
-  /*  fun onLoadingVm(): ProgressBarHandleViewModel {
+    fun onLoadingVm(): ProgressBarHandleViewModel {
         val showLoadingVm: ProgressBarHandleViewModel by activityViewModels()
         return showLoadingVm
     }
 
-    fun onSnackBarVm(): ShowSnackBarViewModel {
-        val showSnackBar: ShowSnackBarViewModel by activityViewModels()
-        return showSnackBar
-    }*/
 }

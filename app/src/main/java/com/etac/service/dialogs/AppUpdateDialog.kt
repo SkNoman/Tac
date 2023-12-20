@@ -30,7 +30,6 @@ class AppUpdateDialog(listener: OnClickListener): AppCompatDialogFragment() {
 
     }
 }
-
     interface OnClickListener{
         fun onClickUpdate()
     }

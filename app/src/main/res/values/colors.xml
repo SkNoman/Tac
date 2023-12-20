@@ -22,4 +22,23 @@
     <color name="red">#C60606</color>
     <color name="offWhiteApp">#FAF9F6</color>
     <color name="green">#4CAF50</color>
+
+
+    <color name="custom_dark_toast">#121212</color>
+    <color name="custom_delete_color">#673AB7</color>
+    <color name="custom_error_color">#F44336</color>
+    <color name="custom_info_color">#2196F3</color>
+    <color name="custom_success_color">#8BC34A</color>
+    <color name="custom_warning_color">#FF9800</color>
+    <color name="dark_bg_color">#2F3032</color>
+    <color name="delete_bg_color">#330288D1</color>
+    <color name="delete_color">#0288D1</color>
+    <color name="error_bg_color">#33D32F2F</color>
+    <color name="error_color">#D50000</color>
+    <color name="info_bg_color">#330340DA</color>
+    <color name="info_color">#0340DA</color>
+    <color name="success_bg_color">#3317B978</color>
+    <color name="success_color">#17B978</color>
+    <color name="warning_bg_color">#33FBC02D</color>
+    <color name="warning_color">#FBC02D</color>
 </resources>
