@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentLaundryServiceBinding
+import com.etac.service.models.service.areaList
 import com.etac.service.network.ApiEndPoint
 import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
@@ -46,13 +47,12 @@ class LaundryServiceFragment : BaseFragmentWithBinding<FragmentLaundryServiceBin
             })
         }
 
-        val areaList: List<String> = listOf("Mohammadpur","Shayamoli")
+
         val arrayAdapter = ArrayAdapter(requireActivity(),
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,areaList)
         binding.etArea.setAdapter(arrayAdapter)
-        binding.etArea.threshold = 1
 
-        serviceViewModel.createServiceResponse.observe(viewLifecycleOwner) { data ->
+        serviceViewModel.createServiceRes.observe(viewLifecycleOwner) { data ->
             data.getContentIfNotHandled().let {
                 if (it?.result_code == 0 && it.result?.message == "SUCCESS") {
                     onLoadingVm().showLoadingFun(false)

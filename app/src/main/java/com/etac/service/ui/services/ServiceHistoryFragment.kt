@@ -1,11 +1,11 @@
 package com.etac.service.ui.services
 
 import android.os.Bundle
-import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.etac.service.R
@@ -13,8 +13,13 @@ import com.etac.service.adapters.ServiceHistoryListAdapter
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentServiceHistoryBinding
 import com.etac.service.dialogs.PaymentInfoSubmitDialog
-import com.etac.service.models.ServiceHistoryList
+import com.etac.service.models.service.ServiceHistoryList
+import com.etac.service.network.ApiEndPoint
 import com.etac.service.utils.Animation
+import com.etac.service.utils.AppUtils
+import com.etac.service.utils.CheckNetworkStatus
+import com.etac.service.utils.Constant
+import com.etac.service.viewmodels.ServiceViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -24,16 +29,15 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
 {
     @Inject
     lateinit var serviceHistoryListAdapter: ServiceHistoryListAdapter
-    private val serviceItemList: MutableList<ServiceHistoryList> = mutableListOf()
+    private var serviceItemList: MutableList<ServiceHistoryList> = mutableListOf()
+
+    private val serviceViewModel: ServiceViewModel by viewModels()
     override fun onViewCreated(view: View , savedInstanceState: Bundle?) {
         super.onViewCreated(view , savedInstanceState)
 
         binding.ivBack.setOnClickListener{
             findNavController().navigate(R.id.dashboardFragment,null,Animation.animNav().build())
         }
-        val delayMillis = 500 // .5 seconds
-        val handler = Handler()
-        handler.postDelayed({ setMenus() } , delayMillis.toLong())
 
         binding.etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -43,6 +47,43 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
             }
         })
 
+        CheckNetworkStatus.isOnline(requireContext(),object:CheckNetworkStatus.Status{
+            override fun online() {
+                try {
+                    onLoadingVm().showLoadingFun(true)
+                    serviceViewModel.getServiceList(ApiEndPoint.GET_SERVICE_LIST,"01718228277")
+                }catch (e:Exception){
+                    onLoadingVm().showLoadingFun(false)
+                    AppUtils.showToast(requireContext(),
+                                       Constant.ERROR_MESSAGE, false, getString(R.string.toast_type_warning))
+                }
+            }
+
+            override fun offline() {
+                onLoadingVm().showLoadingFun(false)
+                AppUtils.showToast(requireContext(),
+                                   getString(R.string.pls_check_internet), false, getString(R.string.toast_type_warning))
+            }
+
+        })
+
+        serviceViewModel.serviceListRes.observe(viewLifecycleOwner) { data ->
+            data.getContentIfNotHandled().let {
+                onLoadingVm().showLoadingFun(false)
+                if (it?.result_code == 0) {
+                    serviceItemList = it.result.toMutableList()
+                    showList(it.result)
+                }
+            }
+        }
+        serviceViewModel.errorResponse.observe(viewLifecycleOwner){error ->
+            onLoadingVm().showLoadingFun(false)
+            error.getContentIfNotHandled().let {
+                AppUtils.showToast(requireContext(),
+                                   it?.message.toString(), false, getString(R.string.toast_type_error))
+            }
+        }
+
 
     }
 
@@ -50,8 +91,8 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
         val temp: MutableList<ServiceHistoryList> = ArrayList()
         for (i in serviceItemList) {
             //SEARCH ON DETAILS & DATE
-            if (i.serviceDetails!!.contains(item, true) ||
-                i.serviceDate!!.contains(item,true)){
+            if (i.service_details!!.contains(item, true) ||
+                i.created_at!!.contains(item,true)){
                 temp.add(i)
             }
         }
@@ -61,112 +102,6 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
         binding.recyclerViewServiceHistory.adapter = serviceHistoryListAdapter
     }
 
-    private fun setMenus() {
-
-        // Add items to the menusItem list
-        serviceItemList.add(
-            ServiceHistoryList(
-                    1 ,
-                    1 ,
-                    "Car Service Request" ,
-                    "Lorem ipsum this is a dummy text to show on a grid to present the view" ,
-                    "10-11-2023",
-                    0
-            )
-        )
-        serviceItemList.add(
-            ServiceHistoryList(
-                    2 ,
-                    2 ,
-                    "Laundry Service Request" ,
-                    "Rakib ipsum this is a dummy text to show on a grid to present the view" ,
-                    "11-10-2023",
-                    1
-            )
-        )
-        serviceItemList.add(
-                ServiceHistoryList(
-                        3,
-                        1,
-                        "Car Service Request",
-                        "Sk ipsum this is a dummy text to show on a grid to present the view",
-                        "10-11-2023",
-                        2
-                )
-        )
-        serviceItemList.add(
-                ServiceHistoryList(
-                        4,
-                        2,
-                        "Laundry Service Request",
-                        "Onim ipsum this is a dummy text to show on a grid to present the view",
-                        "11-10-2023",
-                        3
-                )
-        )
-        serviceItemList.add(
-                ServiceHistoryList(
-                        5,
-                        1,
-                        "Car Service Request",
-                        "Shamim ipsum this is a dummy text to show on a grid to present the view",
-                        "10-11-2023",
-                        2
-                )
-        )
-        serviceItemList.add(
-                ServiceHistoryList(
-                        6,
-                        2,
-                        "Laundry Service Request",
-                        "Jakaria ipsum this is a dummy text to show on a grid to present the view",
-                        "11-10-2023",
-                        1
-                )
-        )
-        serviceItemList.add(
-                ServiceHistoryList(
-                        7,
-                        1,
-                        "Car Service Request",
-                        "Lorem ipsum this is a dummy text to show on a grid to present the view",
-                        "10-11-2023",
-                        0
-                )
-        )
-        serviceItemList.add(
-                ServiceHistoryList(
-                        8,
-                        2,
-                        "Laundry Service Request",
-                        "Sir Alex ipsum this is a dummy text to show on a grid to present the view",
-                        "11-10-2023",
-                        1
-                )
-        )
-        serviceItemList.add(
-                ServiceHistoryList(
-                        9,
-                        1,
-                        "Car Service Request",
-                        "Lorem ipsum this is a dummy text to show on a grid to present the view",
-                        "10-11-2023",
-                        3
-                )
-        )
-        serviceItemList.add(
-                ServiceHistoryList(
-                        10,
-                        2,
-                        "Laundry Service Request",
-                        "Lorem ipsum this is a dummy text to show on a grid to present the view",
-                        "11-10-2023",
-                        2
-                )
-        )
-        showList(serviceItemList)
-    }
-
     private fun showList(serviceItem: List<ServiceHistoryList>) {
         binding.recyclerViewServiceHistory.layoutManager = LinearLayoutManager(requireContext())
         serviceHistoryListAdapter.setData(requireContext(),serviceItem,this)
@@ -174,15 +109,11 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
     }
 
     override fun onClick(id: Int) {
-        //Toast.makeText(requireContext(),"Clicked item: $id",Toast.LENGTH_SHORT).show()
         PaymentInfoSubmitDialog(requireContext(),object:PaymentInfoSubmitDialog.OnClickListener{
             override fun onClickSubmit() {
                 Toast.makeText(requireContext(),"Payment details submitted successfully",Toast.LENGTH_SHORT).show()
             }
-
-            override fun onClickCancel() {
-
-            }
+            override fun onClickCancel() {}
 
         }).show()
     }

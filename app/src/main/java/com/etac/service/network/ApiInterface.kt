@@ -6,6 +6,7 @@ import com.etac.service.models.auth.CheckOTPResponse
 import com.etac.service.models.auth.LoginResponse
 import com.etac.service.models.auth.SignUpResponse
 import com.etac.service.models.service.ServiceCreateResponse
+import com.etac.service.models.service.ServiceListResponse
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Response
@@ -13,34 +14,41 @@ import retrofit2.http.*
 
 interface ApiInterface {
 
-    @GET()
+    @GET
     fun getApplicationStatus(
         @Url url: String,
     ): Call<ApplicationStatusResponse>
 
-    @POST()
+    @POST
     fun checkUser(
         @Url url:String,
         @Body jsonObject: JsonObject
     ): Call<LoginResponse>
 
-    @POST()
+    @POST
     fun postSignUp(
         @Url url:String,
         @Body jsonObject: JsonObject
     ): Call<SignUpResponse>
 
-    @POST()
+    @POST
     fun checkOTP(
         @Url url:String,
         @Body jsonObject: JsonObject
     ): Call<CheckOTPResponse>
 
-    @POST()
+    @POST
     fun createServiceRea(
         @Url url:String,
         @Body jsonObject: JsonObject
     ): Call<ServiceCreateResponse>
+
+    @FormUrlEncoded
+    @POST
+    fun getServiceList(
+        @Url url:String,
+        @Field("phone") phone: String,
+    ): Call<ServiceListResponse>
 
 
 

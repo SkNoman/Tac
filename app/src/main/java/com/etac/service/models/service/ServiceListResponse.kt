@@ -1,0 +1,22 @@
+package com.etac.service.models.service
+
+
+data class ServiceListResponse(
+	val result: List<ServiceHistoryList>,
+	val maintenance_info: Any? = null,
+	val result_code: Int? = null,
+	val time: String? = null
+)
+
+data class ServiceHistoryList(
+	val area: String? = null,
+	val service_details: String? = null,
+	val service_type: String? = null,
+	val address: String? = null,
+	val phone: String? = null,
+	val service_name: String? = null,
+	val service_status: String? = null,
+	val created_at: String? = null,
+	val id: Int? = null
+)
+

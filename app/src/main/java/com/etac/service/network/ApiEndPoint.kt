@@ -8,4 +8,5 @@ object ApiEndPoint {
     const val CHECK_OTP = "auth/check-otp"
 
     const val CREATE_SERVICE_REQ = "service-request"
+    const val GET_SERVICE_LIST = "service-details"
 }

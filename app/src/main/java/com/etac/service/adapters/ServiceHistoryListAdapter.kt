@@ -1,8 +1,6 @@
 package com.etac.service.adapters
 
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getColorStateList
@@ -10,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.etac.service.R
 import com.etac.service.databinding.ItemServiceHistoryBinding
-import com.etac.service.models.ServiceHistoryList
+import com.etac.service.models.service.ServiceHistoryList
 import javax.inject.Inject
 
 class ServiceHistoryListAdapter @Inject constructor():
@@ -37,28 +35,28 @@ class ServiceHistoryListAdapter @Inject constructor():
 
     private fun addData(holder: ServiceItemViewHolder , position: Int) {
         holder.binding.apply {
-            txtServiceDate.text = oldItemList[position].serviceDate
-            txtServiceTitle.text = oldItemList[position].serviceTitle
-            if (oldItemList[position].serviceType == 1){
+            txtServiceDate.text = oldItemList[position].created_at
+            txtServiceTitle.text = oldItemList[position].service_name
+            if (oldItemList[position].service_type == "car"){
                 ivServiceHistoryIcon.setImageResource(R.drawable.car_service_banner_temp)
             }else{
                 ivServiceHistoryIcon.setImageResource(R.drawable.laundry_service_temp2)
             }
-            txtServiceDetails.text = oldItemList[position].serviceDetails
-            when(oldItemList[position].serviceStatus){
-                0->{
+            txtServiceDetails.text = oldItemList[position].service_details
+            when(oldItemList[position].service_status){
+                "request"->{
                     tvServiceStatus.text = "In-Queue"
                     tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.bg_tint_light_blue_sky);
                 }
-                1->{
+                "on-going"->{
                     tvServiceStatus.text = "On-Going"
                     tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.color_input_field);
                 }
-                2->{
+                "rejected"->{
                     tvServiceStatus.text = "Rejected"
                     tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.red);
                 }
-                3->{
+                "completed"->{
                     tvServiceStatus.text = "Completed ☑"
                     tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.green);
                 }

@@ -1,7 +1,7 @@
 package com.etac.service.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.etac.service.models.ServiceHistoryList
+import com.etac.service.models.service.ServiceHistoryList
 
 class ServiceListDiffUtils(
     private val oldItemList:List<ServiceHistoryList>,
