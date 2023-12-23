@@ -23,7 +23,7 @@ class PaymentInfoSubmitDialog(
                 dismiss()
                 listener.onClickSubmit()
             }
-            ivExit.setOnClickListener{
+         /*   ivExit.setOnClickListener{
                 dismiss()
                 listener.onClickCancel()
             }
@@ -36,7 +36,7 @@ class PaymentInfoSubmitDialog(
                 radioCash.isChecked = false
                 etTransactionId.visibility = View.VISIBLE
                 txtTransactionId.visibility = View.VISIBLE
-            }
+            }*/
         }
 
         setView(binding.root)
