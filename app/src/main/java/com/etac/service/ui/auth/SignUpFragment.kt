@@ -28,9 +28,11 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.layoutNavigateSignIn.setOnClickListener{
             findNavController().navigate(R.id.signInFragment ,null,Animation.animNav().build())
+        }
+        binding.ivBack.setOnClickListener{
+            findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
         }
 
         val adapter = CustomDropdownAdapter(requireContext(),

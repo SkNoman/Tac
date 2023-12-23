@@ -4,37 +4,27 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:elevation="@dimen/dp10"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="@dimen/_20dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="@dimen/_100dp"
+        android:layout_height="@dimen/_100dp"
         android:layout_gravity="center"
-        android:padding="@dimen/dp20">
-
-        <ProgressBar
+        android:padding="@dimen/_7dp"
+        >
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="@dimen/dp6"
-            android:indeterminateTint="@color/appThemeBlue"
-            android:visibility="visible"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_rawRes="@raw/loader" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:text="@string/loading"
-            android:textSize="@dimen/_20sp"
-            android:visibility="gone"
-            android:fontFamily="@font/open_sans"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progress_bar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

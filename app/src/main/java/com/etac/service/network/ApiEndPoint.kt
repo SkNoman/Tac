@@ -2,6 +2,7 @@ package com.etac.service.network
 
 
 object ApiEndPoint {
+
     const val GET_APPLICATION_STATUS = "auth/get-application-status"
     const val LOGIN = "auth/login"
     const val SIGN_UP = "auth/sign-up"
@@ -9,4 +10,6 @@ object ApiEndPoint {
 
     const val CREATE_SERVICE_REQ = "service-request"
     const val GET_SERVICE_LIST = "service-details"
+
+    const val UPDATE_USER_INFO = "user-information-update"
 }

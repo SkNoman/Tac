@@ -2,6 +2,7 @@ package com.etac.service.network
 
 
 import com.etac.service.models.ApplicationStatusResponse
+import com.etac.service.models.UpdateUserInfoResponse
 import com.etac.service.models.auth.CheckOTPResponse
 import com.etac.service.models.auth.LoginResponse
 import com.etac.service.models.auth.SignUpResponse
@@ -49,6 +50,12 @@ interface ApiInterface {
         @Url url:String,
         @Field("phone") phone: String,
     ): Call<ServiceListResponse>
+
+    @POST
+    fun updateUserInfo(
+        @Url url:String,
+        @Body jsonObject: JsonObject
+    ): Call<UpdateUserInfoResponse>
 
 
 

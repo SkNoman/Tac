@@ -41,4 +41,6 @@
     <dimen name="sp14">14sp</dimen>
     <dimen name="dp120">120dp</dimen>
     <dimen name="dp6">6dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_7dp">7dp</dimen>
 </resources>

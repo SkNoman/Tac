@@ -61,7 +61,7 @@ class SignInFragment : BaseFragmentWithBinding<FragmentSignInBinding>
                                     UserInfo(
                                             "Sk Noman",
                                             binding.etPhoneNumber.text.toString(),
-                                            "01686693905",
+                                            "",
                                             "Shyamoli",
                                             "77/A Shyamoli, Estern plaza")
                             )

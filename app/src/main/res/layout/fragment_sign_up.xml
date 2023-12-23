@@ -10,17 +10,29 @@ tools:context=".ui.auth.SignUpFragment">
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.airbnb.lottie.LottieAnimationView
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/ivLoginAnim"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sign_up_banner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".35"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="false"
-        app:lottie_rawRes="@raw/sign_up_anim" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtLogin"
@@ -53,7 +65,7 @@ tools:context=".ui.auth.SignUpFragment">
         android:fontFamily="@font/open_sans"
         android:hint="@string/please_enter_your_name"
         android:inputType="textMultiLine"
-        android:maxLength="50"
+        android:maxLength="30"
         android:padding="14dp"
         android:textColorHint="@color/color_input_fld_hint"
         android:textSize="@dimen/sign_up_input_fld_size_16sp"

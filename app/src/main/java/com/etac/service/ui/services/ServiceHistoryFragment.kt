@@ -15,6 +15,7 @@ import com.etac.service.databinding.FragmentServiceHistoryBinding
 import com.etac.service.dialogs.PaymentInfoSubmitDialog
 import com.etac.service.models.service.ServiceHistoryList
 import com.etac.service.network.ApiEndPoint
+import com.etac.service.shared_preference.SharedPref
 import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
 import com.etac.service.utils.CheckNetworkStatus
@@ -51,7 +52,10 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
             override fun online() {
                 try {
                     onLoadingVm().showLoadingFun(true)
-                    serviceViewModel.getServiceList(ApiEndPoint.GET_SERVICE_LIST,"01718228277")
+                    val savedUserInfo = SharedPref(requireContext()).getUserInfo()
+                    val userPhoneNumber = savedUserInfo?.phoneNumber
+                    serviceViewModel.getServiceList(ApiEndPoint.GET_SERVICE_LIST,
+                                                    userPhoneNumber.toString())
                 }catch (e:Exception){
                     onLoadingVm().showLoadingFun(false)
                     AppUtils.showToast(requireContext(),
@@ -71,8 +75,8 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
             data.getContentIfNotHandled().let {
                 onLoadingVm().showLoadingFun(false)
                 if (it?.result_code == 0) {
-                    serviceItemList = it.result.toMutableList()
-                    showList(it.result)
+                    serviceItemList = it.result.data.toMutableList()
+                    showList(serviceItemList)
                 }
             }
         }

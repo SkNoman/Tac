@@ -10,6 +10,7 @@ import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentLaundryServiceBinding
 import com.etac.service.models.service.areaList
 import com.etac.service.network.ApiEndPoint
+import com.etac.service.shared_preference.SharedPref
 import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
 import com.etac.service.utils.CheckNetworkStatus
@@ -25,6 +26,17 @@ class LaundryServiceFragment : BaseFragmentWithBinding<FragmentLaundryServiceBin
     private val serviceViewModel: ServiceViewModel by viewModels()
     override fun onViewCreated(view: View , savedInstanceState: Bundle?) {
         super.onViewCreated(view , savedInstanceState)
+
+        //SET SAVED USER VALUES
+        val savedUserInfo = SharedPref(requireContext()).getUserInfo()
+
+        binding.apply {
+            etName.setText(savedUserInfo?.name)
+            etPhoneNumber.setText(savedUserInfo?.phoneNumber)
+            etArea.setText(savedUserInfo?.area)
+            etAddress.setText(savedUserInfo?.address)
+        }
+
         binding.ivBack.setOnClickListener{
             findNavController().navigate(R.id.dashboardFragment,null,Animation.animNav().build())
         }
@@ -79,7 +91,7 @@ class LaundryServiceFragment : BaseFragmentWithBinding<FragmentLaundryServiceBin
             jsonObject.addProperty("area",binding.etArea.text.toString())
             jsonObject.addProperty("address",binding.etAddress.text.toString())
             jsonObject.addProperty("service_type","laundry")
-            jsonObject.addProperty("service_name","laundry")
+            jsonObject.addProperty("service_name","Laundry Service")
             jsonObject.addProperty("service_details",binding.etServiceDetails.text.toString())
             serviceViewModel.createServiceReq(ApiEndPoint.CREATE_SERVICE_REQ, jsonObject)
         }catch (e:Exception){

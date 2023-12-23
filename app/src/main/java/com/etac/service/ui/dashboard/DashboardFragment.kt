@@ -31,14 +31,16 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
     private val handler = Handler(Looper.getMainLooper())
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val window = requireActivity().window
 
         val savedUserInfo = SharedPref(requireContext()).getUserInfo()
         binding.txtUserName.text = buildString {
-        append(getString(R.string.welcome))
-        append(", ")
-        append(savedUserInfo?.name)
-    }
+            append(getString(R.string.good_day))
+            append(", ")
+            append(savedUserInfo?.name)
+        }
+        binding.txtUserName.setOnClickListener{
+            findNavController().navigate(R.id.profileFragment,null,Animation.animNav().build())
+        }
 
         CoroutineScope(Dispatchers.IO).launch {
             autoImageSlider()
@@ -59,7 +61,6 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
                     //navController.navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
                 }
             }
-            //Toast.makeText(requireContext(),"Item $it selected",Toast.LENGTH_SHORT).show()
         }
     }
     override fun onPause() {
