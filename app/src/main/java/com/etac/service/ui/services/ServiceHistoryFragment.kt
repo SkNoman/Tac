@@ -20,6 +20,8 @@ import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
 import com.etac.service.utils.CheckNetworkStatus
 import com.etac.service.utils.Constant
+import com.etac.service.utils.HideKeyboard
+import com.etac.service.utils.HideKeyboard.hideKeyboard
 import com.etac.service.viewmodels.ServiceViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -115,9 +117,12 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
     override fun onClick(id: Int) {
         PaymentInfoSubmitDialog(requireContext(),object:PaymentInfoSubmitDialog.OnClickListener{
             override fun onClickSubmit() {
-                Toast.makeText(requireContext(),"Payment details submitted successfully",Toast.LENGTH_SHORT).show()
+                AppUtils.showToast(requireContext(),"Payment details submitted successfully",false,
+                                   getString(R.string.toast_type_success))
             }
-            override fun onClickCancel() {}
+            override fun onClickCancel() {
+
+            }
 
         }).show()
     }

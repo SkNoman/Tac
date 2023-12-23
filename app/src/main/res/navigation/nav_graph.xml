@@ -72,4 +72,9 @@
         android:name="com.etac.service.ui.user.ProfileUpdateFragment"
         android:label="fragment_profile_update"
         tools:layout="@layout/fragment_profile_update" />
+    <fragment
+        android:id="@+id/paymentInfoFragment"
+        android:name="com.etac.service.ui.general.PaymentInfoFragment"
+        android:label="fragment_payment_info"
+        tools:layout="@layout/fragment_payment_info" />
 </navigation>

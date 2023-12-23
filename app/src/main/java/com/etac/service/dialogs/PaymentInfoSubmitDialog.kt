@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.etac.service.R
+import com.etac.service.adapters.CustomDropdownAdapter
 import com.etac.service.databinding.PaymentInfoSubmitDialogBinding
+import com.etac.service.models.service.areaList
+import com.etac.service.utils.HideKeyboard.hideKeyboard
 
 
 class PaymentInfoSubmitDialog(
@@ -17,26 +20,32 @@ class PaymentInfoSubmitDialog(
 
     init {
 
-
         binding.apply {
             tvSubmit.setOnClickListener {
                 dismiss()
                 listener.onClickSubmit()
             }
-         /*   ivExit.setOnClickListener{
+           ivExit.setOnClickListener{
                 dismiss()
                 listener.onClickCancel()
             }
+            val paymentInfoList: List<String> = listOf("bKash","Nagad","Rocket","NexusPay")
+            val adapter = CustomDropdownAdapter(context,
+               androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, paymentInfoList
+            )
+            etPaymentType.setAdapter(adapter)
+            etPaymentType.setOnClickListener {
+                binding.etPaymentType.showDropDown()
+            }
+
             radioCash.setOnClickListener{
                 radioOnline.isChecked = false
-                etTransactionId.visibility = View.INVISIBLE
-                txtTransactionId.visibility = View.INVISIBLE
+                group.visibility = View.GONE
             }
             radioOnline.setOnClickListener {
                 radioCash.isChecked = false
-                etTransactionId.visibility = View.VISIBLE
-                txtTransactionId.visibility = View.VISIBLE
-            }*/
+                group.visibility = View.VISIBLE
+            }
         }
 
         setView(binding.root)

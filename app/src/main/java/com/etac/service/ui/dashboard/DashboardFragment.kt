@@ -57,8 +57,11 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
                         } , delayMillis.toLong())
                 }
                 2->{
-                    Toast.makeText(requireContext(),"Coming soon",Toast.LENGTH_SHORT).show()
-                    //navController.navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
+                    val delayMillis = 500 // .5 seconds
+                    val handler = Handler()
+                    handler.postDelayed({
+                      findNavController().navigate(R.id.paymentInfoFragment,null,Animation.animNav().build())
+                      } , delayMillis.toLong())
                 }
             }
         }

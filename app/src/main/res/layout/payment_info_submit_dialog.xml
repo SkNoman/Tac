@@ -22,9 +22,9 @@
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_launcher_foreground"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView8"
@@ -47,10 +47,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Select Payment Type"
-            android:textSize="@dimen/sp18"
             android:fontFamily="@font/open_sans"
+            android:text="Select Payment Type"
             android:textColor="@color/semi_black"
+            android:textSize="@dimen/sp18"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView4" />
 
@@ -60,9 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Cash"
-            android:fontFamily="@font/open_sans"
             android:buttonTint="@color/semi_black"
+            android:fontFamily="@font/open_sans"
+            android:text="Cash"
             android:textColor="@color/semi_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -73,10 +73,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-            android:text="Online"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/semi_black"
             android:buttonTint="@color/semi_black"
+            android:fontFamily="@font/open_sans"
+            android:text="Online"
+            android:textColor="@color/semi_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioCash" />
 
@@ -85,28 +85,29 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:fontFamily="@font/open_sans"
             android:hint="@string/please_enter_transaction_id"
             android:inputType="textMultiLine"
-            android:maxLength="100"
+            android:backgroundTint="@color/semi_black"
+            android:maxLength="30"
             android:maxLines="5"
             android:padding="@dimen/_10dp"
             android:textColor="@color/semi_black"
-            android:backgroundTint="@color/semi_black"
+            android:textColorHint="@color/semi_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTransactionId" />
+            app:layout_constraintTop_toBottomOf="@+id/etPaymentType" />
 
         <TextView
             android:id="@+id/tvSubmit"
             android:layout_width="@dimen/dp150"
             android:layout_height="@dimen/_40dp"
-            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="@dimen/dp16"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_bg_10_dp"
             android:backgroundTint="@color/appThemeBlue"
             android:padding="@dimen/dp10"
@@ -114,9 +115,9 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/etTransactionId"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/etTransactionId"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etTransactionId" />
 
         <ImageView
@@ -125,25 +126,40 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:src="@drawable/close_24_px"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/close_24_px"
             app:tint="@color/red" />
 
-        <TextView
-            android:id="@+id/txtTransactionId"
+
+        <AutoCompleteTextView
+            android:id="@+id/etPaymentType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/open_sans"
-            android:text="Transaction id"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:alpha=".8"
+            android:backgroundTint="@color/semi_black"
+            android:drawableTint="@color/semi_black"
+            android:drawableEnd="@drawable/baseline_arrow_drop_down_24"
             android:textColor="@color/semi_black"
-            android:textSize="@dimen/_18sp"
+            android:textColorHint="@color/semi_black"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Select payment method"
+            android:inputType="none"
+            android:padding="@dimen/_10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioOnline" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="etTransactionId,etPaymentType" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
