@@ -2,11 +2,15 @@ package com.etac.service.ui.auth
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.etac.service.R
+import com.etac.service.adapters.CustomDropdownAdapter
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentSignUpBinding
+import com.etac.service.models.auth.UserInfo
+import com.etac.service.models.service.areaList
 import com.etac.service.network.ApiEndPoint
 import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
@@ -26,7 +30,14 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
 
 
         binding.layoutNavigateSignIn.setOnClickListener{
-            findNavController().navigate(R.id.signInFragment , null , Animation.animNav().build())
+            findNavController().navigate(R.id.signInFragment ,null,Animation.animNav().build())
+        }
+
+        val adapter = CustomDropdownAdapter(requireContext(),
+           androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, areaList)
+        binding.etArea.setAdapter(adapter)
+        binding.etArea.setOnClickListener {
+            binding.etArea.showDropDown()
         }
 
         binding.btnSignUp.setOnClickListener{
@@ -43,7 +54,6 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
                     AppUtils.showToast(requireContext(),
                                        getString(R.string.pls_check_internet), false, getString(R.string.toast_type_error))
                 }
-
             })
         }
         authViewModel.userSignUpRes.observe(viewLifecycleOwner) { data ->
@@ -52,10 +62,16 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
                     onLoadingVm().showLoadingFun(false)
                     AppUtils.showToast(requireContext(),
                                        it.result.message.toString(), false, getString(R.string.toast_type_success))
-                    val bundle = Bundle()
-                    bundle.putString("name",binding.etFullName.text.toString())
-                    bundle.putString("phone",binding.etPhoneNumber.text.toString())
-                    findNavController().navigate(R.id.OTPFragment,bundle,Animation.animNav().build())
+
+                    val action = SignUpFragmentDirections.actionSignUpFragmentToOTPFragment(
+                            UserInfo(
+                                    binding.etFullName.text.toString(),
+                                    binding.etPhoneNumber.text.toString(),
+                                    "",
+                                    binding.etArea.text.toString(),
+                                    binding.etAddress.text.toString()))
+                    findNavController().navigate(action,Animation.animNav().build())
+
                 }
             }
         }
@@ -75,7 +91,7 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
         jsonObject.addProperty("user_type","user")
         jsonObject.addProperty("primary_phone",binding.etPhoneNumber.text.toString())
         jsonObject.addProperty("name",binding.etFullName.text.toString())
-        jsonObject.addProperty("area","Mohammadpur")
+        jsonObject.addProperty("area",binding.etArea.text.toString())
         jsonObject.addProperty("address",binding.etAddress.text.toString())
 
         try {
@@ -92,6 +108,8 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
             getString(R.string.please_enter_your_full_name)
         }else if(binding.etPhoneNumber.text.length != 11){
             getString(R.string.please_enter_valid_phone_number)
+        }else if(binding.etArea.text.isNullOrEmpty()){
+            return getString(R.string.please_select_your_area)
         }else if(binding.etAddress.text.length < 4){
             getString(R.string.please_enter_your_valid_address)
         }else{

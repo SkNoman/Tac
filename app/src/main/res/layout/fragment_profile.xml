@@ -51,11 +51,12 @@ tools:context=".ui.user.ProfileFragment">
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
                 android:fontFamily="@font/open_sans"
-                android:text="Mohammad"
+                tools:text="Mohammad"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:textColor="@color/semi_black"
@@ -69,7 +70,7 @@ tools:context=".ui.user.ProfileFragment">
                 android:layout_marginTop="@dimen/dp10"
                 android:layout_marginStart="@dimen/dp16"
                 android:fontFamily="@font/open_sans"
-                android:text="@string/phone_number"
+                android:text="@string/phone_no"
                 android:textStyle="bold"
                 android:textColor="@color/semi_black"
                 android:textSize="@dimen/sp18">
@@ -77,25 +78,27 @@ tools:context=".ui.user.ProfileFragment">
             </TextView>
 
             <TextView
+                android:id="@+id/txtUserPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
                 android:layout_marginStart="@dimen/dp16"
                 android:fontFamily="@font/open_sans_light"
-                android:text="@string/demo_phone"
+                tools:text="@string/demo_phone"
                 android:textColor="@color/semi_black"
                 android:textSize="@dimen/sp18">
 
             </TextView>
 
-
             <TextView
+                android:id="@+id/txtLabelAlternativePhNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/dp10"
                 android:layout_marginStart="@dimen/dp16"
                 android:fontFamily="@font/open_sans"
-                android:layout_marginRight="@dimen/_20dp"
+                android:layout_marginEnd="@dimen/_20dp"
                 android:text="@string/alternative_phone_no"
                 android:textStyle="bold"
                 android:textColor="@color/semi_black"
@@ -104,12 +107,40 @@ tools:context=".ui.user.ProfileFragment">
             </TextView>
 
             <TextView
+                android:id="@+id/txtAlternativePhoneNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginStart="@dimen/dp16"
+                android:fontFamily="@font/open_sans_light"
+                tools:text="@string/demo_phone"
+                android:textColor="@color/semi_black"
+                android:textSize="@dimen/sp18">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginStart="@dimen/dp16"
+                android:fontFamily="@font/open_sans"
+                android:layout_marginEnd="@dimen/_20dp"
+                android:text="@string/area"
+                android:textStyle="bold"
+                android:textColor="@color/semi_black"
+                android:textSize="@dimen/sp18">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtUserArea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
                 android:layout_marginStart="@dimen/dp16"
                 android:fontFamily="@font/open_sans_light"
-                android:text="@string/demo_phone"
+                tools:text="@string/demo_address"
                 android:textColor="@color/semi_black"
                 android:textSize="@dimen/sp18">
 
@@ -129,13 +160,14 @@ tools:context=".ui.user.ProfileFragment">
             </TextView>
 
             <TextView
+                android:id="@+id/txtUserAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
                 android:layout_marginStart="@dimen/dp16"
                 android:fontFamily="@font/open_sans_light"
-                android:layout_marginRight="@dimen/_20dp"
-                android:text="@string/demo_address"
+                android:layout_marginEnd="@dimen/_20dp"
+                tools:text="@string/demo_address"
                 android:textColor="@color/semi_black"
                 android:textSize="@dimen/sp18">
 

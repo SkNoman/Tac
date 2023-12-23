@@ -8,7 +8,9 @@ import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentSignInBinding
+import com.etac.service.models.auth.UserInfo
 import com.etac.service.network.ApiEndPoint
+import com.etac.service.shared_preference.SharedPref
 import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
 import com.etac.service.utils.CheckNetworkStatus
@@ -22,8 +24,14 @@ class SignInFragment : BaseFragmentWithBinding<FragmentSignInBinding>
     (FragmentSignInBinding::inflate)
 {
         private val authViewModel: AuthViewModel by viewModels()
+
+        override fun onResume() {
+            super.onResume()
+            SharedPref(requireContext()).clearUserInfo()
+        }
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
             binding.tvNavigateSignIn.setOnClickListener {
                 findNavController().navigate(R.id.signUpFragment ,null , Animation.animNav().build())
             }
@@ -49,11 +57,15 @@ class SignInFragment : BaseFragmentWithBinding<FragmentSignInBinding>
                     if (it?.result_code == 0) {
                         if (it.result?.hasUser == true) {
                             onLoadingVm().showLoadingFun(false)
-                            val bundle = Bundle()
-                            bundle.putString("name","Sk Noman")
-                            bundle.putString("phone",binding.etPhoneNumber.text.toString())
-                            findNavController().navigate(R.id.OTPFragment,bundle,
-                                                         Animation.animNav().build())
+                            val action = SignInFragmentDirections.actionSignInFragmentToOTPFragment(
+                                    UserInfo(
+                                            "Sk Noman",
+                                            binding.etPhoneNumber.text.toString(),
+                                            "01686693905",
+                                            "Shyamoli",
+                                            "77/A Shyamoli, Estern plaza")
+                            )
+                            findNavController().navigate(action,Animation.animNav().build())
                         }else{
                             onLoadingVm().showLoadingFun(false)
                             findNavController().navigate(R.id.signUpFragment,null,

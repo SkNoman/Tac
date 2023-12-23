@@ -94,4 +94,6 @@
     <string name="please_enter_your_full_name">Please enter your full name</string>
     <string name="loading">Loading\n</string>
     <string name="invalid_otp">Please enter valid OTP!</string>
+    <string name="area">Area</string>
+    <string name="phone_no">Phone No</string>
 </resources>

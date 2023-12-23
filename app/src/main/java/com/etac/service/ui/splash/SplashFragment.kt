@@ -15,6 +15,7 @@ import com.etac.service.dialogs.AppUpdateDialog
 import com.etac.service.dialogs.OnClickListener
 import com.etac.service.network.ApiEndPoint
 import com.etac.service.network.ApiInterface
+import com.etac.service.shared_preference.SharedPref
 import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
 import com.etac.service.utils.CheckNetworkStatus
@@ -28,13 +29,13 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
 {
     private val tAG = "SPLASH"
     private val authViewModel: AuthViewModel by viewModels()
-    private lateinit var dialog: DialogFragment
+    //private lateinit var dialog: DialogFragment
 
     override fun onResume() {
         super.onResume()
         CheckNetworkStatus.isOnline(requireContext(),object :CheckNetworkStatus.Status{
             override fun online() {
-                getApplicationStatus()
+                //getApplicationStatus()
             }
             override fun offline() {
                 AppUtils.showToast(requireContext(),getString(R.string.pls_check_internet),
@@ -43,30 +44,36 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
         })
     }
 
-    override fun onPause() {
+  /*  override fun onPause() {
         super.onPause()
         dialog.dismiss()
-    }
+    }*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        val savedUserInfo = SharedPref(requireContext()).getUserInfo()
+        if (savedUserInfo != null){
+            findNavController().navigate(R.id.dashboardFragment,null,Animation.animNav().build())
+        }
 
         binding.btnContinue.setOnClickListener {
             findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
         }
 
-        authViewModel.applicationStatusRes.observe(viewLifecycleOwner) { data ->
+       /* authViewModel.applicationStatusRes.observe(viewLifecycleOwner) { data ->
             data.getContentIfNotHandled().let {
                 if (it?.result_code == 0){
                     if (it.result?.current_version!! > Constant.CURRENT_BUILD_VERSION)
                     {
                         if (it.result.force_update!!){
-                            dialog = AppUpdateDialog(this)
+                           *//* dialog = AppUpdateDialog(this)
                             dialog.show(childFragmentManager, "Update App Dialog")
-                            dialog.isCancelable = false
+                            dialog.isCancelable = false*//*
                         }else{
-                            dialog = AppUpdateDialog(this)
+                          *//*  dialog = AppUpdateDialog(this)
                             dialog.show(childFragmentManager, "Update App Dialog")
-                            dialog.isCancelable = true
+                            dialog.isCancelable = true*//*
                         }
                     }
                 }
@@ -79,7 +86,7 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
                                    it?.message.toString(), false,
                                    getString(R.string.toast_type_error))
             }
-        }
+        }*/
     }
 
     private fun getApplicationStatus() {
@@ -91,6 +98,6 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
     }
 
     override fun onClickUpdate() {
-        dialog.dismiss()
+        //dialog.dismiss()
     }
 }

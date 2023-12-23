@@ -19,6 +19,7 @@ import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentDashboardBinding
 import com.etac.service.models.MenusItem
 import com.etac.service.models.SlideItem
+import com.etac.service.shared_preference.SharedPref
 import com.etac.service.utils.Animation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,6 +32,14 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val window = requireActivity().window
+
+        val savedUserInfo = SharedPref(requireContext()).getUserInfo()
+        binding.txtUserName.text = buildString {
+        append(getString(R.string.welcome))
+        append(", ")
+        append(savedUserInfo?.name)
+    }
+
         CoroutineScope(Dispatchers.IO).launch {
             autoImageSlider()
         }
