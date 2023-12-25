@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/main_menu_bg_with_shadow"
-    android:backgroundTint="@color/white"
+    android:backgroundTint="@color/offWhiteApp"
     android:elevation="4dp"
     android:outlineSpotShadowColor="@color/red"
     android:layout_marginBottom="@dimen/_8dp"

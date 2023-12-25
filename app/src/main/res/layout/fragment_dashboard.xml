@@ -144,7 +144,7 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:backgroundColor="@color/offWhiteAppV2"
+        app:backgroundColor="@color/white"
         app:textColor="@color/white"
         android:layout_marginStart="@dimen/_8dp"
         android:layout_marginEnd="@dimen/_8dp"

@@ -42,5 +42,6 @@
     <color name="success_color">#17B978</color>
     <color name="warning_bg_color">#33FBC02D</color>
     <color name="warning_color">#FBC02D</color>
-    <color name="payment_info_card_bg">#EFEDE9</color>
+    <color name="payment_info_card_bg">@color/offWhiteApp</color>
+    <color name="payment_info_card_bg_backup">#EFEDE9</color>
 </resources>
