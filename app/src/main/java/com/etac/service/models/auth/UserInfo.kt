@@ -4,9 +4,9 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 @Parcelize
 data class UserInfo (
-    val name: String,
-    val phoneNumber: String,
-    val alternativePhoneNumber: String,
-    val area: String,
-    val address: String
+    val name: String? = null,
+    val phoneNumber: String? = null,
+    val alternativePhoneNumber: String? = null,
+    val area: String? = null,
+    val address: String? = null
 ): Parcelable

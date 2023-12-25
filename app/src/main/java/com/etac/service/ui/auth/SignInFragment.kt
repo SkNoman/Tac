@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentSignInBinding
+import com.etac.service.models.auth.LoginUserInfo
 import com.etac.service.models.auth.UserInfo
 import com.etac.service.network.ApiEndPoint
 import com.etac.service.shared_preference.SharedPref
@@ -55,21 +56,27 @@ class SignInFragment : BaseFragmentWithBinding<FragmentSignInBinding>
             authViewModel.checkUserRes.observe(viewLifecycleOwner) { data ->
                 data.getContentIfNotHandled().let {
                     if (it?.result_code == 0) {
-                        if (it.result?.hasUser == true) {
-                            onLoadingVm().showLoadingFun(false)
-                            val action = SignInFragmentDirections.actionSignInFragmentToOTPFragment(
-                                    UserInfo(
-                                            "Sk Noman",
-                                            binding.etPhoneNumber.text.toString(),
-                                            "",
-                                            "Shyamoli",
-                                            "77/A Shyamoli, Estern plaza")
-                            )
-                            findNavController().navigate(action,Animation.animNav().build())
-                        }else{
-                            onLoadingVm().showLoadingFun(false)
-                            findNavController().navigate(R.id.signUpFragment,null,
-                                                         Animation.animNav().build())
+                        onLoadingVm().showLoadingFun(false)
+                        when (it.result?.hasUser) {
+                            0 -> {
+                                findNavController().navigate(R.id.signUpFragment,null,
+                                                             Animation.animNav().build())
+                            }
+                            1 -> { //VALID USER HAVE USER INFO
+                                val userInfo = it.result.data
+                                val action = SignInFragmentDirections.actionSignInFragmentToOTPFragment(
+                                        UserInfo(
+                                                userInfo.name,
+                                                userInfo.primary_phone,
+                                                userInfo.alternative_phone,
+                                                userInfo.area,
+                                                userInfo.address))
+                                findNavController().navigate(action,Animation.animNav().build())
+                            }
+                            else -> { //BLOCKED USER
+                                AppUtils.showToast(requireContext(),
+                                it.result?.message.toString(), false,getString(R.string.toast_type_error))
+                            }
                         }
                     }
                 }
@@ -87,7 +94,7 @@ class SignInFragment : BaseFragmentWithBinding<FragmentSignInBinding>
         try {
             onLoadingVm().showLoadingFun(true)
             val jsonObject = JsonObject()
-            jsonObject.addProperty("user_type","user")
+            jsonObject.addProperty("user_type",Constant.USER_TYPE)
             jsonObject.addProperty("primary_phone",binding.etPhoneNumber.text.toString())
             authViewModel.checkUser(ApiEndPoint.LOGIN,jsonObject)
 

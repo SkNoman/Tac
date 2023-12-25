@@ -9,6 +9,14 @@ data class LoginResponse(
 
 data class Result(
 	val message: String? = null,
-	val hasUser: Boolean? = null
+	val hasUser: Int? = null,
+	val data: LoginUserInfo
+)
+data class LoginUserInfo (
+	val name: String = "",
+	val primary_phone: String = "",
+	val alternative_phone: String = "",
+	val area: String = "",
+	val address: String = ""
 )
 

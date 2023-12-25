@@ -44,7 +44,7 @@ class LaundryServiceFragment : BaseFragmentWithBinding<FragmentLaundryServiceBin
             CheckNetworkStatus.isOnline(requireContext(), object: CheckNetworkStatus.Status{
                 override fun online() {
                     if (userInputValidation() == "ok"){
-                        submitServiceRequest()
+                        submitServiceRequest(savedUserInfo?.phoneNumber.toString())
                     }else{
                         AppUtils.showToast(requireContext(),
                                 userInputValidation(), false, getString(R.string.toast_type_warning))
@@ -66,10 +66,10 @@ class LaundryServiceFragment : BaseFragmentWithBinding<FragmentLaundryServiceBin
 
         serviceViewModel.createServiceRes.observe(viewLifecycleOwner) { data ->
             data.getContentIfNotHandled().let {
-                if (it?.result_code == 0 && it.result?.message == "SUCCESS") {
+                if (it?.result_code == 0) {
                     onLoadingVm().showLoadingFun(false)
                     AppUtils.showToast(requireContext(),
-                                       it.result.message.toString(), true, getString(R.string.toast_type_success))
+                                       it.result?.message.toString(), true, getString(R.string.toast_type_success))
                     findNavController().navigate(R.id.dashboardFragment,null,Animation.animNav().build())
                 }
             }
@@ -83,16 +83,17 @@ class LaundryServiceFragment : BaseFragmentWithBinding<FragmentLaundryServiceBin
         }
     }
 
-    private fun submitServiceRequest() {
+    private fun submitServiceRequest(phoneNumberOriginal:String) {
         onLoadingVm().showLoadingFun(true)
         try {
             val jsonObject = JsonObject()
-            jsonObject.addProperty("phone",binding.etPhoneNumber.text.toString())
+            jsonObject.addProperty("phone",phoneNumberOriginal)
+            jsonObject.addProperty("alternative_phone",binding.etPhoneNumber.text.toString())
             jsonObject.addProperty("area",binding.etArea.text.toString())
             jsonObject.addProperty("address",binding.etAddress.text.toString())
-            jsonObject.addProperty("service_type","laundry")
-            jsonObject.addProperty("service_name","Laundry Service")
+            jsonObject.addProperty("service_type",Constant.SERVICE_TYPE_LAUNDRY)
             jsonObject.addProperty("service_details",binding.etServiceDetails.text.toString())
+
             serviceViewModel.createServiceReq(ApiEndPoint.CREATE_SERVICE_REQ, jsonObject)
         }catch (e:Exception){
             onLoadingVm().showLoadingFun(false)

@@ -12,4 +12,5 @@ object ApiEndPoint {
     const val GET_SERVICE_LIST = "service-details"
 
     const val UPDATE_USER_INFO = "user-information-update"
+    const val SUBMIT_PAYMENT_INFO = "submit-payment-info"
 }

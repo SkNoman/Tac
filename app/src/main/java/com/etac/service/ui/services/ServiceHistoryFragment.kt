@@ -22,7 +22,9 @@ import com.etac.service.utils.CheckNetworkStatus
 import com.etac.service.utils.Constant
 import com.etac.service.utils.HideKeyboard
 import com.etac.service.utils.HideKeyboard.hideKeyboard
+import com.etac.service.viewmodels.GeneralViewModel
 import com.etac.service.viewmodels.ServiceViewModel
+import com.google.gson.JsonObject
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -35,6 +37,7 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
     private var serviceItemList: MutableList<ServiceHistoryList> = mutableListOf()
 
     private val serviceViewModel: ServiceViewModel by viewModels()
+    private val generalViewModel: GeneralViewModel by viewModels()
     override fun onViewCreated(view: View , savedInstanceState: Bundle?) {
         super.onViewCreated(view , savedInstanceState)
 
@@ -73,16 +76,38 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
 
         })
 
+        //DATA OBSERVERS
         serviceViewModel.serviceListRes.observe(viewLifecycleOwner) { data ->
             data.getContentIfNotHandled().let {
                 onLoadingVm().showLoadingFun(false)
                 if (it?.result_code == 0) {
                     serviceItemList = it.result.data.toMutableList()
+                    if (serviceItemList.isEmpty()){
+                        binding.noServiceFound.visibility = View.VISIBLE
+                    }
                     showList(serviceItemList)
                 }
             }
         }
         serviceViewModel.errorResponse.observe(viewLifecycleOwner){error ->
+            onLoadingVm().showLoadingFun(false)
+            error.getContentIfNotHandled().let {
+                AppUtils.showToast(requireContext(),
+                                   it?.message.toString(), false, getString(R.string.toast_type_error))
+            }
+        }
+
+        generalViewModel.submitPaymentInfoRes.observe(viewLifecycleOwner) { data ->
+            data.getContentIfNotHandled().let {
+                onLoadingVm().showLoadingFun(false)
+                if (it?.result_code == 0) {
+                    AppUtils.showToast(requireContext(),
+                                       it.result?.message.toString(),
+                                       false, getString(R.string.toast_type_success))
+                }
+            }
+        }
+        generalViewModel.errorResponse.observe(viewLifecycleOwner){error ->
             onLoadingVm().showLoadingFun(false)
             error.getContentIfNotHandled().let {
                 AppUtils.showToast(requireContext(),
@@ -115,15 +140,36 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
     }
 
     override fun onClick(id: Int) {
-        PaymentInfoSubmitDialog(requireContext(),object:PaymentInfoSubmitDialog.OnClickListener{
-            override fun onClickSubmit() {
-                AppUtils.showToast(requireContext(),"Payment details submitted successfully",false,
-                                   getString(R.string.toast_type_success))
-            }
-            override fun onClickCancel() {
+        PaymentInfoSubmitDialog(id,requireContext(),object:PaymentInfoSubmitDialog.OnClickListener{
+            override fun onClickSubmit(jsonObject: JsonObject) {
 
+                CheckNetworkStatus.isOnline(requireContext(),object :CheckNetworkStatus.Status{
+                    override fun online() {
+                        submitPaymentInfo(jsonObject)
+                    }
+
+                    override fun offline() {
+                        onLoadingVm().showLoadingFun(false)
+                        AppUtils.showToast(requireContext(),
+                                           getString(R.string.pls_check_internet), false, getString(R.string.toast_type_warning))
+                    }
+
+                })
             }
+            override fun onClickCancel() {}
 
         }).show()
+    }
+
+    private fun submitPaymentInfo(jsonObject: JsonObject) {
+        try{
+            onLoadingVm().showLoadingFun(true)
+            generalViewModel.submitPaymentInfo(ApiEndPoint.SUBMIT_PAYMENT_INFO,jsonObject)
+        }catch (e:Exception){
+            onLoadingVm().showLoadingFun(false)
+            AppUtils.showToast(requireContext(),
+                               Constant.ERROR_MESSAGE, false, getString(R.string.toast_type_warning))
+        }
+
     }
 }

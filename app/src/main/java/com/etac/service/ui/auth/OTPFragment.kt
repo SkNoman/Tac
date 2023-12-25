@@ -105,7 +105,7 @@ class OTPFragment: BaseFragmentWithBinding<FragmentOTPBinding>
     private fun checkOTP(otp:String,userInfo: UserInfo) {
         onLoadingVm().showLoadingFun(true)
         try {
-            if (userInfo.phoneNumber.isNotEmpty()){
+            if (userInfo.phoneNumber?.isNotEmpty() == true){
                 val jsonObject = JsonObject()
                 jsonObject.addProperty("phone",userInfo.phoneNumber)
                 jsonObject.addProperty("otp",otp)

@@ -36,29 +36,25 @@ class ServiceHistoryListAdapter @Inject constructor():
     private fun addData(holder: ServiceItemViewHolder , position: Int) {
         holder.binding.apply {
             txtServiceDate.text = oldItemList[position].created_at
-            txtServiceTitle.text = oldItemList[position].service_name
-            if (oldItemList[position].service_type == "car"){
+            txtServiceTitle.text = oldItemList[position].service_Name
+            if (oldItemList[position].service_type == 1){
                 ivServiceHistoryIcon.setImageResource(R.drawable.car_service_banner_temp)
             }else{
                 ivServiceHistoryIcon.setImageResource(R.drawable.laundry_service_temp2)
             }
             txtServiceDetails.text = oldItemList[position].service_details
             when(oldItemList[position].service_status){
-                "request"->{
+                0->{
                     tvServiceStatus.text = "In-Queue"
                     tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.bg_tint_light_blue_sky);
                 }
-                "on-going"->{
-                    tvServiceStatus.text = "On-Going"
-                    tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.color_input_field);
-                }
-                "rejected"->{
-                    tvServiceStatus.text = "Rejected"
-                    tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.red);
-                }
-                "completed"->{
+                1->{
                     tvServiceStatus.text = "Completed ☑"
                     tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.green);
+                }
+                2->{
+                    tvServiceStatus.text = "Rejected"
+                    tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.red);
                 }
             }
             holder.itemView.setOnClickListener{

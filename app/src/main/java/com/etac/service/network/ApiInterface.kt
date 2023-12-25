@@ -2,6 +2,7 @@ package com.etac.service.network
 
 
 import com.etac.service.models.ApplicationStatusResponse
+import com.etac.service.models.SubmitPaymentInfoResponse
 import com.etac.service.models.UpdateUserInfoResponse
 import com.etac.service.models.auth.CheckOTPResponse
 import com.etac.service.models.auth.LoginResponse
@@ -57,6 +58,11 @@ interface ApiInterface {
         @Body jsonObject: JsonObject
     ): Call<UpdateUserInfoResponse>
 
+    @POST
+    fun submitPaymentInfo(
+        @Url url:String,
+        @Body jsonObject: JsonObject
+    ): Call<SubmitPaymentInfoResponse>
 
 
 

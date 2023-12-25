@@ -2,7 +2,6 @@ package com.etac.service.ui.auth
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.etac.service.R
@@ -90,7 +89,7 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
 
         onLoadingVm().showLoadingFun(true)
         val jsonObject = JsonObject()
-        jsonObject.addProperty("user_type","user")
+        jsonObject.addProperty("user_type",Constant.USER_TYPE)
         jsonObject.addProperty("primary_phone",binding.etPhoneNumber.text.toString())
         jsonObject.addProperty("name",binding.etFullName.text.toString())
         jsonObject.addProperty("area",binding.etArea.text.toString())

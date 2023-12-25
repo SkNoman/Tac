@@ -82,7 +82,8 @@ tools:context=".ui.user.ProfileUpdateFragment">
                     android:hint="@string/please_enter_your_name"
                     android:inputType="textMultiLine"
                     android:maxLength="50"
-                    android:text="Mohammad" />
+                    android:importantForAutofill="no"
+                    tools:text="Mohammad" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -121,6 +122,7 @@ tools:context=".ui.user.ProfileUpdateFragment">
                     android:fontFamily="@font/open_sans"
                     android:hint="@string/please_enter_your_phone_number"
                     android:inputType="none"
+                    android:importantForAutofill="no"
                     android:maxLength="11" />
 
 
@@ -157,6 +159,7 @@ tools:context=".ui.user.ProfileUpdateFragment">
                     android:drawablePadding="@dimen/dp10"
                     android:fontFamily="@font/open_sans"
                     android:hint="@string/please_enter_alternative_phone_no"
+                    android:importantForAutofill="no"
                     android:inputType="number"
                     android:maxLength="11" />
 
@@ -237,6 +240,7 @@ tools:context=".ui.user.ProfileUpdateFragment">
                     android:hint="@string/please_enter_your_address"
                     android:inputType="textMultiLine"
                     android:maxLength="200"
+                    android:importantForAutofill="no"
                     android:text="@string/demo_address" />
 
 

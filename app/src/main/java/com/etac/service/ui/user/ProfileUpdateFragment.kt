@@ -68,7 +68,7 @@ class ProfileUpdateFragment : BaseFragmentWithBinding<FragmentProfileUpdateBindi
 
         generalViewModel.updateUserInfoRes.observe(viewLifecycleOwner) { data ->
             data.getContentIfNotHandled().let {
-                if (it?.result_code == 0 && it.result?.message == "SUCCESS") {
+                if (it?.result_code == 0) {
                     onLoadingVm().showLoadingFun(false)
                     //SharedPref(requireContext()).clearUserInfo()
                     val userInfo = UserInfo(
@@ -80,7 +80,7 @@ class ProfileUpdateFragment : BaseFragmentWithBinding<FragmentProfileUpdateBindi
                     )
                     SharedPref(requireContext()).saveUserInfo(userInfo)
                     AppUtils.showToast(requireContext(),
-                                       it.result.message.toString(), true, getString(R.string.toast_type_success))
+                                       it.result?.message.toString(), true, getString(R.string.toast_type_success))
                     findNavController().navigate(R.id.profileFragment,null,Animation.animNav().build())
                 }
             }
@@ -98,10 +98,10 @@ class ProfileUpdateFragment : BaseFragmentWithBinding<FragmentProfileUpdateBindi
         onLoadingVm().showLoadingFun(true)
         try {
             val jsonObject = JsonObject()
-            jsonObject.addProperty("user_type","user")
+            jsonObject.addProperty("user_type",Constant.USER_TYPE)
             jsonObject.addProperty("name",binding.etName.text.toString())
             jsonObject.addProperty("primary_phone",binding.etPhoneNumber.text.toString())
-            jsonObject.addProperty("secondery_phone",binding.etPhoneNumberAlternative.text.toString())
+            jsonObject.addProperty("alternative_phone",binding.etPhoneNumberAlternative.text.toString())
             jsonObject.addProperty("area",binding.etArea.text.toString())
             jsonObject.addProperty("address",binding.etAddress.text.toString())
 

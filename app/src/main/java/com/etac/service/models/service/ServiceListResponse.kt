@@ -14,11 +14,11 @@ data class ServiceHistoryResult(
 data class ServiceHistoryList(
 	val area: String? = null,
 	val service_details: String? = null,
-	val service_type: String? = null,
+	val service_type: Int? = null,
 	val address: String? = null,
 	val phone: String? = null,
-	val service_name: String? = null,
-	val service_status: String? = null,
+	val service_Name: String? = null,
+	val service_status: Int? = 0,
 	val created_at: String? = null,
 	val id: Int? = null
 )

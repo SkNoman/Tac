@@ -21,6 +21,8 @@ import com.etac.service.models.MenusItem
 import com.etac.service.models.SlideItem
 import com.etac.service.shared_preference.SharedPref
 import com.etac.service.utils.Animation
+import com.etac.service.utils.AppUtils
+import com.etac.service.utils.CheckNetworkStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -48,22 +50,22 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
         setMenus()
 
         binding.bottomBar.onItemSelected = {
-            when(it){
-                1->{
-                    val delayMillis = 500 // .5 seconds
-                    val handler = Handler()
-                    handler.postDelayed({
-                        findNavController().navigate(R.id.profileFragment,null,Animation.animNav().build())
-                        } , delayMillis.toLong())
-                }
-                2->{
-                    val delayMillis = 500 // .5 seconds
-                    val handler = Handler()
-                    handler.postDelayed({
-                      findNavController().navigate(R.id.paymentInfoFragment,null,Animation.animNav().build())
-                      } , delayMillis.toLong())
-                }
-            }
+           when(it){
+                        1->{
+                            val delayMillis = 500 // .5 seconds
+                            val handler = Handler()
+                            handler.postDelayed({
+                                                    findNavController().navigate(R.id.profileFragment,null,Animation.animNav().build())
+                                                } , delayMillis.toLong())
+                        }
+                        2->{
+                            val delayMillis = 500 // .5 seconds
+                            val handler = Handler()
+                            handler.postDelayed({
+                                                    findNavController().navigate(R.id.paymentInfoFragment,null,Animation.animNav().build())
+                                                } , delayMillis.toLong())
+                        }
+                    }
         }
     }
     override fun onPause() {
@@ -75,6 +77,8 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
         handler.postDelayed(viewPagerHotItemRunnable, 5000)
     }
     private fun autoImageSlider() {
+
+        //ADDING ITEMS TO IMAGE SLIDER MENUS
         val sliderItem : MutableList<SlideItem> = ArrayList()
         sliderItem.add(SlideItem(Constant.c1))
         sliderItem.add(SlideItem(Constant.l1))
@@ -113,7 +117,7 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
     }
     private fun setMenus() {
         val menusItem: MutableList<MenusItem> = mutableListOf()
-        // Add items to the menusItem list
+        // ADDING ITEMS TO MAIN MENU LIST
         menusItem.add(
                 MenusItem(
                         1 ,
@@ -160,19 +164,30 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
             DashboardMainMenuAdapter(requireContext(),menusItem,this)
     }
     override fun onClick(id: Int) {
-        when(id){
-            1->{
-                findNavController().navigate(R.id.carServiceFragment , null , Animation.animNav().build())
+        CheckNetworkStatus.isOnline(requireContext(),object:CheckNetworkStatus.Status{
+            override fun online() {
+                when(id){
+                    1->{
+                        findNavController().navigate(R.id.carServiceFragment , null , Animation.animNav().build())
+                    }
+                    2->{
+                        findNavController().navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
+                    }
+                    3->{
+                        findNavController().navigate(R.id.serviceHistoryFragment,null,Animation.animNav().build())
+                    }
+                    else->{
+                        findNavController().navigate(R.id.aboutUsFragment,null,Animation.animNav().build())
+                    }
+                }
             }
-            2->{
-                findNavController().navigate(R.id.laundryServiceFragment,null,Animation.animNav().build())
+
+            override fun offline() {
+                AppUtils.showToast(requireContext(),
+                getString(R.string.pls_check_internet), false, getString(R.string.toast_type_warning))
             }
-            3->{
-                findNavController().navigate(R.id.serviceHistoryFragment,null,Animation.animNav().build())
-            }
-            else->{
-                findNavController().navigate(R.id.aboutUsFragment,null,Animation.animNav().build())
-            }
-        }
+
+        })
+
     }
 }
