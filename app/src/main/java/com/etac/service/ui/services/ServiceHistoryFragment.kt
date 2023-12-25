@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.etac.service.R
@@ -20,12 +20,12 @@ import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
 import com.etac.service.utils.CheckNetworkStatus
 import com.etac.service.utils.Constant
-import com.etac.service.utils.HideKeyboard
-import com.etac.service.utils.HideKeyboard.hideKeyboard
 import com.etac.service.viewmodels.GeneralViewModel
 import com.etac.service.viewmodels.ServiceViewModel
 import com.google.gson.JsonObject
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -53,7 +53,12 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
             }
         })
 
-        initHistory()
+        // .5 second  delay
+        lifecycleScope.launch {
+            delay(500)
+            initHistory()
+        }
+
         binding.serviceHistorySwipeLayout.setOnRefreshListener {
             binding.serviceHistorySwipeLayout.isRefreshing = false
             initHistory()

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,7 @@ import com.etac.service.utils.CheckNetworkStatus
 import com.etac.service.utils.Constant
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
@@ -49,20 +51,21 @@ class DashboardFragment : BaseFragmentWithBinding<FragmentDashboardBinding>
         setMenus()
 
         binding.bottomBar.onItemSelected = {
+           val delayMillis = 500 // .5 seconds
            when(it){
                         1->{
-                            val delayMillis = 500 // .5 seconds
-                            val handler = Handler()
-                            handler.postDelayed({
-                                                    findNavController().navigate(R.id.profileFragment,null,Animation.animNav().build())
-                                                } , delayMillis.toLong())
+                            lifecycleScope.launch {
+                                delay(delayMillis.toLong())
+                                findNavController().navigate(R.id.profileFragment, null,
+                                                             Animation.animNav().build())
+                            }
                         }
                         2->{
-                            val delayMillis = 500 // .5 seconds
-                            val handler = Handler()
-                            handler.postDelayed({
-                                                    findNavController().navigate(R.id.paymentInfoFragment,null,Animation.animNav().build())
-                                                } , delayMillis.toLong())
+                            lifecycleScope.launch {
+                                delay(delayMillis.toLong())
+                                findNavController().navigate(R.id.paymentInfoFragment, null,
+                                                             Animation.animNav().build())
+                            }
                         }
                     }
         }
