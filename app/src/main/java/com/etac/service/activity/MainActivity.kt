@@ -33,7 +33,7 @@ class MainActivity : BaseActivity() {
         val decorView = window.decorView
         val wic = WindowInsetsControllerCompat(window, decorView)
         wic.isAppearanceLightStatusBars = true
-        window.statusBarColor = ContextCompat.getColor(this,R.color.offWhiteApp)
+        window.statusBarColor = ContextCompat.getColor(this,R.color.offWhiteAppV2)
 
         initAlertDialog()
 
