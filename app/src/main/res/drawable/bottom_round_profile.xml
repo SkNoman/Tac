@@ -5,7 +5,7 @@
     <corners android:bottomRightRadius="@dimen/dp50"
         android:bottomLeftRadius="@dimen/dp50"/>
 
-    <gradient android:startColor="@color/offWhiteApp"
+    <gradient android:startColor="@color/offWhiteAppV2"
         android:centerColor="#667CEB"
         android:endColor="@color/appThemeBlue"
         android:angle="-90"
