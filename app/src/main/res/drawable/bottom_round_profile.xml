@@ -6,7 +6,7 @@
         android:bottomLeftRadius="@dimen/dp50"/>
 
     <gradient android:startColor="@color/offWhiteAppV2"
-        android:centerColor="#667CEB"
+        android:centerColor="#566BDB"
         android:endColor="@color/appThemeBlue"
         android:angle="-90"
         android:type="linear"/>
