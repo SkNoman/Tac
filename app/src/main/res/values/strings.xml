@@ -42,13 +42,13 @@
         Maps
     </string>
     <string name="locate_us">Locate Us</string>
-    <string name="dev_name">Good Day! Abdullah-Al-Noman</string>
+    <string name="dev_name">Abdullah-Al-Noman</string>
     <string name="developed_by_arc">Developed by ARC</string>
     <string name="create_car_service_request">Create Car\nService Request</string>
     <string name="name">Name</string>
     <string name="address">Address</string>
     <string name="phone_number">Phone Number</string>
-    <string name="demo_phone">01718228200</string>
+    <string name="demo_phone">01718228277</string>
     <string name="service_area">Service Area</string>
     <string name="service_details">Service Details</string>
     <string name="submit">Submit</string>
@@ -104,4 +104,5 @@
     <string name="nagad_payment">Nagad Payment</string>
     <string name="rocket_payment">Rocket Payment</string>
     <string name="nexus_payment">Nexus Payment</string>
+    <string name="open_google_map">Open  <font color="#1246F7"><b>G</b></font><font color="#DB2602"><b>o</b></font><font color="#EDD400"><b>o</b></font><font color="#1246F7"><b>g</b></font><font color="#04CD13"><b>l</b></font><font color="#DB2602"><b>e</b></font> Map</string>
 </resources>

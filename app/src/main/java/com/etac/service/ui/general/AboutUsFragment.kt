@@ -19,11 +19,24 @@ class AboutUsFragment : BaseFragmentWithBinding<FragmentAboutUsBinding>
     override fun onViewCreated(view: View , savedInstanceState: Bundle?) {
         super.onViewCreated(view , savedInstanceState)
 
-        binding.ivGoogleMapView.setOnClickListener{
-            val uri =  "geo: 20.999,90.232?q=Tokyo Square, Mohammadpur,Dhaka ,Bangladesh"
-            val intent = Intent(Intent.ACTION_VIEW , Uri.parse(uri))
+        binding.layoutGoogleMaps.setOnClickListener{
+
+            val latitude = 23.7584892 // Replace with the actual latitude
+            val longitude = 90.3636594 // Replace with the actual longitude
+
+            val geoUri = "geo:$latitude,$longitude?q=$latitude,$longitude"
+            val intent = Intent(Intent.ACTION_VIEW , Uri.parse(geoUri))
             intent.setPackage("com.google.android.apps.maps")
             requireActivity().startActivity(intent)
+        }
+
+        binding.contactUsPhoneNumber.setOnClickListener {
+            val phoneNumber = "+8801718228277" // Replace with the actual phone number
+            val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+            // Check if there is an app to handle the dial intent
+            if (dialIntent.resolveActivity(requireActivity().packageManager) != null) {
+                startActivity(dialIntent)
+            }
         }
 
         binding.ivBack.setOnClickListener{

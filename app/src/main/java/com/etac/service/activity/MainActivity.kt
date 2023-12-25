@@ -1,12 +1,14 @@
 package com.etac.service.activity
 
+/* Author : Shekh Abdullah-Al-Noman
+Contact: 01718228277
+Copyright reserved to author
+ */
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.etac.service.R
