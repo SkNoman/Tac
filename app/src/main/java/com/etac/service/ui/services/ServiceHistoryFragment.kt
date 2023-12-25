@@ -53,28 +53,12 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
             }
         })
 
-        CheckNetworkStatus.isOnline(requireContext(),object:CheckNetworkStatus.Status{
-            override fun online() {
-                try {
-                    onLoadingVm().showLoadingFun(true)
-                    val savedUserInfo = SharedPref(requireContext()).getUserInfo()
-                    val userPhoneNumber = savedUserInfo?.phoneNumber
-                    serviceViewModel.getServiceList(ApiEndPoint.GET_SERVICE_LIST,
-                                                    userPhoneNumber.toString())
-                }catch (e:Exception){
-                    onLoadingVm().showLoadingFun(false)
-                    AppUtils.showToast(requireContext(),
-                                       Constant.ERROR_MESSAGE, false, getString(R.string.toast_type_warning))
-                }
-            }
+        initHistory()
+        binding.serviceHistorySwipeLayout.setOnRefreshListener {
+            binding.serviceHistorySwipeLayout.isRefreshing = false
+            initHistory()
+        }
 
-            override fun offline() {
-                onLoadingVm().showLoadingFun(false)
-                AppUtils.showToast(requireContext(),
-                                   getString(R.string.pls_check_internet), false, getString(R.string.toast_type_warning))
-            }
-
-        })
 
         //DATA OBSERVERS
         serviceViewModel.serviceListRes.observe(viewLifecycleOwner) { data ->
@@ -116,6 +100,31 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
         }
 
 
+    }
+
+    private fun initHistory() {
+        CheckNetworkStatus.isOnline(requireContext(),object:CheckNetworkStatus.Status{
+            override fun online() {
+                try {
+                    onLoadingVm().showLoadingFun(true)
+                    val savedUserInfo = SharedPref(requireContext()).getUserInfo()
+                    val userPhoneNumber = savedUserInfo?.phoneNumber
+                    serviceViewModel.getServiceList(ApiEndPoint.GET_SERVICE_LIST,
+                                                    userPhoneNumber.toString())
+                }catch (e:Exception){
+                    onLoadingVm().showLoadingFun(false)
+                    AppUtils.showToast(requireContext(),
+                                       Constant.ERROR_MESSAGE, false, getString(R.string.toast_type_warning))
+                }
+            }
+
+            override fun offline() {
+                onLoadingVm().showLoadingFun(false)
+                AppUtils.showToast(requireContext(),
+                                   getString(R.string.pls_check_internet), false, getString(R.string.toast_type_warning))
+            }
+
+        })
     }
 
     private fun filter(item: String) {
