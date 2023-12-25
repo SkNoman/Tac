@@ -9,6 +9,8 @@ data class ApplicationStatusResponse(
 
 data class Result(
 	val current_version: Int,
-	val force_update: Boolean? = false
+	val force_update: Boolean? = false,
+	val title: String,
+	val message: String
 )
 

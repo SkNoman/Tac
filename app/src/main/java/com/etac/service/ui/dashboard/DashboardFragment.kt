@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.etac.service.utils.Constant
 import com.etac.service.R
 import com.etac.service.adapters.DashboardMainMenuAdapter
 import com.etac.service.adapters.OnClickMenu
@@ -23,6 +21,7 @@ import com.etac.service.shared_preference.SharedPref
 import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
 import com.etac.service.utils.CheckNetworkStatus
+import com.etac.service.utils.Constant
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

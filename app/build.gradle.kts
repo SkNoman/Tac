@@ -21,9 +21,8 @@ android {
         applicationId = "com.etac.service"
         minSdk = 21
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
+        versionCode = 1000
+        versionName = "1.0.0"
 
         buildConfigField("String","USER_NAME", getLocalProperty("username"))
         buildConfigField("String","PASSWORD", getLocalProperty("password"))
@@ -110,11 +109,6 @@ dependencies {
 fun getLocalProperty(key: String, file: String = "local.properties"): String {
     val properties = Properties()
     val localProperties = File(file)
-    if (key != null){
-        Log.d("key", key)
-    }else{
-        Log.d("key","key is null :(")
-    }
     if (localProperties.isFile) {
         InputStreamReader(FileInputStream(localProperties),Charsets.UTF_8).use { reader->
             properties.load(reader)

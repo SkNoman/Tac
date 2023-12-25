@@ -97,4 +97,5 @@
     <string name="area">Area</string>
     <string name="phone_no">Phone No</string>
     <string name="please_enter_alternative_phone_no">Please enter alternative phone no</string>
+    <string name="txt_continue">Continue</string>
 </resources>

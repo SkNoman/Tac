@@ -3,16 +3,11 @@ package com.etac.service.utils
 object Constant {
 
     const val USER_TYPE = 1
-    const val CURRENT_BUILD_VERSION = 999
-    const val CLIENT_TYPE =  1
-    const val KEY_CLIENT_TYPE =  "client_type"
-    const val KEY_CLIENT_VERSION =  "client_version"
-    const val KEY_JSON =  "json"
     const val ERROR_MESSAGE = "SOMETHING WENT WRONG!"
-    const val KEY_USER_INFO = "user_info"
 
     const val SERVICE_TYPE_CAR = 1
     const val SERVICE_TYPE_LAUNDRY = 2
+    const val CLIENT_UPDATE_URL = "https://play.google.com/store/apps/"
 
     const val sliderImg1 = "https://img.freepik.com/free-vector/laundry-room-isometric-composition-with-conceptual-image-tablet-laundry-equipment-with-people-touchscreen_1284-32369.jpg?w=740&t=st=1701891675~exp=1701892275~hmac=87d3914f30b64e5c3da105f8122edd387a7b8e37721dab8eced7edb52fe8f89c"
     const val sliderImg2 = "https://etimg.etb2bimg.com/photo/78030839.cms"
