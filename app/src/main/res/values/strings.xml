@@ -105,4 +105,5 @@
     <string name="rocket_payment">Rocket Payment</string>
     <string name="nexus_payment">Nexus Payment</string>
     <string name="open_google_map">Open  <font color="#1246F7"><b>G</b></font><font color="#DB2602"><b>o</b></font><font color="#EDD400"><b>o</b></font><font color="#1246F7"><b>g</b></font><font color="#04CD13"><b>l</b></font><font color="#DB2602"><b>e</b></font> Map</string>
+    <string name="sign_out">Sign Out</string>
 </resources>

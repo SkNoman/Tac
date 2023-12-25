@@ -202,7 +202,7 @@ tools:context=".ui.user.ProfileFragment">
                 android:backgroundTint="@color/appThemeBlue"
                 android:fontFamily="@font/open_sans"
                 android:gravity="center"
-                android:text="Logout"
+                android:text="@string/sign_out"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_18sp" />
 

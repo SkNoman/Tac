@@ -1,7 +1,7 @@
 package com.etac.service.ui.user
 
+import android.app.AlertDialog
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.etac.service.R
@@ -47,7 +47,27 @@ class ProfileFragment : BaseFragmentWithBinding<FragmentProfileBinding>(
             })
         }
         binding.btnLogout.setOnClickListener {
-            findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
+            val alertDialogBuilder: AlertDialog.Builder = AlertDialog.Builder(context,
+            R.style.AppCompatAlertDialogStyle)
+            alertDialogBuilder.setTitle("Alert!")
+            alertDialogBuilder.setMessage("Are you sure to sign out?")
+            alertDialogBuilder.setCancelable(false)
+
+            alertDialogBuilder.setPositiveButton(
+                    "Yes"
+            ) { dialog, _ ->
+                dialog.cancel()
+                findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
+
+            }
+            alertDialogBuilder.setNegativeButton(
+                    "No"
+            ) { dialog, _ ->
+                dialog.cancel()
+            }
+            val alertDialog: AlertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+
         }
     }
 }

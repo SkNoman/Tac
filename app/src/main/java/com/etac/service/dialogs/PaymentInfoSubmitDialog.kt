@@ -23,12 +23,16 @@ class PaymentInfoSubmitDialog(
         binding.apply {
             tvSubmit.setOnClickListener {
                 val paymentMethod: String
+                val transactionId =
+                    binding.etTransactionId.text?.toString()?.replace("\\s".toRegex(), "")
+
                 val jsonObj = JsonObject().apply {
                     addProperty("id", serviceId)
                 }
                 when {
                     binding.radioCash.isChecked -> {
                         paymentMethod = "Cash"
+                        jsonObj.addProperty("transaction_id","")
                     }
                     binding.radioOnline.isChecked -> {
                         paymentMethod = binding.etPaymentType.text.toString()
@@ -36,11 +40,11 @@ class PaymentInfoSubmitDialog(
                             AppUtils.showToast(context, "Please select payment method", false,"warning")
                             return@setOnClickListener  // Stop further execution
                         }
-                        else if (binding.etTransactionId.text.trim().isEmpty()) {
-                            AppUtils.showToast(context, "Please enter transaction id", false, "warning")
+                        else if (transactionId?.length!! < 8) {
+                            AppUtils.showToast(context, "Please enter valid transaction id", false, "warning")
                             return@setOnClickListener  // Stop further execution
                         }
-                        jsonObj.addProperty("transaction_id", binding.etTransactionId.text.trim().toString())
+                        jsonObj.addProperty("transaction_id",transactionId)
                     }
                     else -> {
                         // Handle the case where neither radioCash nor radioOnline is checked
@@ -50,7 +54,6 @@ class PaymentInfoSubmitDialog(
                 }
 
                 jsonObj.addProperty("payment_method", paymentMethod)
-                Log.e("nlog-json-obj",paymentMethod)
                 dismiss()
                 listener.onClickSubmit(jsonObj)
 
