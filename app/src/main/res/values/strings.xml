@@ -98,4 +98,10 @@
     <string name="phone_no">Phone No</string>
     <string name="please_enter_alternative_phone_no">Please enter alternative phone no</string>
     <string name="txt_continue">Continue</string>
+    <string name="payment_information">Payment Information</string>
+    <string name="these_are_the_online_payment_methods_we_support_right_now">These are the online payment methods we support right now.</string>
+    <string name="bkash_payment">bKash Payment</string>
+    <string name="nagad_payment">Nagad Payment</string>
+    <string name="rocket_payment">Rocket Payment</string>
+    <string name="nexus_payment">Nexus Payment</string>
 </resources>

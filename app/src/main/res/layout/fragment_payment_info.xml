@@ -6,358 +6,398 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.general.PaymentInfoFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp16"
-        android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/baseline_arrow_back_ios_new_24"
-            >
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </ImageView>
 
-        <TextView
-            android:layout_marginTop="@dimen/dp16"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Payment Information"
-            android:textSize="@dimen/sp24"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/semi_black"
-            />
+            android:layout_margin="@dimen/dp16"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivBack">
 
-        <TextView
-            android:layout_marginTop="@dimen/dp16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="These are the online payment methods we support right now."
-            android:textSize="@dimen/_16sp"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/semi_black"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:text="@string/payment_information"
+                android:textColor="@color/semi_black"
+                android:textSize="@dimen/sp24" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100dp"
-            android:layout_marginTop="@dimen/dp16"
-            android:backgroundTint="@color/payment_info_card_bg"
-            android:elevation="@dimen/_4dp"
-            android:outlineSpotShadowColor="@color/semi_black"
-            app:cardCornerRadius="@dimen/dp16">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp16"
+                android:fontFamily="@font/open_sans"
+                android:text="@string/these_are_the_online_payment_methods_we_support_right_now"
+                android:textColor="@color/semi_black"
+                android:textSize="@dimen/_16sp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/_100dp"
+                android:layout_marginTop="@dimen/dp16"
+                android:backgroundTint="@color/payment_info_card_bg"
+                android:elevation="@dimen/_4dp"
+                android:outlineSpotShadowColor="@color/semi_black"
+                app:cardCornerRadius="@dimen/dp16">
 
-                <ImageView
-                    android:id="@+id/ivBkash"
-                    android:layout_width="@dimen/_50dp"
-                    android:layout_height="@dimen/_50dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/bkash"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tvBkashPayment"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text="bKash Payment"
-                    android:textColor="@color/semi_black"
-                    android:textSize="@dimen/_18sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivBkash"
-                    app:layout_constraintEnd_toStartOf="@+id/radioButtonBkash"
-                    app:layout_constraintStart_toEndOf="@+id/ivBkash"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/ivBkash"
+                        android:layout_width="@dimen/_50dp"
+                        android:layout_height="@dimen/_50dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/bkash"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <RadioButton
-                    android:id="@+id/radioButtonBkash"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="10dp"
-                    android:visibility="gone"
-                    android:drawableTint="@color/green"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tvBkashPayment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="@string/bkash_payment"
+                        android:textColor="@color/semi_black"
+                        android:textSize="@dimen/_18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivBkash"
+                        app:layout_constraintEnd_toStartOf="@+id/radioButtonBkash"
+                        app:layout_constraintStart_toEndOf="@+id/ivBkash"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtBkashNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Payment number: 01718228277"
-                    android:textColor="@color/semi_black"
-                    android:textSize="@dimen/_16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvBkashPayment" />
+                    <RadioButton
+                        android:id="@+id/radioButtonBkash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:drawableTint="@color/green"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.01"
-                    app:layout_constraintStart_toEndOf="@+id/txtBkashNumber"
-                    app:layout_constraintTop_toBottomOf="@+id/tvBkashPayment"
-                    app:srcCompat="@drawable/content_copy_24px"
-                    app:tint="@color/teal_200" />
+                    <TextView
+                        android:id="@+id/txtBkashNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:textColor="@color/semi_black"
+                        android:textSize="@dimen/_16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ivBkashCopy"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBkashPayment"
+                        tools:text="Payment number: 01718228277" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/ivBkashCopy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/app_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.01"
+                        app:layout_constraintStart_toEndOf="@+id/txtBkashNumber"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBkashPayment"
+                        app:srcCompat="@drawable/content_copy_24px"
+                        app:tint="@color/semi_black" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100dp"
-            android:layout_marginTop="@dimen/dp16"
-            android:backgroundTint="@color/payment_info_card_bg"
-            android:elevation="@dimen/_4dp"
-            android:outlineSpotShadowColor="@color/semi_black"
-            android:layout_marginBottom="@dimen/_8dp"
-            app:cardCornerRadius="@dimen/_20dp">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/_100dp"
+                android:layout_marginTop="@dimen/dp16"
+                android:layout_marginBottom="@dimen/_8dp"
+                android:backgroundTint="@color/payment_info_card_bg"
+                android:elevation="@dimen/_4dp"
+                android:outlineSpotShadowColor="@color/semi_black"
+                app:cardCornerRadius="@dimen/_20dp">
 
-                <ImageView
-                    android:id="@+id/ivNagad"
-                    android:layout_width="@dimen/_50dp"
-                    android:layout_height="@dimen/_50dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/nagad"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tvNagadPayment"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Nagad Payment"
-                    android:textColor="@color/semi_black"
-                    android:textSize="@dimen/_18sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivNagad"
-                    app:layout_constraintEnd_toStartOf="@+id/radioButtonNagad"
-                    app:layout_constraintStart_toEndOf="@+id/ivNagad"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/ivNagad"
+                        android:layout_width="@dimen/_50dp"
+                        android:layout_height="@dimen/_50dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/nagad"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <RadioButton
-                    android:id="@+id/radioButtonNagad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="10dp"
-                    android:visibility="gone"
-                    android:drawableTint="@color/green"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tvNagadPayment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="@string/nagad_payment"
+                        android:textColor="@color/semi_black"
+                        android:textSize="@dimen/_18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivNagad"
+                        app:layout_constraintEnd_toStartOf="@+id/radioButtonNagad"
+                        app:layout_constraintStart_toEndOf="@+id/ivNagad"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtNagadNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Payment Number: 01718228277"
-                    android:textColor="@color/semi_black"
-                    android:textSize="@dimen/_16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvNagadPayment" />
+                    <RadioButton
+                        android:id="@+id/radioButtonNagad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:drawableTint="@color/green"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/ivNagadCopy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.01"
-                    app:layout_constraintStart_toEndOf="@+id/txtNagadNumber"
-                    app:layout_constraintTop_toBottomOf="@+id/tvNagadPayment"
-                    app:srcCompat="@drawable/content_copy_24px"
-                    app:tint="@color/teal_200" />
+                    <TextView
+                        android:id="@+id/txtNagadNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:textColor="@color/semi_black"
+                        android:textSize="@dimen/_16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ivNagadCopy"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNagadPayment"
+                        tools:text="Payment Number: 01718228277" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/ivNagadCopy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/app_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.01"
+                        app:layout_constraintStart_toEndOf="@+id/txtNagadNumber"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNagadPayment"
+                        app:srcCompat="@drawable/content_copy_24px"
+                        app:tint="@color/semi_black" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100dp"
-            android:layout_marginTop="@dimen/dp16"
-            android:backgroundTint="@color/payment_info_card_bg"
-            android:elevation="@dimen/_4dp"
-            android:outlineSpotShadowColor="@color/semi_black"
-            app:cardCornerRadius="@dimen/_20dp">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/_100dp"
+                android:layout_marginTop="@dimen/dp8"
+                android:backgroundTint="@color/payment_info_card_bg"
+                android:elevation="@dimen/_4dp"
+                android:outlineSpotShadowColor="@color/semi_black"
+                app:cardCornerRadius="@dimen/_20dp">
 
-                <ImageView
-                    android:id="@+id/ivTaka"
-                    android:layout_width="@dimen/_50dp"
-                    android:layout_height="@dimen/_50dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/roket"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tvTakaPayment"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Roket Payment"
-                    android:textColor="@color/semi_black"
-                    android:textSize="@dimen/_18sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivTaka"
-                    app:layout_constraintEnd_toStartOf="@+id/radioButtonTaka"
-                    app:layout_constraintStart_toEndOf="@+id/ivTaka"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/ivTaka"
+                        android:layout_width="@dimen/_50dp"
+                        android:layout_height="@dimen/_50dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/roket"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <RadioButton
-                    android:id="@+id/radioButtonTaka"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="10dp"
-                    android:visibility="gone"
-                    android:drawableTint="@color/green"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tvTakaPayment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="@string/rocket_payment"
+                        android:textColor="@color/semi_black"
+                        android:textSize="@dimen/_18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivTaka"
+                        app:layout_constraintEnd_toStartOf="@+id/radioButtonTaka"
+                        app:layout_constraintStart_toEndOf="@+id/ivTaka"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtTakaNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Payment Number: 01686693905"
-                    android:textColor="@color/semi_black"
-                    android:textSize="@dimen/_16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTakaPayment" />
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.01"
-                    app:layout_constraintStart_toEndOf="@+id/txtTakaNumber"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTakaPayment"
-                    app:srcCompat="@drawable/content_copy_24px"
-                    app:tint="@color/teal_200" />
+                    <RadioButton
+                        android:id="@+id/radioButtonTaka"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:drawableTint="@color/green"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/txtTakaNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:textColor="@color/semi_black"
+                        android:textSize="@dimen/_16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ivRocketCopy"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTakaPayment"
+                        tools:text="Payment Number: 01686693905" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100dp"
-            android:layout_marginTop="@dimen/dp16"
-            android:layout_marginBottom="@dimen/dp16"
-            android:backgroundTint="@color/payment_info_card_bg"
-            android:elevation="@dimen/_4dp"
-            android:outlineSpotShadowColor="@color/semi_black"
-            app:cardCornerRadius="@dimen/_20dp">
+                    <ImageView
+                        android:id="@+id/ivRocketCopy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/app_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.01"
+                        app:layout_constraintStart_toEndOf="@+id/txtTakaNumber"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTakaPayment"
+                        app:srcCompat="@drawable/content_copy_24px"
+                        app:tint="@color/semi_black" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/_100dp"
+                android:layout_marginTop="@dimen/dp16"
+                android:layout_marginBottom="@dimen/dp16"
+                android:backgroundTint="@color/payment_info_card_bg"
+                android:elevation="@dimen/_4dp"
+                android:outlineSpotShadowColor="@color/semi_black"
+                app:cardCornerRadius="@dimen/_20dp">
 
-                <ImageView
-                    android:id="@+id/ivNexus"
-                    android:layout_width="@dimen/_50dp"
-                    android:layout_height="@dimen/_50dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/nuxus"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tvNexusPayment"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Nexus Payment"
-                    android:textColor="@color/semi_black"
-                    android:textSize="@dimen/_18sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivNexus"
-                    app:layout_constraintEnd_toStartOf="@+id/radioButtonNexus"
-                    app:layout_constraintStart_toEndOf="@+id/ivNexus"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/ivNexus"
+                        android:layout_width="@dimen/_50dp"
+                        android:layout_height="@dimen/_50dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/nuxus"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <RadioButton
-                    android:id="@+id/radioButtonNexus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="10dp"
-                    android:drawableTint="@color/green"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tvNexusPayment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="@string/nexus_payment"
+                        android:textColor="@color/semi_black"
+                        android:textSize="@dimen/_18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivNexus"
+                        app:layout_constraintEnd_toStartOf="@+id/radioButtonNexus"
+                        app:layout_constraintStart_toEndOf="@+id/ivNexus"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtNexusNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Account No: 423423423233"
-                    android:textColor="@color/semi_black"
-                    android:textSize="@dimen/_16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvNexusPayment" />
-                <ImageView
-                    android:id="@+id/imageView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.01"
-                    app:layout_constraintStart_toEndOf="@+id/txtNexusNumber"
-                    app:layout_constraintTop_toBottomOf="@+id/tvNexusPayment"
-                    app:srcCompat="@drawable/content_copy_24px"
-                    app:tint="@color/teal_200" />
+                    <RadioButton
+                        android:id="@+id/radioButtonNexus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:drawableTint="@color/green"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/txtNexusNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:textColor="@color/semi_black"
+                        android:textSize="@dimen/_16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ivNexusCopy"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNexusPayment"
+                        tools:text="Account No: 423423423233" />
 
-        <TextView
-            android:layout_marginTop="@dimen/dp16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/_16sp"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/semi_black"
-            />
+                    <ImageView
+                        android:id="@+id/ivNexusCopy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/app_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/txtNexusNumber"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNexusPayment"
+                        app:srcCompat="@drawable/content_copy_24px"
+                        app:tint="@color/semi_black" />
 
-    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp16"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/semi_black"
+                android:textSize="@dimen/_16sp" />
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </ScrollView>
