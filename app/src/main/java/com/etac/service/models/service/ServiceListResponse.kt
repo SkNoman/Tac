@@ -12,6 +12,7 @@ data class ServiceHistoryResult(
 	val data: List<ServiceHistoryList>
 )
 data class ServiceHistoryList(
+	val id: Int? = null,
 	val area: String? = null,
 	val service_details: String? = null,
 	val service_type: Int? = null,
@@ -20,6 +21,6 @@ data class ServiceHistoryList(
 	val service_Name: String? = null,
 	val service_status: Int? = 0,
 	val created_at: String? = null,
-	val id: Int? = null
+	val payment_method: String? = null
 )
 

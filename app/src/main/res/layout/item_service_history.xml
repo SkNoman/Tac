@@ -80,7 +80,7 @@
                 tools:text="Recycler view details lorem is the greatest dummy text which every developers write down into their projects initially." />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/tvPaymentDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

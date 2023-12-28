@@ -74,7 +74,7 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
                     if (serviceItemList.isEmpty()){
                         binding.noServiceFound.visibility = View.VISIBLE
                     }
-                    showList(serviceItemList)
+                    showList(serviceItemList.reversed())
                 }
             }
         }
@@ -93,6 +93,8 @@ class ServiceHistoryFragment : BaseFragmentWithBinding<FragmentServiceHistoryBin
                     AppUtils.showToast(requireContext(),
                                        it.result?.message.toString(),
                                        false, getString(R.string.toast_type_success))
+
+                    initHistory()
                 }
             }
         }

@@ -1,6 +1,8 @@
 package com.etac.service.adapters
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getColorStateList
@@ -35,6 +37,13 @@ class ServiceHistoryListAdapter @Inject constructor():
 
     private fun addData(holder: ServiceItemViewHolder , position: Int) {
         holder.binding.apply {
+            var paymentVerified = false
+            if (!oldItemList[position].payment_method.isNullOrEmpty()){
+                paymentVerified = true
+                tvPaymentDetails.text = "Payment Verified ☑"
+                tvPaymentDetails.setTextColor(getColorStateList(context!!,R.color.green))
+                tvPaymentDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+            }
             txtServiceDate.text = oldItemList[position].created_at
             txtServiceTitle.text = oldItemList[position].service_Name
             if (oldItemList[position].service_type == 1){
@@ -58,7 +67,10 @@ class ServiceHistoryListAdapter @Inject constructor():
                 }
             }
             holder.itemView.setOnClickListener{
-                oldItemList[position].id?.let { it1 -> onServiceListItemClickListener.onClick(it1) }
+                if (!paymentVerified){
+                    oldItemList[position].id?.let { it1 -> onServiceListItemClickListener.onClick(it1) }
+                }
+
             }
 
         }
