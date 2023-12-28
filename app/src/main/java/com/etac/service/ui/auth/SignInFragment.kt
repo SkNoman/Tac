@@ -33,9 +33,9 @@ class SignInFragment : BaseFragmentWithBinding<FragmentSignInBinding>
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
-            binding.tvNavigateSignIn.setOnClickListener {
+            /*binding.tvNavigateSignIn.setOnClickListener {
                 findNavController().navigate(R.id.signUpFragment ,null , Animation.animNav().build())
-            }
+            }*/
             binding.btnSignIn.setOnClickListener {
                 CheckNetworkStatus.isOnline(requireContext(),object:CheckNetworkStatus.Status{
                     override fun online() {
@@ -59,8 +59,14 @@ class SignInFragment : BaseFragmentWithBinding<FragmentSignInBinding>
                         onLoadingVm().showLoadingFun(false)
                         when (it.result?.hasUser) {
                             0 -> {
-                                findNavController().navigate(R.id.signUpFragment,null,
-                                                             Animation.animNav().build())
+                                val action = SignInFragmentDirections.actionSignInFragmentToOTPFragment(
+                                        UserInfo(
+                                                null,
+                                                binding.etPhoneNumber.text.toString(),
+                                               null,
+                                                null,
+                                               null))
+                                findNavController().navigate(action,Animation.animNav().build())
                             }
                             1 -> { //VALID USER HAVE USER INFO
                                 val userInfo = it.result.data

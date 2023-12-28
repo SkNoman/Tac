@@ -11,6 +11,7 @@ import com.etac.service.databinding.FragmentSignUpBinding
 import com.etac.service.models.auth.UserInfo
 import com.etac.service.models.service.areaList
 import com.etac.service.network.ApiEndPoint
+import com.etac.service.shared_preference.SharedPref
 import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
 import com.etac.service.utils.CheckNetworkStatus
@@ -24,9 +25,17 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
     (FragmentSignUpBinding::inflate)
 {
     private val authViewModel: AuthViewModel by viewModels()
+    private var passedMobileNumber = ""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        try {
+            passedMobileNumber = requireArguments().getString("mobileNumber").toString()
+            binding.etPhoneNumber.setText(passedMobileNumber)
+        }catch (e:Exception){
+            AppUtils.showToast(requireContext(),
+                    Constant.ERROR_MESSAGE, false, getString(R.string.toast_type_error))
+        }
         binding.layoutNavigateSignIn.setOnClickListener{
             findNavController().navigate(R.id.signInFragment ,null,Animation.animNav().build())
         }
@@ -61,17 +70,19 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
             data.getContentIfNotHandled().let {
                 if (it?.result_code == 0 && it.result?.message == "SUCCESS") {
                     onLoadingVm().showLoadingFun(false)
-                    AppUtils.showToast(requireContext(),
-                                       it.result.message.toString(), false, getString(R.string.toast_type_success))
 
-                    val action = SignUpFragmentDirections.actionSignUpFragmentToOTPFragment(
-                            UserInfo(
+                    val userInfo =   UserInfo(
                                     binding.etFullName.text.toString(),
-                                    binding.etPhoneNumber.text.toString(),
+                                    passedMobileNumber,
                                     "",
                                     binding.etArea.text.toString(),
-                                    binding.etAddress.text.toString()))
-                    findNavController().navigate(action,Animation.animNav().build())
+                                    binding.etAddress.text.toString())
+
+                    SharedPref(requireContext()).saveUserInfo(userInfo)
+                    AppUtils.showToast(requireContext(),
+                                       "Welcome ${userInfo.name}", true, getString(R.string.toast_type_success))
+                    findNavController().navigate(R.id.dashboardFragment,null,
+                                                 Animation.animNav().build())
 
                 }
             }
@@ -90,7 +101,7 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
         onLoadingVm().showLoadingFun(true)
         val jsonObject = JsonObject()
         jsonObject.addProperty("user_type",Constant.USER_TYPE)
-        jsonObject.addProperty("primary_phone",binding.etPhoneNumber.text.toString())
+        jsonObject.addProperty("primary_phone",passedMobileNumber)
         jsonObject.addProperty("name",binding.etFullName.text.toString())
         jsonObject.addProperty("area",binding.etArea.text.toString())
         jsonObject.addProperty("address",binding.etAddress.text.toString())

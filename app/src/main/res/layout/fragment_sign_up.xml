@@ -73,7 +73,7 @@ tools:context=".ui.auth.SignUpFragment">
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <EditText
+    <TextView
         android:id="@+id/etPhoneNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -83,19 +83,19 @@ tools:context=".ui.auth.SignUpFragment">
         android:importantForAutofill="no"
         android:background="@drawable/rounded_bg_20_dp"
         android:backgroundTint="@color/color_input_field"
-        android:drawableStart="@drawable/baseline_contacts_24"
         android:drawablePadding="@dimen/_10dp"
         android:ems="11"
         android:textColor="@color/white"
-        android:hint="@string/please_enter_mobile_number"
-        android:inputType="phone"
+        android:inputType="none"
+        android:focusable="false"
         android:maxLength="11"
         android:padding="14dp"
         android:textColorHint="@color/color_input_fld_hint"
         android:textSize="@dimen/sign_up_input_fld_size_16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/etFullName" />
+        app:layout_constraintTop_toBottomOf="@+id/etFullName"
+        app:drawableStartCompat="@drawable/baseline_contacts_24" />
 
     <AutoCompleteTextView
         android:id="@+id/etArea"

@@ -72,21 +72,29 @@ class OTPFragment: BaseFragmentWithBinding<FragmentOTPBinding>
 
         authViewModel.checkOTPRes.observe(viewLifecycleOwner) { data ->
             data.getContentIfNotHandled().let {
+                onLoadingVm().showLoadingFun(false)
                 if (it?.result_code == 0) {
                     if (it.result?.is_valid == true) {
                         try {
-                            SharedPref(requireContext()).saveUserInfo(userInfo)
-                            onLoadingVm().showLoadingFun(false)
-                            AppUtils.showToast(requireContext(),
-                                               "Welcome ${userInfo.name}", true, getString(R.string.toast_type_success))
-                            findNavController().navigate(R.id.dashboardFragment,null,
-                                                         Animation.animNav().build())
+                            if (userInfo.name.isNullOrEmpty()){
+                                val bundle = Bundle()
+                                bundle.putString("mobileNumber",userInfo.phoneNumber)
+                                findNavController().navigate(R.id.signUpFragment,bundle,
+                                                             Animation.animNav().build())
+                            }else{
+                                SharedPref(requireContext()).saveUserInfo(userInfo)
+                                onLoadingVm().showLoadingFun(false)
+                                AppUtils.showToast(requireContext(),
+                                                   "Welcome ${userInfo.name}", true, getString(R.string.toast_type_success))
+                                findNavController().navigate(R.id.dashboardFragment,null,
+                                                             Animation.animNav().build())
+                            }
+
                         }catch (e:Exception){
                             AppUtils.showToast(requireContext(),getString(R.string.invalid_otp),true,
                                               Constant.ERROR_MESSAGE)
                         }
                     }else{
-                        onLoadingVm().showLoadingFun(false)
                         AppUtils.showToast(requireContext(),getString(R.string.invalid_otp),true,
                                            getString(R.string.toast_type_error))
                     }
