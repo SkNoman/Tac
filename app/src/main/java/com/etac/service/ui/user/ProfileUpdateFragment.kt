@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentProfileUpdateBinding
+import com.etac.service.dialogs.SubmitConfirmDialog
 import com.etac.service.models.auth.UserInfo
 import com.etac.service.models.service.areaList
 import com.etac.service.network.ApiEndPoint
@@ -51,7 +52,13 @@ class ProfileUpdateFragment : BaseFragmentWithBinding<FragmentProfileUpdateBindi
             CheckNetworkStatus.isOnline(requireContext(), object: CheckNetworkStatus.Status{
                 override fun online() {
                     if (userInputValidation() == "ok"){
-                        updateUserInfo()
+                        SubmitConfirmDialog(requireContext(),object:SubmitConfirmDialog.OnClickListener{
+                            override fun onClickPositive() {
+                                updateUserInfo()
+                            }
+                            override fun onClickNegative() {}
+                        }).show()
+
                     }else{
                         AppUtils.showToast(requireContext(),
                                            userInputValidation(), false, getString(R.string.toast_type_warning))

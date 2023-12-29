@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentLaundryServiceBinding
+import com.etac.service.dialogs.SubmitConfirmDialog
 import com.etac.service.models.service.areaList
 import com.etac.service.network.ApiEndPoint
 import com.etac.service.shared_preference.SharedPref
@@ -41,13 +42,18 @@ class LaundryServiceFragment : BaseFragmentWithBinding<FragmentLaundryServiceBin
             findNavController().navigate(R.id.dashboardFragment,null,Animation.animNav().build())
         }
         binding.btnSubmit.setOnClickListener {
-            CheckNetworkStatus.isOnline(requireContext(), object: CheckNetworkStatus.Status{
+            CheckNetworkStatus.isOnline(requireContext(),object:CheckNetworkStatus.Status{
                 override fun online() {
                     if (userInputValidation() == "ok"){
-                        submitServiceRequest(savedUserInfo?.phoneNumber.toString())
+                        SubmitConfirmDialog(requireContext(),object: SubmitConfirmDialog.OnClickListener{
+                            override fun onClickPositive() {
+                                submitServiceRequest(savedUserInfo?.phoneNumber.toString())
+                            }
+                            override fun onClickNegative() {}
+                        }).show()
                     }else{
                         AppUtils.showToast(requireContext(),
-                                userInputValidation(), false, getString(R.string.toast_type_warning))
+                                           userInputValidation(), false, getString(R.string.toast_type_warning))
                     }
                 }
 
@@ -55,7 +61,6 @@ class LaundryServiceFragment : BaseFragmentWithBinding<FragmentLaundryServiceBin
                     AppUtils.showToast(requireContext(),
                                        getString(R.string.pls_check_internet), false, getString(R.string.toast_type_warning))
                 }
-
             })
         }
 
