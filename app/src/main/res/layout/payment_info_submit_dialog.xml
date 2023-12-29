@@ -3,7 +3,7 @@
     android:id="@+id/layoutPaymentInfoSubmitDialog"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#00000000"
+    android:background="@color/transparent"
     android:padding="@dimen/dp16"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_bg_20_dp"
-        android:backgroundTint="#F2F4F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +23,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/app_name" />
 
         <TextView
             android:id="@+id/textView8"
@@ -48,7 +48,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/open_sans"
-            android:text="Select Payment Type"
+            android:text="@string/select_payment_type"
             android:textColor="@color/semi_black"
             android:textSize="@dimen/sp18"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,7 @@
             android:layout_marginTop="16dp"
             android:buttonTint="@color/semi_black"
             android:fontFamily="@font/open_sans"
-            android:text="Cash"
+            android:text="@string/cash"
             android:textColor="@color/semi_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -75,7 +75,7 @@
             android:layout_marginTop="10dp"
             android:buttonTint="@color/semi_black"
             android:fontFamily="@font/open_sans"
-            android:text="Mobile Banking"
+            android:text="@string/mobile_banking"
             android:textColor="@color/semi_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioCash" />
@@ -99,7 +99,8 @@
             android:textColorHint="@color/semi_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPaymentType" />
+            app:layout_constraintTop_toBottomOf="@+id/etPaymentType"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/tvSubmit"
@@ -129,7 +130,8 @@
             android:src="@drawable/close_24_px"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/red" />
+            app:tint="@color/red"
+            android:contentDescription="@string/app_name" />
 
 
         <AutoCompleteTextView
@@ -147,7 +149,7 @@
             android:textColorHint="@color/semi_black"
             android:ems="10"
             android:focusable="false"
-            android:hint="Select payment method"
+            android:hint="@string/select_payment_method"
             android:inputType="none"
             android:padding="@dimen/_10dp"
             app:layout_constraintEnd_toEndOf="parent"

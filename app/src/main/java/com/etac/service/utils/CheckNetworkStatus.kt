@@ -13,15 +13,11 @@ object CheckNetworkStatus {
 
         val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        val n = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        val n =
             cm.activeNetwork
-        } else {
-            TODO("VERSION.SDK_INT < M")
-        }
         if (n != null) {
             val nc = cm.getNetworkCapabilities(n)
             //It will check for both wifi and cellular network
-
             networkStatus =
                 nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(
                     NetworkCapabilities.TRANSPORT_WIFI

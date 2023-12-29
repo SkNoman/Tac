@@ -1,12 +1,12 @@
 package com.etac.service.ui.user
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentProfileBinding
+import com.etac.service.dialogs.SubmitConfirmDialog
 import com.etac.service.shared_preference.SharedPref
 import com.etac.service.utils.Animation
 import com.etac.service.utils.AppUtils
@@ -47,27 +47,13 @@ class ProfileFragment : BaseFragmentWithBinding<FragmentProfileBinding>(
             })
         }
         binding.btnLogout.setOnClickListener {
-            val alertDialogBuilder: AlertDialog.Builder = AlertDialog.Builder(context,
-            R.style.AppCompatAlertDialogStyle)
-            alertDialogBuilder.setTitle("Alert!")
-            alertDialogBuilder.setMessage("Are you sure to sign out?")
-            alertDialogBuilder.setCancelable(false)
-
-            alertDialogBuilder.setPositiveButton(
-                    "Yes"
-            ) { dialog, _ ->
-                dialog.cancel()
-                findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
-
-            }
-            alertDialogBuilder.setNegativeButton(
-                    "No"
-            ) { dialog, _ ->
-                dialog.cancel()
-            }
-            val alertDialog: AlertDialog = alertDialogBuilder.create()
-            alertDialog.show()
-
+           SubmitConfirmDialog(requireContext(),object:SubmitConfirmDialog.OnClickListener{
+               override fun onClickPositive() {
+                   findNavController().navigate(R.id.signInFragment,null,
+                                                Animation.animNav().build())
+               }
+               override fun onClickNegative() {}
+           }).show()
         }
     }
 }

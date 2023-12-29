@@ -10,7 +10,8 @@ import com.etac.service.R
 import com.etac.service.databinding.AlertDialogCustomBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class AppUpdateDialog(private val title: String,private val msg: String, listener: OnClickListener): AppCompatDialogFragment() {
+class AppUpdateDialog(private val title: String,private val msg: String, listener: OnClickListener):
+    AppCompatDialogFragment() {
 
     private var binding: AlertDialogCustomBinding? = null
     private var onClickListener = listener

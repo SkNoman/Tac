@@ -106,4 +106,12 @@
     <string name="nexus_payment">Nexus Payment</string>
     <string name="open_google_map">Open  <font color="#1246F7"><b>G</b></font><font color="#DB2602"><b>o</b></font><font color="#EDD400"><b>o</b></font><font color="#1246F7"><b>g</b></font><font color="#04CD13"><b>l</b></font><font color="#DB2602"><b>e</b></font> Map</string>
     <string name="sign_out">Sign Out</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="select_payment_type">Select Payment Type</string>
+    <string name="cash">Cash</string>
+    <string name="mobile_banking">Mobile Banking</string>
+    <string name="select_payment_method">Select payment method</string>
 </resources>

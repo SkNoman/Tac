@@ -31,7 +31,7 @@ class SignUpFragment : BaseFragmentWithBinding<FragmentSignUpBinding>
 
         try {
             passedMobileNumber = requireArguments().getString("mobileNumber").toString()
-            binding.etPhoneNumber.setText(passedMobileNumber)
+            binding.etPhoneNumber.text = passedMobileNumber
         }catch (e:Exception){
             AppUtils.showToast(requireContext(),
                     Constant.ERROR_MESSAGE, false, getString(R.string.toast_type_error))

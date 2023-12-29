@@ -2,13 +2,11 @@ package com.etac.service.ui.auth
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.etac.service.R
 import com.etac.service.base.BaseFragmentWithBinding
 import com.etac.service.databinding.FragmentSignInBinding
-import com.etac.service.models.auth.LoginUserInfo
 import com.etac.service.models.auth.UserInfo
 import com.etac.service.network.ApiEndPoint
 import com.etac.service.shared_preference.SharedPref

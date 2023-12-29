@@ -33,7 +33,7 @@ class ApiSuccessResponse<T>(val data: T) : ApiResponse<T>() {
 }
 
 class ApiSuccessEmptyResponse<T> : ApiResponse<T>()
-class ApiErrorResponse<T>(val errorMessage: String) : ApiResponse<T>() {
+class ApiErrorResponse<T>(private val errorMessage: String) : ApiResponse<T>() {
     override fun toString(): String {
         return "ApiErrorResponse(errorMessage='$errorMessage')"
     }
