@@ -40,7 +40,7 @@ class ServiceHistoryListAdapter @Inject constructor():
             var paymentVerified = false
             if (!oldItemList[position].payment_method.isNullOrEmpty()){
                 paymentVerified = true
-                tvPaymentDetails.text = "Payment Verified ☑"
+                tvPaymentDetails.text = "Payment Submitted ☑"
                 tvPaymentDetails.setTextColor(getColorStateList(context!!,R.color.green))
                 tvPaymentDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
             }
@@ -58,7 +58,7 @@ class ServiceHistoryListAdapter @Inject constructor():
                     tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.bg_tint_light_blue_sky);
                 }
                 1->{
-                    tvServiceStatus.text = "Completed ☑"
+                    tvServiceStatus.text = "Accepted ☑"
                     tvServiceStatus.backgroundTintList = getColorStateList(context!!,R.color.green);
                 }
                 2->{
