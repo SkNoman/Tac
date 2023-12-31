@@ -54,12 +54,6 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        val savedUserInfo = SharedPref(requireContext()).getUserInfo()
-        if (savedUserInfo != null){
-            findNavController().navigate(R.id.dashboardFragment,null,Animation.animNav().build())
-        }
-
         binding.btnContinue.setOnClickListener {
             findNavController().navigate(R.id.signInFragment,null,Animation.animNav().build())
         }
@@ -91,7 +85,15 @@ class SplashFragment : BaseFragmentWithBinding<FragmentSplashBinding>
                         }
                     }
                     else if (it.result.current_version == BuildConfig.VERSION_CODE){
-                        binding.btnContinue.visibility = View.VISIBLE
+
+                        val savedUserInfo = SharedPref(requireContext()).getUserInfo()
+                        if (savedUserInfo != null){
+                            findNavController().navigate(R.id.dashboardFragment,null,
+                                                         Animation.animNav().build())
+                        }else{
+                            binding.btnContinue.visibility = View.VISIBLE
+                        }
+
                     }
                 }
             }
